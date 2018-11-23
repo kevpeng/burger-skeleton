@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Ordering from './views/Ordering.vue'
+import selectionOverview from '.views/selectionOverview.vue'
 
 
 Vue.use(Router)
@@ -35,6 +36,14 @@ let router = new Router({
          },
       name: 'start',
       component: () => import(/* webpackChunkName: "read" */ './views/Start.vue')
+   },
+   {
+      path: '/selectionOverview',
+         meta: {
+            title: 'Selection Overview',
+         },
+      name: 'selectionOverview',
+      component: () => import(/* webpackChunkName: "read" */ './views/selectionOverview.vue')
    }
 
   ]
