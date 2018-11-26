@@ -16,5 +16,12 @@
   "ingredients" : "Ingredienser",
   "ready" : "Klart",
   "order" : "Min burgare",
-  "language" : "English"
+  "language" : "English",
+  "bread" : "Bröd",
+  "patty" : "Patty", 
+  "toppings" : "Toppings",
+  "sauce" : "Sås",
+  "back" : "Tillbaka",
+  "add" : "Add",
+  "burgerCreation" : "Burger Creation"
 }
