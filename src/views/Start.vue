@@ -1,13 +1,21 @@
 <template>
     <div id="start">
         <div class="button">
-            <button v-on:click="switchLang()">hello</button>
+            <button v-on:click="switchLang()">
+                <img src="@/assets/ENG-select.png" alt="language selected">
+            </button>
 
             <!-- To do: decide between function/object -->
             {{lang_link}}
-            <img v-bind:src="lang_link" alt="lang_selected">
+
+            <!--<img src="@/assets/SV-select.png" alt="language selected">-->
+            <br>
+            <h1>Welcome to myCreation</h1>
+            <br>
+            <h2>Where do you want to enjoy your meal?</h2>
+
+
         </div>
-        Hello
     </div>
 </template>
 <script>

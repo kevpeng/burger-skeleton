@@ -8,7 +8,7 @@ var sharedVueStuff = {
       uiLabels: {},
       ingredients: {},
       lang: "en",
-      lang_link: "@/assets/ENG-select.jpg"
+      lang_link: "@/assets/ENG-select.png"
 
     }
   },
@@ -34,12 +34,15 @@ var sharedVueStuff = {
     switchLang: function () {
       if (this.lang === "en") {
         this.lang = "sv";
-        this.lang_link = "@/assets/SV-select.jpg";
+        this.lang_link = "@/assets/SV-select.png";
       } else {
         this.lang = "en";
-        this.lang_link = "@/assets/ENG-select.jpg";
+        this.lang_link = "@/assets/ENG-select.png";
       }
-      this.$store.state.socket.emit('switchLang', this.lang);
+      this.$store.state.socket.emit('switchLang', this.lang, this.lang_link);
+    },
+    getImage: function() {
+      return this.lang_link;
     }
   }
 };
