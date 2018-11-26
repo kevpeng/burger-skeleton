@@ -90,6 +90,7 @@ export default {
 #title{
   background-color: #FFE4B5;
   text-align: center;
+  color: #8B4513;
 }
 .buttons {
   width: 55%;
@@ -142,6 +143,10 @@ export default {
 .drinks {
   grid-column: 3;
   grid-row: 3;
+}
+button:hover{
+  background-color: #501811;
+  cursor: pointer;
 }
 
   </style>
