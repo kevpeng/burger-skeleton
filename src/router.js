@@ -44,6 +44,14 @@ let router = new Router({
          },
       name: 'selectionOverview',
       component: () => import(/* webpackChunkName: "read" */ './views/selectionOverview.vue')
+   },
+   {
+      path: '/burgerCreation',
+         meta: {
+            title: 'Burger Creation',
+         },
+      name: 'burgerCreation',
+      component: () => import(/* webpackChunkName: "read" */ './views/burgerCreation.vue')
    }
   ]
 })
