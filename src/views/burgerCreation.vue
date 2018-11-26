@@ -1,4 +1,5 @@
 <template>
+  <div>
   <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -6,38 +7,40 @@
   </head>
 
   <body>
-
+    <div class="background">
     <main>
       <div class="header">
-        <button  class="language" id="language"> SV </button> <!--use image-->
+        <button  class="language" id="language"> {{ uiLabels.language }} </button> <!--use image-->
         <button  class="cancel" id="cancel"><img src="https://img.icons8.com/material/52/FFE4B5/delete-sign.png">  </button>
         <button  class="cart" id="language"><img src="https://img.icons8.com/material/52/FFE4B5/shopping-cart.png">  </button>
-        <h1> Burger Creation </h1>
+        <h1> {{ uiLabels.burgerCreation }}  </h1>
       </div>
     </main>
 
     <section>
-      <button class="burgerButtons" id="bread"> Bread </button> <!--'bread' hardcoded -->
-      <button class="burgerButtons" id="patty"> Patty </button> <!--'patty' hardcoded -->
-      <img class="burgerImage" src="burger.png">
-      <button class="burgerButtons" id="toppings"> Toppings </button> <!--'toppings' hardcoded -->
-      <button class="burgerButtons" id="sauce"> Sauce </button> <!--'sauce' hardcoded -->
+      <button class="burgerButtons" id="bread"> {{ uiLabels.bread }} </button> <!--'bread' hardcoded -->
+      <button class="burgerButtons" id="patty"> {{ uiLabels.patty }} </button> <!--'patty' hardcoded -->
+      <img class="burgerImage" src="../assets/burger.png">
+      <button class="burgerButtons" id="toppings"> {{ uiLabels.toppings }} </button> <!--'toppings' hardcoded -->
+      <button class="burgerButtons" id="sauce"> {{ uiLabels.sauce }} </button> <!--'sauce' hardcoded -->
     </section>
 
 
     <footer>
-      <button  class="back" id="back"> Back </button> <!--'back' hardcoded -->
-      <button  class="add" id="add"> Add to burger </button> <!--'add to burger' hardcoded -->
+      <button  class="back" id="back"> {{ uiLabels.back }} </button> <!--'back' hardcoded -->
+      <button  class="add" id="add"> {{ uiLabels.add }} </button> <!--'add to burger' hardcoded -->
     </footer>
+  </div>
   </body>
-
+</div>
 </template>
 
 <script>
 import sharedVueStuff from '@/components/sharedVueStuff.js'
     export default {
         // add the right name
-        name: "    .vue"
+        name: "    .vue",
+        mixins: [sharedVueStuff]
     }
 </script>
 
@@ -200,9 +203,13 @@ h1{
   margin-top: -50px;
 }
 
-body{
+.background {
   background-color: #FFFFF0;
   font-family: 'Amaranth';
+  width: 110%;
+  height: 100%;
+  margin-left: -3%;
+
 }
 
 </style>
