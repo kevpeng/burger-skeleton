@@ -7,7 +7,9 @@ var sharedVueStuff = {
       orders: {},
       uiLabels: {},
       ingredients: {},
-      lang: "en"
+      lang: "en",
+      lang_link: "@/assets/ENG-select.jpg"
+
     }
   },
   created: function () {
@@ -32,8 +34,10 @@ var sharedVueStuff = {
     switchLang: function () {
       if (this.lang === "en") {
         this.lang = "sv";
+        this.lang_link = "@/assets/SV-select.jpg";
       } else {
         this.lang = "en";
+        this.lang_link = "@/assets/ENG-select.jpg";
       }
       this.$store.state.socket.emit('switchLang', this.lang);
     }

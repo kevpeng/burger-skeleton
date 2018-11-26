@@ -1,9 +1,13 @@
 <template>
     <div id="start">
         <div class="button">
+            <button v-on:click="switchLang()">hello</button>
+
+            <!-- To do: decide between function/object -->
+            {{lang_link}}
+            <img v-bind:src="lang_link" alt="lang_selected">
         </div>
         Hello
-        <button v-on:click="switchLang()">Hello</button>
     </div>
 </template>
 <script>
@@ -17,6 +21,9 @@
 //    //import methods and data that are shared between ordering and kitchen views
     import sharedVueStuff from '@/components/sharedVueStuff.js'
     export default {
+        name: 'Start',
+        components: {},
+        mixins: [sharedVueStuff], // include stuff that is used in both
 
     }
 //    /* instead of defining a Vue instance, export default allows the only
