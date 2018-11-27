@@ -8,10 +8,11 @@
         <body>
         <div id="background">
             <header class="header">
-                        <button class="button language" v-on:click="switchLang()"></button>
+                        <button :class="['button', 'language', lang]" v-on:click="switchLang()"></button>
                         <h1 style="margin-top: -50px">Welcome to myCreation</h1>
+                {{lang}}
             </header>
-            <main>
+            <main style="margin-left: 20px">
                 <br><br><br>
                 <h2>Where do you want to enjoy your meal?</h2>
                 <div class="grid-container">
@@ -101,6 +102,7 @@
         color: black;
         font-size: 0.9em;
         padding-left: 20px;
+        padding-right: 20px;
     }
 
     button:hover {
@@ -119,17 +121,9 @@
         font-size: 3em;
     }
 
-    .lang {
-        background: #8b4513 url('../assets/ENG-select.png') no-repeat right 10px top 10px;
-        width: 85px;
-        height: 85px;
-        background-size: 65px;
-        margin-top: 10px;
-    }
-
     .header{
         /*display: inline;*/
-        top:0px;
+        /*top:0px;*/
         /*position:fixed;*/
         background-color: #DEB887;
         width:100%;
@@ -138,8 +132,8 @@
         color:black;
         font-size: 1em;
         padding-left:20px;
+        padding-right:20px;
     }
-
 
     .language {
         width: 4em;
@@ -154,7 +148,16 @@
         font-family: 'Amaranth';
         color: #FFE4B5;
         border-radius: 10px;
-        background: #8b4513 url('../assets/ENG-select.png') no-repeat right 5px top 5px;
+    }
+
+    /* these 2 classes are used to select language flag. */
+    .sv {
+        background: #8b4513 url('~@/assets/SV-select.png') no-repeat right 5px top 5px;
+        background-size: 50px;
+    }
+
+    .en {
+        background: #8b4513 url('~@/assets/ENG-select.png') no-repeat right 5px top 5px;
         background-size: 50px;
     }
 

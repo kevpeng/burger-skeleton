@@ -11,7 +11,6 @@ var sharedVueStuff = {
       uiLabels: {},
       ingredients: {},
       lang: "en",
-      // image: eng_select,
 
     }
   },
@@ -37,10 +36,8 @@ var sharedVueStuff = {
     switchLang: function () {
       if (this.lang === "en") {
         this.lang = "sv";
-        // this.image = sv_select;
       } else {
         this.lang = "en";
-        // this.image = eng_select;
       }
       this.$store.state.socket.emit('switchLang', this.lang);
     },
