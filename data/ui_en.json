@@ -23,5 +23,7 @@
   "sauce" : "Sauce",
   "back" : "Back",
   "add" : "Add",
-  "burgerCreation" : "Burger Creation"
+  "burgerCreation" : "Burger Creation",
+  "ingredientSelection" : "Ingredients Selection",
+  "addToBurger" : "Add to burger"
 }
