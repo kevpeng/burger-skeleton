@@ -25,5 +25,9 @@
   "add" : "Läg till",
   "burgerCreation" : "Burgare Kreation",
   "ingredientSelection" : "Val av ingredienser",
-  "addToBurger" : "Lägg till burgare"
+  "addToBurger" : "Lägg till burgare",
+  "whereToEat" : "Ska du äta här eller ta med",
+  "welcome" : "Välkommen till myCreation",
+  "takeaway" : "Ta med",
+  "eatIn" : "Äta här"
 }

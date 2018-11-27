@@ -6,23 +6,24 @@
             <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
         </head>
         <body>
-        <div id="background">
             <header class="header">
                         <button :class="['button', 'language', lang]" v-on:click="switchLang()"></button>
-                        <h1 style="margin-top: -50px">Welcome to myCreation</h1>
-                {{lang}}
+                        <h1 style="margin-top: -50px"> {{ uiLabels.welcome }}</h1>
             </header>
-            <main style="margin-left: 20px">
-                <br><br><br>
-                <h2>Where do you want to enjoy your meal?</h2>
+            <div class="background">
+
+            <main>
+                <br>
+                <h2> {{ uiLabels.whereToEat }}</h2>
+                <br>
                 <div class="grid-container">
-                    <button class="button takeaway" v-on:click="switchLang()">Take away</button>
-                    <button class="button eatin" v-on:click="switchLang()">Eat in</button>
+                    <button class="button takeaway" v-on:click="switchLang()">{{ uiLabels.eatIn }}</button>
+                    <button class="button eatin" v-on:click="switchLang()">{{ uiLabels.takeaway }}</button>
                 </div>
+
             </main>
-        </div>
+            </div>
         <footer>
-            hello
         </footer>
         </body>
     </div>
@@ -110,6 +111,12 @@
         cursor: pointer;
     }
 
+    .button:active {
+        box-shadow: 0 1px #666;
+        transform: translateY(2px);
+    }
+
+
     .button {
         width: 7em;
         height: 2em;
@@ -151,12 +158,13 @@
     }
 
     /* these 2 classes are used to select language flag. */
-    .sv {
+    .en {
         background: #8b4513 url('~@/assets/SV-select.png') no-repeat right 5px top 5px;
         background-size: 50px;
     }
 
-    .en {
+    /* swapped the images.. gonna have to take a look at it tomorrow */
+    .sv {
         background: #8b4513 url('~@/assets/ENG-select.png') no-repeat right 5px top 5px;
         background-size: 50px;
     }
@@ -168,22 +176,43 @@
         /*margin-top: ;*/
     }
 
+    h2 {
+        text-align: center;
+        font-family: 'Amaranth';
+        color: #8B4513;
+        font-size: 30px;
+    }
+
     body {
         background-color: #FFFFF0;
         font-family: 'Amaranth';
     }
 
     .grid-container {
+        justify-items: center;
         display: grid;
+        grid-row-gap: 10px;
+        grid-template-columns: auto auto;
+        grid-gap: 10px;
+
     }
 
-    .background {
-        background-color: #FFFFF0;
-        font-family: 'Amaranth';
-        width: 110%;
-        height: 100%;
-        margin-left: -3%;
 
+    .background {
+        background-color: white;
+        font-family: 'Amaranth';
+        margin-top: 0px;
+
+        width: 100%;
+        height: 60%;
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    .divider {
+        width: 5px;
+        height: auto;
+        display: inline-block;
     }
 
 </style>

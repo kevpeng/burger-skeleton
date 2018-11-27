@@ -25,5 +25,9 @@
   "add" : "Add",
   "burgerCreation" : "Burger Creation",
   "ingredientSelection" : "Ingredients Selection",
-  "addToBurger" : "Add to burger"
+  "addToBurger" : "Add to burger",
+  "welcome" : "Welcome to myCreation",
+  "whereToEat" : "Would you like to eat here or take away?",
+  "takeaway" : "Take away",
+  "eatIn" : "Eat here"
 }

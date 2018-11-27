@@ -1,7 +1,5 @@
 'use strict';
 
-// import eng_select from "../assets/ENG-select.png"
-// import sv_select  from "../assets/SV-select.png"
 
 // Stuff that is used both in the ordering system and in the kitchen
 var sharedVueStuff = {
