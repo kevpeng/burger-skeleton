@@ -25,6 +25,9 @@
       </div>
     </div>
   </body>
+  <!-- <footer>
+    <button  class="back" id="back"> {{ Back }} </button>
+  </footer> -->
 </div>
 </template>
 
@@ -78,7 +81,8 @@ import sharedVueStuff from '@/components/sharedVueStuff.js'
 // ]
 export default {
   // add the right name
-  name: "selectionOverview.vue"
+  name: 'selectionOverview.vue',
+  mixins: [sharedVueStuff],
 }
 </script>
 
@@ -144,6 +148,17 @@ export default {
   grid-column: 3;
   grid-row: 3;
 }
+/* footer{
+	bottom:0px;
+	position:fixed;
+	background-color: #DEB887;
+	width:100%;
+	height:4em;
+	left:0px;
+	color:black;
+	font-size: 0.9em;
+	padding-left:20px;
+} */
 button:hover{
   background-color: #501811;
   cursor: pointer;
