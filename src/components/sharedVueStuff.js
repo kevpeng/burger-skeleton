@@ -1,5 +1,8 @@
 'use strict';
 
+// import eng_select from "../assets/ENG-select.png"
+// import sv_select  from "../assets/SV-select.png"
+
 // Stuff that is used both in the ordering system and in the kitchen
 var sharedVueStuff = {
   data: function () {
@@ -8,7 +11,6 @@ var sharedVueStuff = {
       uiLabels: {},
       ingredients: {},
       lang: "en",
-      lang_link: "@/assets/ENG-select.png"
 
     }
   },
@@ -34,16 +36,11 @@ var sharedVueStuff = {
     switchLang: function () {
       if (this.lang === "en") {
         this.lang = "sv";
-        this.lang_link = "@/assets/SV-select.png";
       } else {
         this.lang = "en";
-        this.lang_link = "@/assets/ENG-select.png";
       }
-      this.$store.state.socket.emit('switchLang', this.lang, this.lang_link);
+      this.$store.state.socket.emit('switchLang', this.lang);
     },
-    getImage: function() {
-      return this.lang_link;
-    }
   }
 };
 

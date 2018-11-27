@@ -18,17 +18,17 @@
     </main>
 
     <section>
-      <button class="burgerButtons" id="bread"> {{ uiLabels.bread }} </button> <!--'bread' hardcoded -->
-      <button class="burgerButtons" id="patty"> {{ uiLabels.patty }} </button> <!--'patty' hardcoded -->
+      <button class="burgerButtons" id="bread"> {{ uiLabels.bread }} </button>
+      <button class="burgerButtons" id="patty"> {{ uiLabels.patty }} </button>
       <img class="burgerImage" src="../assets/burger.png">
-      <button class="burgerButtons" id="toppings"> {{ uiLabels.toppings }} </button> <!--'toppings' hardcoded -->
-      <button class="burgerButtons" id="sauce"> {{ uiLabels.sauce }} </button> <!--'sauce' hardcoded -->
+      <button class="burgerButtons" id="toppings"> {{ uiLabels.toppings }} </button>
+      <button class="burgerButtons" id="sauce"> {{ uiLabels.sauce }} </button>
     </section>
 
 
     <footer>
-      <button  class="back" id="back"> {{ uiLabels.back }} </button> <!--'back' hardcoded -->
-      <button  class="add" id="add"> {{ uiLabels.add }} </button> <!--'add to burger' hardcoded -->
+      <button  class="back" id="back"> {{ uiLabels.back }} </button>
+      <button  class="add" id="add"> {{ uiLabels.add }} </button>
     </footer>
   </div>
   </body>
@@ -38,8 +38,7 @@
 <script>
 import sharedVueStuff from '@/components/sharedVueStuff.js'
     export default {
-        // add the right name
-        name: "    .vue",
+        name: "burgerCreation.vue",
         mixins: [sharedVueStuff]
     }
 </script>
