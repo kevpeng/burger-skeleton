@@ -25,5 +25,13 @@
   "add" : "Läg till",
   "burgerCreation" : "Burgare Kreation",
   "ingredientSelection" : "Val av ingredienser",
-  "addToBurger" : "Lägg till burgare"
+  "addToBurger" : "Lägg till burgare",
+  "selectionOverviewTitle": "Välj mat",
+  "createOwnBurger": "Skapa egen burger",
+  "menus": "Menyer",
+  "burgers": "Hamburgare",
+  "fries": "Frites",
+  "iceCream": "Glass",
+  "salad": "Sallad",
+  "drinks": "Drycker"
 }

@@ -2,32 +2,32 @@
   <!-- HTML code -->
   <div>
     <head>
-      <title>Selection Overview</title>
+      <!-- <title>Selection Overview</title> -->
       <meta charset="utf-8"/>
       <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
     </head>
     <body>
       <div class="theWholeBody">
         <div id="title">
-          <h1>Selection Overview</h1>
+          <h1>{{uiLabels.selectionOverviewTitle}}</h1>
         </div>
         <div class="buttons">
-          <button class="button create" v-on:click="switchLang()"> Create own Burger </button>
-          <button class="button menus" v-on:click="switchLang()"> Menus </button>
-          <button class="button burgers" v-on:click="switchLang()"> Burgers </button>
-          <button class="button fries" v-on:click="switchLang()"> Fries </button>
-          <button class="button icecream" v-on:click="switchLang()"> Ice Cream </button>
-          <button class="button salad" v-on:click="switchLang()"> Salad </button>
-          <button class="button drinks" v-on:click="switchLang()"> Drinks </button>
+          <button class="button create" v-on:click="switchLang()"> {{uiLabels.createOwnBurger}} </button>
+          <button class="button menus" v-on:click="switchLang()"> {{uiLabels.menus}} </button>
+          <button class="button burgers" v-on:click="switchLang()"> {{uiLabels.burgers}} </button>
+          <button class="button fries" v-on:click="switchLang()"> {{uiLabels.fries}} </button>
+          <button class="button icecream" v-on:click="switchLang()"> {{uiLabels.iceCream}} </button>
+          <button class="button salad" v-on:click="switchLang()"> {{uiLabels.salad}} </button>
+          <button class="button drinks" v-on:click="switchLang()"> {{uiLabels.drinks}} </button>
           <!-- <div class="button" v-for="b in buttonList">
 
         </div> -->
       </div>
     </div>
+    <footer>
+      <button  class="back" id="back"> {{uiLabels.back}}  </button>
+    </footer>
   </body>
-  <footer>
-    <button  class="back" id="back"> {{uiLabels.back}}  </button>
-  </footer>
 </div>
 </template>
 
@@ -99,10 +99,14 @@ export default {
 .buttons {
   width: 55%;
   display: grid;
-  grid-template-columns: 100px 100px 100px;
-  grid-template-rows: 100px 100px 100px;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  /* grid-template-areas:
+  "create create create"
+  "a b c"
+  "d e f"; */
   grid-row-gap: 100px;
-  grid-column-gap: 150px;
+  /* grid-column-gap: 150px; */
   color: #FFE4B5;
   margin : 0 auto;
   /* border: 5px solid black; */
@@ -120,8 +124,8 @@ export default {
 }
 .create{
   grid-column: 1 / 3;
-  grid-row: 1;
-  width: 197%;
+  /* grid-row: 1; */
+  /* width: 187%; */
 }
 .menus {
   grid-column: 1 ;
@@ -150,7 +154,7 @@ export default {
 }
 footer{
 	bottom:0px;
-	position:fixed;
+	/* position:fixed; */
 	background-color: #DEB887;
 	width:100%;
 	height:4em;

@@ -25,5 +25,13 @@
   "add" : "Add",
   "burgerCreation" : "Burger Creation",
   "ingredientSelection" : "Ingredients Selection",
-  "addToBurger" : "Add to burger"
+  "addToBurger" : "Add to burger",
+  "selectionOverviewTitle": "Select food",
+  "createOwnBurger": "Create Own Burger",
+  "menus": "Menus",
+  "burgers": "Burgers",
+  "fries": "Fries",
+  "iceCream": "Ice Cream",
+  "salad": "Salad",
+  "drinks": "Drinks"
 }
