@@ -18,10 +18,12 @@
   "order" : "Min burgare",
   "language" : "English",
   "bread" : "Bröd",
-  "patty" : "Patty", 
-  "toppings" : "Toppings",
+  "patty" : "Bulle",
+  "toppings" : "Pålägg",
   "sauce" : "Sås",
   "back" : "Tillbaka",
-  "add" : "Add",
-  "burgerCreation" : "Burger Creation"
+  "add" : "Läg till",
+  "burgerCreation" : "Burgare Kreation",
+  "ingredientSelection" : "Val av ingredienser",
+  "addToBurger" : "Lägg till burgare"
 }
