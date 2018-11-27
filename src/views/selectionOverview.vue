@@ -25,9 +25,9 @@
       </div>
     </div>
   </body>
-  <!-- <footer>
-    <button  class="back" id="back"> {{ Back }} </button>
-  </footer> -->
+  <footer>
+    <button  class="back" id="back"> {{uiLabels.back}}  </button>
+  </footer>
 </div>
 </template>
 
@@ -148,7 +148,7 @@ export default {
   grid-column: 3;
   grid-row: 3;
 }
-/* footer{
+footer{
 	bottom:0px;
 	position:fixed;
 	background-color: #DEB887;
@@ -158,7 +158,19 @@ export default {
 	color:black;
 	font-size: 0.9em;
 	padding-left:20px;
-} */
+}
+.back{
+  width: 10%;
+  height: 2.5em;
+  margin-top: 0.75em;
+  background-color: #8B4513;
+  border: none;
+  font-weight: bold;
+  font-size: 15px;
+  font-family: 'Amaranth';
+  color: #FFE4B5;
+  border-radius: 10px;
+}
 button:hover{
   background-color: #501811;
   cursor: pointer;
