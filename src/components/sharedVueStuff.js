@@ -9,7 +9,8 @@ var sharedVueStuff = {
       uiLabels: {},
       ingredients: {},
       lang: "en",
-
+      kitchenState: 'serving',
+      kitchenStateOpposite: 'cooking',
     }
   },
   created: function () {
@@ -39,6 +40,11 @@ var sharedVueStuff = {
       }
       this.$store.state.socket.emit('switchLang', this.lang);
     },
+    switchKitchenTab: function (newState) {
+      this.kitchenStateOpposite = this.kitchenState;
+      this.kitchenState = newState;
+      console.log(newState);
+    }
   }
 };
 

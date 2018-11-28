@@ -1,6 +1,15 @@
 <template>
 <div id="orders">
-  <h1>{{ uiLabels.ordersInQueue }}</h1>
+  <h1>{{ kitchenState }}</h1>
+  <h1>1</h1>
+  <button v-on:click="switchKitchenTab(kitchenStateOpposite)">SWITCH</button>
+  <div>
+    <Serving v-if="kitchenState === 'serving'"></Serving>
+  </div>
+  <h1>2</h1>
+  <div>
+    <Cooking v-if="kitchenState === 'cooking'"></Cooking>    
+  </div> 
   <div>
     <OrderItemToPrepare
       v-for="(order, key) in orders"
@@ -29,6 +38,8 @@
 </template>
 <script>
 import OrderItem from '@/components/OrderItem.vue'
+import Serving from '@/components/Serving.vue'
+import Cooking from '@/components/Cooking.vue'
 import OrderItemToPrepare from '@/components/OrderItemToPrepare.vue'
 
 //import methods and data that are shared between ordering and kitchen views
@@ -37,6 +48,8 @@ import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   name: 'Ordering',
   components: {
+    Serving,
+    Cooking,
     OrderItem,
     OrderItemToPrepare
   },
@@ -45,10 +58,15 @@ export default {
   data: function(){
     return {
       chosenIngredients: [],
-      price: 0
+      price: 0,
+      state: "serving",
     }
   },
   methods: {
+    switchTab: function (newState) {
+      this.state = newState;
+    },
+
     markDone: function (orderid) {
       this.$store.state.socket.emit("orderDone", orderid);
     }
@@ -63,5 +81,9 @@ export default {
   h1 {
     text-transform: uppercase;
     font-size: 1.4em;
+  }
+
+  button {
+        margin: 0 auto;
   }
 </style>
