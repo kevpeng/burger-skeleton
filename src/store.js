@@ -6,13 +6,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    socket: io()
+    socket: io(),
+    hello: "Hello World!"
   },
   getters: {
     getSocket: state => state.socket
   },
   mutations: {
-
+    changeHello: function(state, msg){
+      state.hello = msg;
+    }
   },
   actions: {
 

@@ -5,11 +5,13 @@
       <!-- <title>Selection Overview</title> -->
       <meta charset="utf-8"/>
       <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
+      <link rel="stylesheet" href="./components/sharedCSSStuff.css">
     </head>
     <body>
       <div class="theWholeBody">
         <div id="title">
           <h1>{{uiLabels.selectionOverviewTitle}}</h1>
+           <!-- <h2>{{$store.state.hello}}</h2> -->
         </div>
         <div class="buttons">
           <button class="button create" v-on:click="switchLang()"> {{uiLabels.createOwnBurger}} </button>
@@ -20,7 +22,7 @@
           <button class="button salad" v-on:click="switchLang()"> {{uiLabels.salad}} </button>
           <button class="button drinks" v-on:click="switchLang()"> {{uiLabels.drinks}} </button>
           <!-- <div class="button" v-for="b in buttonList">
-
+            <button class="button" v-on:click="b.methods"> {{b.title}} </button>
         </div> -->
       </div>
     </div>
@@ -33,56 +35,54 @@
 
 <script>
 // Javascript
-//
-// 'use strict';
-// var socket = io();
-// var vm = new Vue({
-//   el: '#theWholeBody',
-//   data: {
-//     headLine: 'Selection Overview',
-//     buttonList: buttons
-//   },
-//   methods: {
-//     create: function(event){
-//
-//     }
-//   }
-// })
-import sharedVueStuff from '@/components/sharedVueStuff.js'
+
+
 // var buttons = [
 //   {
-//     "title": "Create your own burger",
+//     "title": {{uiLabels.createOwnBurger}},
 //     "methods": "create"
 //   },
 //   {
-//     "title": "Menus",
+//     "title": {{uiLabels.menus}},
 //     "methods": "menus"
 //   },
 //   {
-//     "title": "Burgers",
+//     "title": {{uiLabels.burgers}},
 //     "methods": "burgers"
 //   },
 //   {
-//     "title": "Fries",
+//     "title": {{uiLabels.fries}},
 //     "methods": "fries"
 //   },
 //   {
-//     "title": "Ice Cream",
+//     "title": {{uiLabels.iceCream}},
 //     "methods": "icecream"
 //   },
 //   {
-//     "title": "Salad",
-//     "methods": "sald"
+//     "title": {{uiLabels.salad}},
+//     "methods": "salad"
 //   },
 //   {
-//     "title": "Drinks",
+//     "title": {{uiLabels.drinks}},
 //     "methods": "Drinks"
 //   }
 // ]
+import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   // add the right name
   name: 'selectionOverview.vue',
-  mixins: [sharedVueStuff],
+  mixins: [sharedVueStuff]
+    // data: function() {
+    //   return {
+    //     headLine: 'Selection Overview',
+    //     buttonList: buttons,
+    //   }
+    // },
+    // methods: {
+    //   create: function(){
+    //
+    //   }
+    // }
 }
 </script>
 
@@ -97,22 +97,20 @@ export default {
   color: #8B4513;
 }
 .buttons {
-  width: 55%;
+  justify-items: center;
+  width: 100%;
   display: grid;
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto auto;
-  /* grid-template-areas:
-  "create create create"
-  "a b c"
-  "d e f"; */
-  grid-row-gap: 100px;
-  /* grid-column-gap: 150px; */
+  grid-gap: 2%;
+  /* grid-row-gap: 100%; */
+  /* grid-column-gap: 5%; */
   color: #FFE4B5;
-  margin : 0 auto;
+  /* margin : 0 auto; */
   /* border: 5px solid black; */
 }
 .button{
-  width: 180%;
+  width: 90%;
   height: 100;
   font-family: 'Amaranth';
   font-size: 3em;
@@ -123,7 +121,8 @@ export default {
   border-radius: 10px;
 }
 .create{
-  grid-column: 1 / 3;
+  grid-column: 1 / 4;
+  width: 97%;
   /* grid-row: 1; */
   /* width: 187%; */
 }
@@ -131,7 +130,7 @@ export default {
   grid-column: 1 ;
   grid-row: 2;
 }
-.burgers {
+/* .burgers {
   grid-column: 2 ;
   grid-row: 2 ;
 }
@@ -151,7 +150,7 @@ export default {
 .drinks {
   grid-column: 3;
   grid-row: 3;
-}
+} */
 footer{
 	bottom:0px;
 	/* position:fixed; */
@@ -178,6 +177,10 @@ footer{
 button:hover{
   background-color: #501811;
   cursor: pointer;
+}
+button:active{
+  box-shadow: 0 1px #666;
+  transform: translateY(2px);
 }
 
   </style>

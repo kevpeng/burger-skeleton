@@ -20,10 +20,10 @@ body {
   height:100vh;
   background: radial-gradient(white, lightblue);
   background-size: 200% 200%;
-  animation: Gradient 20s linear infinite;
+  /* animation: Gradient 20s linear infinite; */
 }
 
-@keyframes Gradient {
+/* @keyframes Gradient {
   0% {
     background-position: 10% 10%
   }
@@ -42,5 +42,5 @@ body {
   100% {
     background-position: 10% 10%
   }
-}
+} */
 </style>
