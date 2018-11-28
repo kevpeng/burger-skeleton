@@ -33,5 +33,9 @@
   "fries": "Fries",
   "iceCream": "Ice Cream",
   "salad": "Salad",
-  "drinks": "Drinks"
+  "drinks": "Drinks",
+  "welcome" : "Welcome to myCreation",
+  "whereToEat" : "Would you like to eat here or take away?",
+  "takeaway" : "Take away",
+  "eatIn" : "Eat here"
 }

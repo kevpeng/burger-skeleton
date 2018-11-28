@@ -6,23 +6,28 @@
             <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
         </head>
         <body>
-        <div id="background">
-            <header class="header">
-                        <button :class="['button', 'language', lang]" v-on:click="switchLang()"></button>
-                        <h1 style="margin-top: -50px">Welcome to myCreation</h1>
-                {{lang}}
+        <header class="header">
+            <button :class="['button', 'language', lang]" v-on:click="switchLang()"></button>
+            <button :class="['button', 'language', lang]" v-on:click="switchLang()"></button>
+            <span class="title"> {{ uiLabels.welcome }} </span>
+            <!--<button :class="['button', 'language', lang]" v-on:click="switchLang()"></button>-->
+            <!--<h1 style="float: right; text-align: center;"> {{ uiLabels.welcome }}</h1>-->
             </header>
-            <main style="margin-left: 20px">
-                <br><br><br>
-                <h2>Where do you want to enjoy your meal?</h2>
+
+        <div class="background">
+            <main>
+                <br>
+                <h2> {{ uiLabels.whereToEat }}</h2>
+                <br>
                 <div class="grid-container">
-                    <button class="button takeaway" v-on:click="switchLang()">Take away</button>
-                    <button class="button eatin" v-on:click="switchLang()">Eat in</button>
+                    <button class="button takeaway" v-on:click="switchLang()">{{ uiLabels.eatIn }}</button>
+                    <button class="button eatin" v-on:click="switchLang()">{{ uiLabels.takeaway }}</button>
                 </div>
+
             </main>
         </div>
         <footer>
-            hello
+
         </footer>
         </body>
     </div>
@@ -42,6 +47,7 @@
         name: 'Start',
         components: {},
         mixins: [sharedVueStuff], // include stuff that is used in both
+        state: 'start'
 
     }
     //    /* instead of defining a Vue instance, export default allows the only
@@ -92,25 +98,20 @@
 </script>
 
 <style scoped>
-    footer {
-        bottom: 0px;
-        /*position: fixed;*/
-        background-color: #DEB887;
-        width: 100%;
-        height: 4em;
-        left: 0px;
-        color: black;
-        font-size: 0.9em;
-        padding-left: 20px;
-        padding-right: 20px;
-    }
 
     button:hover {
         background-color: #501811;
         cursor: pointer;
     }
 
+    button:active {
+        box-shadow: 0 1px #666;
+        transform: translateY(2px);
+    }
+
+
     .button {
+        /*position: absolute;*/
         width: 7em;
         height: 2em;
         background-color: #8B4513;
@@ -119,47 +120,40 @@
         color: #FFE4B5;
         border: none;
         font-size: 3em;
+
     }
 
-    .header{
-        /*display: inline;*/
-        /*top:0px;*/
-        /*position:fixed;*/
-        background-color: #DEB887;
-        width:100%;
-        height:5em;
-        left:0px;
-        color:black;
-        font-size: 1em;
-        padding-left:20px;
-        padding-right:20px;
-    }
 
     .language {
-        width: 4em;
-        height: 4em;
+        justify-content: left;
+        width: 10%;
+        height: 85%;
         /*position: absolute;*/
-        top: 0px;
-        margin-top: 0.75em;
-        border: none;
-        font-weight: bold;
-        font-size: 15px;
-        margin-right: 40px;
-        font-family: 'Amaranth';
-        color: #FFE4B5;
+        margin: 0.5%;
+        /*border: none;*/
         border-radius: 10px;
     }
 
     /* these 2 classes are used to select language flag. */
-    .sv {
-        background: #8b4513 url('~@/assets/SV-select.png') no-repeat right 5px top 5px;
-        background-size: 50px;
+    .en {
+        background: #8b4513 url('~@/assets/SV-select.png') no-repeat right 50% top 50%;
+        background-size: 60%;
     }
 
-    .en {
-        background: #8b4513 url('~@/assets/ENG-select.png') no-repeat right 5px top 5px;
-        background-size: 50px;
+    /* swapped the images.. gonna have to take a look at it tomorrow */
+    .sv {
+        background: #8b4513 url('~@/assets/ENG-select.png') no-repeat right 50% top 50%;
+        background-size: 60%;
     }
+
+    .eatin {
+
+    }
+
+    .takeaway {
+
+    }
+
 
     h1 {
         text-align: center;
@@ -168,22 +162,80 @@
         /*margin-top: ;*/
     }
 
+    h2 {
+        text-align: center;
+        font-family: 'Amaranth';
+        color: #8B4513;
+        font-size: 30px;
+    }
+
     body {
         background-color: #FFFFF0;
         font-family: 'Amaranth';
     }
 
     .grid-container {
+        justify-items: center;
         display: grid;
+        /*grid-row-gap: 10px;*/
+        grid-template-columns: auto auto;
+        /*grid-gap: 10px;*/
+
+    }
+
+    .header{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
+        /*display: inline;*/
+        /*top:0px;*/
+        /*position:fixed;*/
+        background-color: #DEB887;
+        width: 94.5vw;
+        /*height:5em;*/
+        height: 12vh;
+        left:0px;
+        color:black;
+        font-size: 1em;
+        padding-left:20px;
+        padding-right:20px;
     }
 
     .background {
-        background-color: #FFFFF0;
+        background-color: white;
         font-family: 'Amaranth';
-        width: 110%;
-        height: 100%;
-        margin-left: -3%;
 
+        width: 94.5vw;
+        height: 76vh;
+        padding-left:20px;
+        padding-right:20px;
+    }
+
+    footer {
+        bottom: 0px;
+        /*position: fixed;*/
+        background-color: #DEB887;
+        width: 94.5vw;
+        height: 10vh;
+        left: 0px;
+        color: black;
+        font-size: 0.9em;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .divider {
+        width: 5px;
+        height: auto;
+        display: inline-block;
+    }
+
+    .title {
+        vertical-align: ;
+        /*text-align: center;*/
+        /*width: 100%;*/
+        /*font-size: 50px;*/
     }
 
 </style>

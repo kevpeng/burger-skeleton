@@ -1,7 +1,5 @@
 'use strict';
 
-// import eng_select from "../assets/ENG-select.png"
-// import sv_select  from "../assets/SV-select.png"
 
 // Stuff that is used both in the ordering system and in the kitchen
 var sharedVueStuff = {
@@ -11,7 +9,8 @@ var sharedVueStuff = {
       uiLabels: {},
       ingredients: {},
       lang: "en",
-
+      kitchenState: 'serving',
+      kitchenStateOpposite: 'cooking',
     }
   },
   created: function () {
@@ -42,6 +41,11 @@ var sharedVueStuff = {
       this.$store.state.socket.emit('switchLang', this.lang);
       // this.$store.commit('changeHello', "Hi there again!");
     },
+    switchKitchenTab: function (newState) {
+      this.kitchenStateOpposite = this.kitchenState;
+      this.kitchenState = newState;
+      console.log(newState);
+    }
   }
 };
 
