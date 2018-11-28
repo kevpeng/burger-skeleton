@@ -27,7 +27,6 @@
             </main>
         </div>
         <footer>
-
         </footer>
         </body>
     </div>
@@ -184,45 +183,48 @@
     }
 
     .header{
-        display: flex;
+        /*display: flex;*/
         flex-direction: row;
         justify-content: center;
-        margin: auto;
-        /*display: inline;*/
-        /*top:0px;*/
-        /*position:fixed;*/
-        background-color: #DEB887;
-        width: 94.5vw;
-        /*height:5em;*/
-        height: 12vh;
-        left:0px;
         color:black;
-        font-size: 1em;
-        padding-left:20px;
-        padding-right:20px;
+
+
+        /* -------------------------------------------- */
+
+        position:fixed;
+        background-color: #DEB887;
+        width: 100vw;
+        height: 15vh;
+        top: 0px;
+        left:0px;
+        font-size: 16px;
+        font-size: calc(2.5vw + 2.5vh);
+        padding-left:1vw;
+        padding-right:1vw;
     }
 
     .background {
-        background-color: white;
         font-family: 'Amaranth';
-
-        width: 94.5vw;
-        height: 76vh;
-        padding-left:20px;
-        padding-right:20px;
+        margin-top:15vh;
+        position: fixed;
+        width: 100vw;
+        height: 70vh;
+        left:0px;
+        /*padding-left:20px;*/
+        /*padding-right:20px;*/
     }
 
     footer {
-        bottom: 0px;
-        /*position: fixed;*/
-        background-color: #DEB887;
-        width: 94.5vw;
-        height: 10vh;
+        bottom: 0;
         left: 0px;
-        color: black;
-        font-size: 0.9em;
-        padding-left: 20px;
-        padding-right: 20px;
+        position: fixed;
+        background-color: #DEB887;
+        width: 100vw;
+        height: 15vh;
+
+        /* padding is for buttons */
+        padding-left:1vw;
+        padding-right:1vw;
     }
 
     .divider {

@@ -43,7 +43,7 @@ var sharedVueStuff = {
     switchKitchenTab: function (newState) {
       this.kitchenStateOpposite = this.kitchenState;
       this.kitchenState = newState;
-      console.log(newState);
+      // console.log(newState);
     }
   }
 };
