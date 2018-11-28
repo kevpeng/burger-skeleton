@@ -111,7 +111,7 @@
         cursor: pointer;
     }
 
-    .button:active {
+    button:active {
         box-shadow: 0 1px #666;
         transform: translateY(2px);
     }
@@ -191,9 +191,9 @@
     .grid-container {
         justify-items: center;
         display: grid;
-        grid-row-gap: 10px;
+        /*grid-row-gap: 10px;*/
         grid-template-columns: auto auto;
-        grid-gap: 10px;
+        /*grid-gap: 10px;*/
 
     }
 
