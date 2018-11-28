@@ -39,6 +39,7 @@ var sharedVueStuff = {
         this.lang = "en";
       }
       this.$store.state.socket.emit('switchLang', this.lang);
+      // this.$store.commit('changeHello', "Hi there again!");
     },
     switchKitchenTab: function (newState) {
       this.kitchenStateOpposite = this.kitchenState;
