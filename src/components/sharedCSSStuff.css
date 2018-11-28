@@ -1,0 +1,42 @@
+/* Formatting for headers */
+.header{
+  /* top:0px; */
+  color:black;
+  /* positioning of buttons and title? */
+  /* -------------------------------- */
+  position:fixed;
+  background-color: #DEB887;
+  width: 100vw;
+  height:15vh;
+  left:0px;
+  font-size: calc(2.5vw + 2.5vh);
+  padding-left: 1vw;
+  padding-right: 1vw;
+}
+/* Middle part of the page, includes background color and size... "Main" */
+.middle{
+  /* background-color: #FFF8DC; */
+  font-family: 'Amaranth';
+  margin-top: 15vh;
+  position: fixed;
+  width: 100vw;
+  height: 70vh;
+  left: 0;
+}
+
+/* Formatting for footers */
+.footer{
+  position:fixed;
+  background-color: #DEB887;
+  color:black;
+
+  width: 100vw;
+  height:15vh;
+  left:0px;
+  bottom: 0;
+  
+	/* font-size: 0.9em; */
+
+	padding-left: 1vw;
+  padding-right: 1vw;
+}
