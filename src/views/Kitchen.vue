@@ -5,7 +5,8 @@
         <button class="btn" v-on:click="switchKitchenTab(kitchenStateOpposite)">TAB</button>      
         <button :class="[lang]" v-on:click="switchLang()"></button>
         <hr>
-        <h3>{{ kitchenState }}</h3>
+        <h3 v-if="kitchenState === 'serving'"> {{ uiLabels.serving }}</h3>
+        <h3 v-if="kitchenState === 'cooking'"> {{ uiLabels.cooking }}</h3>
     </div>  
     <div class="tab">
       <div>
@@ -132,13 +133,13 @@ export default {
   }
 
   /* these 2 classes are used to select language flag. */
-  .en {
+  .sv {
       background: #8b4513 url('~@/assets/SV-select.png') no-repeat right 50% top 50%;
       background-size: 80%;
   }
 
   /* swapped the images.. gonna have to take a look at it tomorrow */
-  .sv {
+  .en {
       background: #8b4513 url('~@/assets/ENG-select.png') no-repeat right 50% top 50%;
       background-size: 80%;
   }
