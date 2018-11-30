@@ -41,7 +41,7 @@
 <style scoped>
     .container {
         display: grid;
-        grid-template-columns: 30.7vmax 30.7vmax 30.7vmax;
+        grid-template-columns: 31.666vmax 31.666vmax 31.666vmax;
         max-width: 100%;
         height: 100vh;
         text-align: center;

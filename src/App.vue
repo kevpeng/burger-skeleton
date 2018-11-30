@@ -20,6 +20,8 @@ body {
   /*height:100vh;*/
   /* background blends in now  */
   background-color: #FFF8DC;
+  margin: 0;
+  padding: 0;
   /*background: radial-gradient(white, lightblue);*/
   /*background-size: 200% 200%;*/
   /*animation: Gradient 20s linear infinite;*/

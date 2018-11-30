@@ -1,35 +1,89 @@
 <template>
-  <div id="ordering">
-    <img class="example-panel" src="@/assets/exampleImage.jpg">
-    <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
-
-    <h1>{{ uiLabels.ingredients }}</h1>
-
-    <Ingredient
-      ref="ingredient"
-      v-for="item in ingredients"
-      v-on:increment="addToOrder(item)"  
-      :item="item" 
-      :lang="lang"
-      :key="item.ingredient_id">
-    </Ingredient>
-
-    <h1>{{ uiLabels.order }}</h1>
-    {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
-    <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
-
-    <h1>{{ uiLabels.ordersInQueue }}</h1>
-    <div>
-      <OrderItem 
-        v-for="(order, key) in orders"
-        v-if="order.status !== 'done'"
-        :order-id="key"
-        :order="order" 
-        :ui-labels="uiLabels"
-        :lang="lang"
-        :key="key">
-      </OrderItem>
+  <div id="ordering" class="container">
+    <div class="header">      
+      <div class="btn_cancel">
+        <button :class="['btn_header']" v-on:click="switchLang()">
+          <img src="https://img.icons8.com/material/52/FFE4B5/delete-sign.png" height="70vh">
+          </button>
+      </div>
+      <div class="btn_lang">
+        <button :class="['btn_header', lang]" v-on:click="switchLang()"></button>
+      </div>
+      <div class="title">
+        {{ uiLabels.welcome }}
+      </div>
+      <div class="nothing">
+      </div>
+      <div class="btn_cart">
+        <button :class="['btn_header']" v-on:click="switchLang()">
+          <img src="https://img.icons8.com/material/52/FFE4B5/shopping-cart.png" height="70vh">
+          </button>
+      </div>
     </div>
+
+
+    <div class="page">
+      <button
+        v-for="tab in tabs"
+        v-bind:key="tab"
+        v-bind:class="['tab-button', { active: currentTab === tab }]"
+        v-on:click="currentTab = tab">
+        {{ tab }}
+      </button>
+
+      <component 
+        v-bind:is="currentTabComponent" 
+        class="tab"
+        type="inline-template">
+      </component>
+    </div>
+
+
+    <div class="footer">
+      <div class="btn_back">
+        <button :class="['btn_footer']" v-on:click="switchLang()">&lt;&lt; {{ uiLabels.back}} &lt;&lt;</button>
+      </div>
+      <div class="nothing">       
+      </div>
+      <div class="btn_next">
+        <button :class="['btn_footer']" v-on:click="switchLang()">&gt;&gt; {{ uiLabels.next}} &gt;&gt;</button>
+      </div>
+    </div>
+
+
+
+    <!--div>
+      <img class="example-panel" src="@/assets/exampleImage.jpg">
+      <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+
+      <h1>{{ uiLabels.ingredients }}</h1>
+
+      <Ingredient
+        ref="ingredient"
+        v-for="item in ingredients"
+        v-on:increment="addToOrder(item)"  
+        :item="item" 
+        :lang="lang"
+        :key="item.ingredient_id">
+      </Ingredient>
+
+      <h1>{{ uiLabels.order }}</h1>
+      {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
+      <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+
+      <h1>{{ uiLabels.ordersInQueue }}</h1>
+      <div>
+        <OrderItem 
+          v-for="(order, key) in orders"
+          v-if="order.status !== 'done'"
+          :order-id="key"
+          :order="order" 
+          :ui-labels="uiLabels"
+          :lang="lang"
+          :key="key">
+        </OrderItem>
+      </div>
+    </div-->
   </div>
 </template>
 <script>
@@ -39,6 +93,10 @@
 //components
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
+import Start from '@/views/Start.vue'
+import SelectionOverview from '@/views/selectionOverview.vue'
+import BurgerCreation from '@/views/burgerCreation.vue'
+import IngredientsSelection from '@/views/ingredientsSelection.vue'
 
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
@@ -49,15 +107,26 @@ export default {
   name: 'Ordering',
   components: {
     Ingredient,
-    OrderItem
+    OrderItem,
+    Start,
+    SelectionOverview,
+    BurgerCreation,
+    IngredientsSelection
   },
   mixins: [sharedVueStuff], // include stuff that is used in both 
                             // the ordering system and the kitchen
   data: function() { //Not that data is a function!
     return {
+      currentTab: '',
+      tabs: ['Start', 'SelectionOverview', 'BurgerCreation', 'IngredientsSelection'],
       chosenIngredients: [],
       price: 0,
       orderNumber: "",
+    }
+  },
+  computed: {
+    currentTabComponent: function () {
+      return this.currentTab;
     }
   },
   created: function () {
@@ -92,20 +161,104 @@ export default {
 <style scoped>
 /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
 #ordering {
-  margin:auto;
-  width: 40em;
 }
 
-.example-panel {
-  position: fixed;
-  left:0;
-  top:0;
-  z-index: -2;
+.container {
+  display: grid;
+  grid-template-columns: 100vmax;
+  grid-template-rows: 13vh 74vh 13vh;
 }
+
+.header, .footer {
+  display: grid;
+  background: url('~@/assets/exampleImage.jpg');
+  text-align: center;
+}
+
+.header {
+  grid-template-columns: 13vh 13vh auto 13vh 13vh;
+}
+
+.footer {
+  grid-template-columns: 20vw auto 20vw;
+}
+
+.page {
+  text-align: center;
+}
+
+
+
+/** PAGE START **/
+/*
 .ingredient {
   border: 1px solid #ccd;
   padding: 1em;
   background-image: url('~@/assets/exampleImage.jpg');
   color: white;
+}*/
+
+.tab-button {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: #f0f0f0;
 }
+.tab-button:hover {
+  background: #e0e0e0;
+}
+.tab-button.active {
+  background: #e0e0e0;
+}
+
+/** PAGE END **/
+
+/** HEADER&FOOTER START **/
+.title {
+  color: black;
+  font-size: 4vmax;
+  font-family: 'Amaranth';
+  margin: 2vh 2vw;
+}
+
+button:hover {
+  background-color: #501811;
+  cursor: pointer;
+}
+
+button:active {
+  box-shadow: 0 1px #666;
+  transform: translateY(2px);
+}
+.btn_header {
+  width: 10vh;
+  height: 10vh;
+  border-radius: 10px;
+  background-color: #8B4513;
+  margin: 1.5vh 1.5vh;
+}
+
+.btn_footer {
+  min-width: 18vh;
+  width: 95%;
+  height: 6vh;
+  margin: 3vh 2.5%;
+  background-color: #8B4513;
+  border-radius: 10px;
+  font-size: 2vmax;  
+}
+
+/* these 2 classes are used to select language flag. */
+.en {
+  background: #8b4513 url('~@/assets/ENG-select.png') no-repeat right 50% top 50%;
+  background-size: 80%;
+}
+
+/* swapped the images.. gonna have to take a look at it tomorrow */
+.sv {
+  background: #8b4513 url('~@/assets/SV-select.png') no-repeat right 50% top 50%;
+  background-size: 80%;
+}
+
+/** HEADER END **/
 </style>

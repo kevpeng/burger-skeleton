@@ -42,7 +42,7 @@
  /* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
     .container {
         display: grid;
-        grid-template-columns: 46vmax 46vmax;
+        grid-template-columns: 47.5vmax 47.5vmax;
         max-width: 100%;
         height: 100vh;
         text-align: center;

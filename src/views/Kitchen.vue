@@ -2,7 +2,7 @@
 <div id="orders">
   <div class="kitchen_container">
     <div class="navigation">
-        <button class="btn" v-on:click="switchKitchenTab(kitchenStateOpposite)">TAB</button>      
+        <button v-on:click="switchKitchenTab(kitchenStateOpposite)"><p class="t">TAB</p></button>      
         <button :class="[lang]" v-on:click="switchLang()"></button>
         <hr>
         <h3 v-if="kitchenState === 'serving'"> {{ uiLabels.serving }}</h3>
@@ -67,7 +67,6 @@ export default {
   data: function(){
     return {
       chosenIngredients: [],
-      price: 0,
       state: "serving",
     }
   },
@@ -78,6 +77,11 @@ export default {
 
     markDone: function (orderid) {
       this.$store.state.socket.emit("orderDone", orderid);
+    },
+
+    switchKitchenTab: function (newState) {
+      this.kitchenStateOpposite = this.kitchenState;
+      this.kitchenState = newState;
     }
   }
 }
@@ -88,7 +92,7 @@ export default {
   }
 
   .kitchen_container {
-    display: inline-grid;
+    display: grid;
     grid-template-columns: 5vmax 95vmax;
     grid-template-rows: 100vh;
     }
@@ -99,13 +103,6 @@ export default {
   }
 
   .tab {
-  }
-
-  .btn {    
-    background: #8b4513;
-    background-size: 80%;
-    color: white;
-    border-color: white;
   }
 
   h3 {
@@ -130,6 +127,8 @@ export default {
       width: 100%;
       height: 5vmax;
       border-radius: 10px;
+      color: white;
+      background: #8b4513;
   }
 
   /* these 2 classes are used to select language flag. */
@@ -144,4 +143,23 @@ export default {
       background-size: 80%;
   }
   /*---------END BUTTON---------*/
+  /*
+  
+    <img :src="getImage(item.imagepath)">
+    in methods-vue:
+    getImage: function(path){
+      return required("../assets/" + path); //provide "missing picture" as default
+    }
+
+  v-show="state === "start" "
+    v-if: item.category==1
+
+  v-show="state === "veggies" "
+    v-if: item.category==2
+    button v-if="state == "start" " v-onclick: "toveggies"
+
+    toveggies function(){
+        this.state = "veggies";
+    }
+  */
 </style>

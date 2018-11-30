@@ -9,8 +9,8 @@ var sharedVueStuff = {
       uiLabels: {},
       ingredients: {},
       lang: "en",
-      kitchenState: 'serving',
-      kitchenStateOpposite: 'cooking',
+      kitchenState: '',
+      kitchenStateOpposite: '',
     }
   },
   created: function () {
@@ -18,6 +18,8 @@ var sharedVueStuff = {
       this.orders = data.orders;
       this.uiLabels = data.uiLabels;
       this.ingredients = data.ingredients;
+      this.kitchenState = 'serving';
+      this.kitchenStateOpposite = 'cooking';
     }.bind(this));
 
     this.$store.state.socket.on('switchLang', function (data) {
@@ -40,11 +42,6 @@ var sharedVueStuff = {
       }
       this.$store.state.socket.emit('switchLang', this.lang);
       // this.$store.commit('changeHello', "Hi there again!");
-    },
-    switchKitchenTab: function (newState) {
-      this.kitchenStateOpposite = this.kitchenState;
-      this.kitchenState = newState;
-      // console.log(newState);
     }
   }
 };
