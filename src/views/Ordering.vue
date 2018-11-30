@@ -167,12 +167,13 @@ export default {
   display: grid;
   grid-template-columns: 100vmax;
   grid-template-rows: 13vh 74vh 13vh;
+  text-align: center;
 }
 
 .header, .footer {
   display: grid;
   background: url('~@/assets/exampleImage.jpg');
-  text-align: center;
+  border-style: groove;
 }
 
 .header {
@@ -184,9 +185,7 @@ export default {
 }
 
 .page {
-  text-align: center;
 }
-
 
 
 /** PAGE START **/
@@ -215,7 +214,6 @@ export default {
 
 /** HEADER&FOOTER START **/
 .title {
-  color: black;
   font-size: 4vmax;
   font-family: 'Amaranth';
   margin: 2vh 2vw;
@@ -233,18 +231,18 @@ button:active {
 .btn_header {
   width: 10vh;
   height: 10vh;
+  margin: 1.5vh 1.5vh;
   border-radius: 10px;
   background-color: #8B4513;
-  margin: 1.5vh 1.5vh;
 }
 
 .btn_footer {
   min-width: 18vh;
-  width: 95%;
+  width: 90%;
   height: 6vh;
-  margin: 3vh 2.5%;
-  background-color: #8B4513;
+  margin: 3vh 5%;
   border-radius: 10px;
+  background-color: #8B4513;
   font-size: 2vmax;  
 }
 
