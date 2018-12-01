@@ -33,7 +33,7 @@
   </body>
 
   <footer>
-    <button  class="back" id="back"> {{ uiLabels.back }} </button>
+    <button v-on:click="addToOrder()"  class="back" id="back"> {{ uiLabels.back }} </button>
     <button  class="add" id="add"> {{ uiLabels.addToBurger }} </button>
   </footer>
 
@@ -48,12 +48,42 @@ import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
 
 export default {
-  name: "ingredientsSelection.vue",
+  name: "IngredientsSelection",
   components: {
     Ingredient,
     OrderItem
   },
-  mixins: [sharedVueStuff]
+  mixins: [sharedVueStuff],
+  data: function() {
+    return {
+      chosenIngredients:[],
+      price: 0
+    }
+  },
+  methods: {
+    addToOrder: function (item) {
+      this.chosenIngredients.push(item);
+      this.price += +item.selling_price;
+    },
+/**    placeOrder: function () {
+      var i;
+      //Wrap the order in an object
+        var patty = {
+          ingredients: this.chosenIngredients,
+          price: this.price
+        };
+      //  order.selection.push(patty);
+      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+      // this.$store.state.socket.emit('order', {order: order});
+      //set all counters to 0. Notice the use of $refs
+      // for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+      //   this.$refs.ingredient[i].resetCounter();
+      // }
+      this.price = 0;
+      this.chosenIngredients = [];
+    }**/
+  }
+
 
 
 }
@@ -206,6 +236,8 @@ h1{
   padding-left: 2%;
   background-color: #8B4513;
   border-radius: 10px;
+  width: 100%;
+  min-width: 100px;
 }
 
 .wrapper {
@@ -213,7 +245,7 @@ h1{
   left: 0;
   width: 100%;
   display: grid;
-  grid-gap: 5px;
+  grid-gap: 20px;
   color: black;
   font-family: 'Amaranth';
   font-weight: lighter;
