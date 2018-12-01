@@ -33,7 +33,7 @@ let router = new Router({
             path: '/start',
             meta: {
                 // this doesn't work either. should show "myCreation"
-                title: 'myCreation',
+                title: 'myCreation - Start page',
             },
             name: 'start',
             component: () => import(/* webpackChunkName: "read" */ './views/Start.vue')
