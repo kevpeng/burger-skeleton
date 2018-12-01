@@ -31,6 +31,7 @@
         {{ tab }}
       </button>
 
+
       <component
         v-bind:is="currentTabComponent"
         class="tab"
@@ -96,7 +97,7 @@ import OrderItem from '@/components/OrderItem.vue'
 import Start from '@/views/Start.vue'
 import SelectionOverview from '@/views/selectionOverview.vue'
 import BurgerCreation from '@/views/burgerCreation.vue'
-import IngredientsSelection from '@/views/IngredientsSelection.vue'
+import IngredientsSelection from '@/components/IngredientsSelection.vue'
 
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
