@@ -60,7 +60,7 @@ let router = new Router({
                 title: 'Ingredients Selection',
             },
             name: 'ingredientsSelection',
-            component: () => import(/* webpackChunkName: "read" */ './views/ingredientsSelection.vue')
+            component: () => import(/* webpackChunkName: "read" */ './views/IngredientsSelection.vue')
         },
 
         // not working here!!!

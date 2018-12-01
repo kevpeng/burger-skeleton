@@ -1,6 +1,6 @@
 <template>
   <div id="ordering" class="container">
-    <div class="header">      
+    <div class="header">
       <div class="btn_cancel">
         <button :class="['btn_header']" v-on:click="switchLang()">
           <img src="https://img.icons8.com/material/52/FFE4B5/delete-sign.png" height="70vh">
@@ -31,8 +31,8 @@
         {{ tab }}
       </button>
 
-      <component 
-        v-bind:is="currentTabComponent" 
+      <component
+        v-bind:is="currentTabComponent"
         class="tab"
         type="inline-template">
       </component>
@@ -43,7 +43,7 @@
       <div class="btn_back">
         <button :class="['btn_footer']" v-on:click="switchLang()">&lt;&lt; {{ uiLabels.back}} &lt;&lt;</button>
       </div>
-      <div class="nothing">       
+      <div class="nothing">
       </div>
       <div class="btn_next">
         <button :class="['btn_footer']" v-on:click="switchLang()">&gt;&gt; {{ uiLabels.next}} &gt;&gt;</button>
@@ -61,8 +61,8 @@
       <Ingredient
         ref="ingredient"
         v-for="item in ingredients"
-        v-on:increment="addToOrder(item)"  
-        :item="item" 
+        v-on:increment="addToOrder(item)"
+        :item="item"
         :lang="lang"
         :key="item.ingredient_id">
       </Ingredient>
@@ -73,11 +73,11 @@
 
       <h1>{{ uiLabels.ordersInQueue }}</h1>
       <div>
-        <OrderItem 
+        <OrderItem
           v-for="(order, key) in orders"
           v-if="order.status !== 'done'"
           :order-id="key"
-          :order="order" 
+          :order="order"
           :ui-labels="uiLabels"
           :lang="lang"
           :key="key">
@@ -96,12 +96,12 @@ import OrderItem from '@/components/OrderItem.vue'
 import Start from '@/views/Start.vue'
 import SelectionOverview from '@/views/selectionOverview.vue'
 import BurgerCreation from '@/views/burgerCreation.vue'
-import IngredientsSelection from '@/views/ingredientsSelection.vue'
+import IngredientsSelection from '@/views/IngredientsSelection.vue'
 
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 
-/* instead of defining a Vue instance, export default allows the only 
+/* instead of defining a Vue instance, export default allows the only
 necessary Vue instance (found in main.js) to import your data and methods */
 export default {
   name: 'Ordering',
@@ -113,7 +113,7 @@ export default {
     BurgerCreation,
     IngredientsSelection
   },
-  mixins: [sharedVueStuff], // include stuff that is used in both 
+  mixins: [sharedVueStuff], // include stuff that is used in both
                             // the ordering system and the kitchen
   data: function() { //Not that data is a function!
     return {
@@ -243,7 +243,7 @@ button:active {
   margin: 3vh 5%;
   border-radius: 10px;
   background-color: #8B4513;
-  font-size: 2vmax;  
+  font-size: 2vmax;
 }
 
 /* these 2 classes are used to select language flag. */
