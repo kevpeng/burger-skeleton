@@ -71,6 +71,14 @@ let router = new Router({
             },
             name: 'tester',
             component: () => import(/* webpackChunkName: "read" */ './views/test.vue')
+        },
+        {
+            path: '/paymentScreen',
+            meta: {
+                title: 'Payment',
+            },
+            name: 'paymentScreen',
+            component: () => import(/* webpackChunkName: "read" */ './views/paymentScreen.vue')
         }
     ]
 })

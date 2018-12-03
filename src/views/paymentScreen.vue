@@ -11,23 +11,12 @@
       <div class="theWholeBody">
         <div class="header">
           <button :class="['languageButton', 'language', lang]" v-on:click="switchLang()"></button>
-          <span> {{uiLabels.selectionOverviewTitle}} </span>
-          <!-- <h2>{{$store.state.hello}}</h2> -->
+          <span> Payment </span>
         </div>
         <div class="middle">
-          <div class="buttons">
-            <button class="button create" v-on:click="switchLang()"> {{uiLabels.createOwnBurger}} </button>
-            <div class="line">  </div>
-            <button class="button menusTop" v-on:click="switchLang()"> {{uiLabels.menus}} </button>
-            <button class="button menusTop" v-on:click="switchLang()"> {{uiLabels.burgers}} </button>
-            <button class="button menusTop" v-on:click="switchLang()"> {{uiLabels.fries}} </button>
-            <button class="button menusDown" v-on:click="switchLang()"> {{uiLabels.iceCream}} </button>
-            <button class="button menusDown" v-on:click="switchLang()"> {{uiLabels.salad}} </button>
-            <button class="button menusDown" v-on:click="switchLang()"> {{uiLabels.drinks}} </button>
-            <!-- <div class="button" v-for="b in buttonList">
-            <button class="button" v-on:click="b.methods"> {{b.title}} </button>
-          </div> -->
-        </div>
+          <div class="message">
+            Waiting for payment...
+          </div>
       </div>
       <div class="footer">
         <button  class="button back" id="back"> {{uiLabels.back}}  </button>
@@ -39,74 +28,18 @@
 
 <script>
 // Javascript
-
-
-// var buttons = [
-//   {
-//     "title": {{uiLabels.createOwnBurger}},
-//     "methods": "create"
-//   },
-//   {
-//     "title": {{uiLabels.menus}},
-//     "methods": "menus"
-//   },
-//   {
-//     "title": {{uiLabels.burgers}},
-//     "methods": "burgers"
-//   },
-//   {
-//     "title": {{uiLabels.fries}},
-//     "methods": "fries"
-//   },
-//   {
-//     "title": {{uiLabels.iceCream}},
-//     "methods": "icecream"
-//   },
-//   {
-//     "title": {{uiLabels.salad}},
-//     "methods": "salad"
-//   },
-//   {
-//     "title": {{uiLabels.drinks}},
-//     "methods": "Drinks"
-//   }
-// ]
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   // add the right name
-  name: 'selectionOverview.vue',
+  name: 'paymentScreen.vue',
   mixins: [sharedVueStuff]
-  // data: function() {
-  //   return {
-  //     headLine: 'Selection Overview',
-  //     buttonList: buttons,
-  //   }
-  // },
-  // methods: {
-  //   create: function(){
-  //
-  //   }
-  // }
 }
 </script>
 
 <style scoped>
 /* CSS */
 .theWholeBody{
-  /* background-color: #FFFFF0; */
-}
-.buttons {
-  /* width: 100%; */
-  justify-items: center;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto 10px auto auto;
-  grid-gap: 2%;
-  /* grid-row-gap: 100%; */
-  /* grid-column-gap: 5%; */
-  color: #FFE4B5;
-  /* margin : 0 auto; */
-  /* border: 5px solid black; */
+
 }
 .button{
   width: 90%;
@@ -119,26 +52,15 @@ export default {
   border: 3px solid black;
   vertical-align: bottom;
 }
-.create{
-  grid-column: 1 / 4;
-  width: 97%;
-  margin-bottom: 2%;
-  /* grid-row: 1; */
-  /* width: 187%; */
-}
-.line{
-  grid-column: 1 / 4;
-  width: 97%;
-  background-color: #8B4513;
-  border-radius: 10px;
-}
+.message{
+  /* width: 100vw;
+  height: 70vh;
+  top: 15vh; */
+  font-size: calc(5vw + 2.5vh);
 
-.menusTop {
-  margin-top: 5vh;
-  margin-bottom: 5vh;
-}
-.menusDown{
-  margin-bottom: 8vh;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 70vh;
 }
 .back{
   width: 10%;
@@ -165,21 +87,26 @@ button:active{
   background-color: #DEB887;
   width: 100vw;
   height:15vh;
+  top:0px;
   left:0px;
   font-size: calc(2.5vw + 2.5vh);
-  padding-left: 1vw;
+  /* padding-left: 1vw;
   padding-right: 1vw;
-  font-family: 'Amaranth';
+  font-family: 'Amaranth'; */
 }
 /* Middle part of the page, includes background color and size... "Main" */
 .middle{
   /* background-color: #FFF8DC; */
-  font-family: 'Amaranth';
   margin-top: 15vh;
-  position: fixed;
+  position:fixed;
+  font-family: 'Amaranth';
   width: 100vw;
   height: 70vh;
   left: 0;
+
+  border: 3px solid black;
+
+
 }
 
 /* Formatting for footers */
@@ -230,4 +157,7 @@ button:active{
     background-size: 60%;
 }
 
+body {
+  font-family: 'Amaranth';
+}
 </style>
