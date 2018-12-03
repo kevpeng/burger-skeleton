@@ -57,13 +57,24 @@
             }
         },
         created: function() {
-            window.setTimeout(function () {
-                window.location.reload();
-            }.bind(this),30000);
+            var timer = null;
+            function refresh() {
+                clearTimeout(timer);
+                timer = setTimeout(function() { window.location = 'http://localhost:8080/#/';}, 5000);
 
-            this.$store.state.socket.on('orderPreference', function(data) {
-                this.orderPreference = data;
-            }.bind(this));
+            }
+            //
+            // window.setTimeout(function () {
+            //     window.location.reload();
+            // }.bind(this),30000);
+
+            window.addEventListener('mousemove', refresh, true);
+            refresh();
+
+            // playing around with storing data..
+            // this.$store.state.socket.on('orderPreference', function(data) {
+            //     this.orderPreference = data;
+            // }.bind(this));
 
         },
         methods: {
