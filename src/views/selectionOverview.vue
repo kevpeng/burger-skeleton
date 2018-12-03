@@ -99,7 +99,7 @@ export default {
   /* width: 100%; */
   justify-items: center;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 32vw 32vw 32vw;
   grid-template-rows: auto 10px auto auto;
   grid-gap: 2%;
   /* grid-row-gap: 100%; */
@@ -145,7 +145,7 @@ export default {
   height: 5vh;
   font-size: calc(1vw + 1vh);
 
-  margin-left: 0.5%;
+  margin-left: 1.5%;
 }
 button:hover{
   background-color: #501811;
@@ -189,7 +189,7 @@ button:active{
   color:black;
 
   width: 100vw;
-  height:15vh;
+  height:9.5vh;
   left:0px;
   bottom: 0;
 
