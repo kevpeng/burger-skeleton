@@ -1,5 +1,8 @@
 <template>
   <div id="ordering" class="container">
+    <head>
+      <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
+    </head>
     <div class="header">
       <div class="btn_cancel">
         <button :class="['btn_header']" v-on:click="switchLang()">
@@ -40,7 +43,7 @@
     </div>
 
 
-    <div class="footer">
+    <!-- <div class="footer">
       <div class="btn_back">
         <button :class="['btn_footer']" v-on:click="switchLang()">&lt;&lt; {{ uiLabels.back}} &lt;&lt;</button>
       </div>
@@ -49,7 +52,7 @@
       <div class="btn_next">
         <button :class="['btn_footer']" v-on:click="switchLang()">&gt;&gt; {{ uiLabels.next}} &gt;&gt;</button>
       </div>
-    </div>
+    </div> -->
 
 
 
@@ -173,12 +176,24 @@ export default {
 
 .header, .footer {
   display: grid;
-  background: url('~@/assets/exampleImage.jpg');
+  /* background: url('~@/assets/exampleImage.jpg'); */
   border-style: groove;
 }
 
 .header {
   grid-template-columns: 13vh 13vh auto 13vh 13vh;
+
+  /* top:0px; */
+  color:black;
+  /* position:fixed; */
+  background-color: #DEB887;
+  /* width: 100vw;
+  height:15vh;
+  left:0px;*/
+  font-size: calc(2.5vw + 2.5vh);
+  /* padding-left: 1vw;
+  padding-right: 1vw; */
+  font-family: 'Amaranth';
 }
 
 .footer {
@@ -215,8 +230,8 @@ export default {
 
 /** HEADER&FOOTER START **/
 .title {
-  font-size: 4vmax;
-  font-family: 'Amaranth';
+  /* font-size: 4vmax;
+  font-family: 'Amaranth';*/
   margin: 2vh 2vw;
 }
 

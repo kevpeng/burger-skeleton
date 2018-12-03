@@ -7,14 +7,13 @@
             <link href="./components/sharedCSSStuff.css" rel="stylesheet">
         </head>
         <body>
-        <header class="header">
+        <!-- <header class="header">
             <button :class="['button', 'language', lang]" v-on:click="switchLang()"></button>
             <span class="title"> {{ uiLabels.welcome }} </span>
 
-            <!-- added this button as a way to pad the left/right -->
+            added this button as a way to pad the left/right 
             <button class="button language clear"  style="float: right;" v-on:click="switchLang()"></button>
-        </header>
-
+        </header> -->
         <div class="middle">
             <main>
                 <h2> {{ uiLabels.whereToEat }}</h2>

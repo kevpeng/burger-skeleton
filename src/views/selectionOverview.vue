@@ -9,11 +9,11 @@
     </head>
     <body>
       <div class="theWholeBody">
-        <div class="header">
+        <!--<div class="header">
           <button :class="['languageButton', 'language', lang]" v-on:click="switchLang()"></button>
           <span> {{uiLabels.selectionOverviewTitle}} </span>
-          <!-- <h2>{{$store.state.hello}}</h2> -->
-        </div>
+           <h2>{{$store.state.hello}}</h2>
+        </div>-->
         <div class="middle">
           <div class="buttons">
             <button class="button create" v-on:click="switchLang()"> {{uiLabels.createOwnBurger}} </button>
@@ -110,7 +110,7 @@ export default {
 }
 .button{
   width: 90%;
-  height: 17vh;
+  height: 15vh;
   font-family: 'Amaranth';
   font-size: calc(2.5vw + 2.5vh);
   background-color: #8B4513;
@@ -144,7 +144,7 @@ export default {
   width: 10%;
   height: 5vh;
   font-size: calc(1vw + 1vh);
-  margin-top: 2.5%;
+
   margin-left: 0.5%;
 }
 button:hover{
@@ -175,8 +175,8 @@ button:active{
 .middle{
   /* background-color: #FFF8DC; */
   font-family: 'Amaranth';
-  margin-top: 15vh;
-  position: fixed;
+  margin-top: 3vh;
+  /* position: fixed; */
   width: 100vw;
   height: 70vh;
   left: 0;
@@ -184,7 +184,7 @@ button:active{
 
 /* Formatting for footers */
 .footer{
-  position:fixed;
+  /* position:fixed; */
   background-color: #DEB887;
   color:black;
 
@@ -193,9 +193,11 @@ button:active{
   left:0px;
   bottom: 0;
 
-	padding-left: 1vw;
-  padding-right: 1vw;
-  justify-content: center
+	/* padding-left: 1vw;
+  padding-right: 1vw; */
+  /* justify-content: center; */
+  display: flex;
+  align-items: center;
   /* font-size: 0.9em; */
 }
 .languageButton {
