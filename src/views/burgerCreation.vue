@@ -9,12 +9,12 @@
   <body>
     <div class="background">
     <main>
-      <div class="header">
-        <button  class="language" id="language"> {{ uiLabels.language }} </button> <!--use image-->
+      <!-- <div class="header">
+        <button  class="language" id="language"> {{ uiLabels.language }} </button>
         <button  class="cancel" id="cancel"><img src="https://img.icons8.com/material/52/FFE4B5/delete-sign.png">  </button>
         <button  class="cart" id="language"><img src="https://img.icons8.com/material/52/FFE4B5/shopping-cart.png">  </button>
         <h1> {{ uiLabels.burgerCreation }}  </h1>
-      </div>
+      </div> -->
     </main>
 
     <section>
@@ -57,6 +57,9 @@ footer{
 }
 
 .back{
+  position: absolute;
+  left: 0;
+  margin-left: 3vw;
   width: 10%;
   height: 2.5em;
   margin-top: 0.75em;
@@ -85,14 +88,14 @@ button:hover{
   font-size: 15px;
   position: absolute;
   right: 0;
-  margin-right: 40px;
+  margin-right: 3vw;
   font-family: 'Amaranth';
   color: #FFE4B5;
   border-radius: 10px;
 
 }
 
-.header{
+/* .header{
   top:0px;
   position:fixed;
   background-color: #DEB887;
@@ -151,13 +154,11 @@ button:hover{
   margin-right: 40px;
   border-radius: 10px;
 
-}
+} */
 
 .burgerImage{
   text-align: center;
-  margin-left: 34%;
-  margin-top: 8%;
-
+  margin-top: 5vh;
 }
 
 .burgerButtons{
@@ -173,26 +174,26 @@ button:hover{
 
 #bread{
   position: absolute;
-  margin-top: 10%;
-  margin-left: 5%;
+  margin-top: 10vh;
+  margin-left: -25vw;
 }
 
 #toppings{
   position: absolute;
-  margin-top: 10%;
-  margin-left: 2%;
+  margin-top: 10vh;
+  margin-left: 5vw;
 }
 
 #patty{
   position: absolute;
-  margin-top: 28%;
-  margin-left: 5%;
+  margin-top: 40vh;
+  margin-left: -25vw;
 }
 
 #sauce{
   position: absolute;
-  margin-top: 28%;
-  margin-left: 2%;
+  margin-top: 40vh;
+  margin-left: 5vw;
 }
 
 h1{
@@ -202,13 +203,13 @@ h1{
   margin-top: -50px;
 }
 
-.background {
+/* .background {
   background-color: #FFFFF0;
   font-family: 'Amaranth';
   width: 110%;
   height: 100%;
   margin-left: -3%;
 
-}
+} */
 
 </style>

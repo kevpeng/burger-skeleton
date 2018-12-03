@@ -4,8 +4,11 @@
             <meta charset="utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
-            <link href="./components/sharedCSSStuff.css" rel="stylesheet">
+            <!--<link href="./components/sharedCSSStuff.css" rel="stylesheet">-->
         </head>
+
+
+
         <body>
         <!-- <header class="header">
             <button :class="['button', 'language', lang]" v-on:click="switchLang()"></button>
@@ -19,10 +22,10 @@
                 <h2> {{ uiLabels.whereToEat }}</h2>
                 <br>
                 <div class="grid-container">
-                    <button class="button eatin" v-on:click="switchLang()">{{ uiLabels.eatIn }}</button>
-                    <button class="button takeaway" v-on:click="switchLang()">{{ uiLabels.takeaway }}</button>
+                    <button class="button eatin" v-on:click="chooseEatIn()">{{ uiLabels.eatIn }}</button>
+                    <button class="button takeaway" v-on:click="chooseTakeAway()">{{ uiLabels.takeaway }}</button>
                 </div>
-
+                {{ this.orderPreference }}
             </main>
         </div>
         <footer>
@@ -45,7 +48,44 @@
         name: 'Start',
         components: {},
         mixins: [sharedVueStuff], // include stuff that is used in both
-        state: 'start'
+        state: 'start',
+
+        data: function() {
+            return {
+                orderPreference: ""
+            }
+        },
+        created: function() {
+            var timer = null;
+            function refresh() {
+                clearTimeout(timer);
+                timer = setTimeout(function() { window.location = 'http://localhost:8080/#/';}, 5000);
+
+            }
+            //
+            // window.setTimeout(function () {
+            //     window.location.reload();
+            // }.bind(this),30000);
+
+            window.addEventListener('mousemove', refresh, true);
+            refresh();
+
+            // playing around with storing data..
+            // this.$store.state.socket.on('orderPreference', function(data) {
+            //     this.orderPreference = data;
+            // }.bind(this));
+
+        },
+        methods: {
+            chooseTakeAway: function() {
+                this.orderPreference = 'takeAway';
+            },
+            chooseEatIn: function() {
+                this.orderPreference = 'eatIn';
+            }
+        }
+
+
 
     }
     //    /* instead of defining a Vue instance, export default allows the only
@@ -105,7 +145,7 @@
         border-radius: 10px;
         color: #FFE4B5;
         border: black solid 3px;
-        font-size: calc(2.5vw + 2.5vh);
+        font-size: calc(2vw + 2vh);
     }
     button:hover {
         background-color: #501811;
@@ -119,14 +159,14 @@
     .eatin {
         width: 30vw;
         height: 20vh;
-        /*margin-right: 0vh;*/
+        margin-left: 10vw;
 
     }
     /* takeaway */
     .takeaway {
         width: 30vw;
         height: 20vh;
-        /*margin-left: 10vh;*/
+        margin-right: 10vw;
     }
 
     /* language button */
@@ -180,7 +220,7 @@
         text-align: center;
         font-family: 'Amaranth';
         color: #8B4513;
-        font-size: calc(1.25vw + 1.25vh);
+        font-size: calc(1.5vw + 1.5vh);
     }
 
 
@@ -212,6 +252,7 @@
 
     /* Middle part of the page, includes background color and size... "Main" */
     .middle {
+        /*border: black 2px solid;*/
         margin-top: 15vh;
         position: fixed;
         width: 100vw;
