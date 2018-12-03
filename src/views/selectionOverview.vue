@@ -116,7 +116,7 @@ export default {
   background-color: #8B4513;
   color: #FFE4B5;
   border-radius: 10px;
-  border: 3px solid black;
+  border: none;
   vertical-align: bottom;
 }
 .create{
