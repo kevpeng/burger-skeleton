@@ -4,24 +4,24 @@
             <meta charset="utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1">
             <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
+            <link href="./components/sharedCSSStuff.css" rel="stylesheet">
         </head>
         <body>
         <header class="header">
             <button :class="['button', 'language', lang]" v-on:click="switchLang()"></button>
-            <button :class="['button', 'language', lang]" v-on:click="switchLang()"></button>
             <span class="title"> {{ uiLabels.welcome }} </span>
-            <!--<button :class="['button', 'language', lang]" v-on:click="switchLang()"></button>-->
-            <!--<h1 style="float: right; text-align: center;"> {{ uiLabels.welcome }}</h1>-->
-            </header>
 
-        <div class="background">
+            <!-- added this button as a way to pad the left/right -->
+            <button class="button language clear"  style="float: right;" v-on:click="switchLang()"></button>
+        </header>
+
+        <div class="middle">
             <main>
-                <br>
                 <h2> {{ uiLabels.whereToEat }}</h2>
                 <br>
                 <div class="grid-container">
-                    <button class="button takeaway" v-on:click="switchLang()">{{ uiLabels.eatIn }}</button>
-                    <button class="button eatin" v-on:click="switchLang()">{{ uiLabels.takeaway }}</button>
+                    <button class="button eatin" v-on:click="switchLang()">{{ uiLabels.eatIn }}</button>
+                    <button class="button takeaway" v-on:click="switchLang()">{{ uiLabels.takeaway }}</button>
                 </div>
 
             </main>
@@ -98,39 +98,49 @@
 
 <style scoped>
 
-    button:hover {
-        background-color: #501811;
-        cursor: pointer;
-    }
-
-    button:active {
-        box-shadow: 0 1px #666;
-        transform: translateY(2px);
-    }
-
-
+    /* button characteristics */
     .button {
         /*position: absolute;*/
-        width: 7em;
-        height: 2em;
         background-color: #8B4513;
         font-family: 'Amaranth';
         border-radius: 10px;
         color: #FFE4B5;
-        border: none;
-        font-size: 3em;
+        border: black solid 3px;
+        font-size: calc(2.5vw + 2.5vh);
+    }
+    button:hover {
+        background-color: #501811;
+        cursor: pointer;
+    }
+    button:active {
+        box-shadow: 0 1px #666;
+        transform: translateY(2px);
+    }
+    /* eat in */
+    .eatin {
+        width: 30vw;
+        height: 20vh;
+        /*margin-right: 0vh;*/
 
     }
+    /* takeaway */
+    .takeaway {
+        width: 30vw;
+        height: 20vh;
+        /*margin-left: 10vh;*/
+    }
 
-
+    /* language button */
     .language {
+        /*position: fixed;*/
         justify-content: left;
         width: 10%;
         height: 85%;
         /*position: absolute;*/
-        margin: 0.5%;
+        margin: 0.55%;
         /*border: none;*/
         border-radius: 10px;
+        float: left;
     }
 
     /* these 2 classes are used to select language flag. */
@@ -145,34 +155,13 @@
         background-size: 60%;
     }
 
-    .eatin {
-
+    .clear {
+        /*position: absolute;*/
+        background-color: #DEB887;
+        border: none;
     }
 
-    .takeaway {
-
-    }
-
-
-    h1 {
-        text-align: center;
-        font-family: 'Amaranth';
-        color: #8B4513;
-        /*margin-top: ;*/
-    }
-
-    h2 {
-        text-align: center;
-        font-family: 'Amaranth';
-        color: #8B4513;
-        font-size: 30px;
-    }
-
-    body {
-        background-color: #FFFFF0;
-        font-family: 'Amaranth';
-    }
-
+    /* grid container for the buttons on page */
     .grid-container {
         justify-items: center;
         display: grid;
@@ -182,62 +171,73 @@
 
     }
 
+    /* the text font should be same :-) */
+    body {
+        font-family: 'Amaranth';
+    }
+
+
+    h2 {
+        text-align: center;
+        font-family: 'Amaranth';
+        color: #8B4513;
+        font-size: calc(1.25vw + 1.25vh);
+    }
+
+
+
+    /* Shared with other pages... linking to a CSS page is not working. */
+    .title {
+        vertical-align: top;
+        line-height: 15vh;
+    }
+
+    /* Formatting for headers */
     .header{
-        /*display: flex;*/
-        flex-direction: row;
-        justify-content: center;
+        /* Font properties */
+        text-align: center;
+        font-size: calc(2.0vw + 2.0vh);
         color:black;
 
+        /* Positioning and color properties */
 
-        /* -------------------------------------------- */
-
+        display: inline-block;
         position:fixed;
         background-color: #DEB887;
         width: 100vw;
         height: 15vh;
         top: 0px;
         left:0px;
-        font-size: 16px;
-        font-size: calc(2.5vw + 2.5vh);
-        padding-left:1vw;
-        padding-right:1vw;
+
     }
 
-    .background {
-        font-family: 'Amaranth';
-        margin-top:15vh;
+    /* Middle part of the page, includes background color and size... "Main" */
+    .middle {
+        margin-top: 15vh;
         position: fixed;
         width: 100vw;
         height: 70vh;
-        left:0px;
-        /*padding-left:20px;*/
-        /*padding-right:20px;*/
+        left: 0;
     }
 
+    /* Formatting for footers */
     footer {
-        bottom: 0;
-        left: 0px;
-        position: fixed;
+        position:fixed;
         background-color: #DEB887;
+        color:black;
+
         width: 100vw;
-        height: 15vh;
-
-        /* padding is for buttons */
-        padding-left:1vw;
-        padding-right:1vw;
+        height:15vh;
+        left:0px;
+        bottom: 0;
     }
 
-    .divider {
-        width: 5px;
-        height: auto;
-        display: inline-block;
-    }
+    /* end of shared */
 
-    .title {
-        vertical-align: ;
-        /*text-align: center;*/
-        /*width: 100%;*/
-        /*font-size: 50px;*/
-    }
+
+    /*Cart button to be used in other things*/
+
+
+
 
 </style>

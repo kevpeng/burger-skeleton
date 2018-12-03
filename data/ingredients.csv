@@ -1,14 +1,14 @@
-ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,selling_price
-1,bönburgare,bean patty,1,1,1,1,40
-2,nötfärsburgare 100g,beef patty 100g,1,1,1,0,40
-3,nötfärsburgare 200g,beef patty 200g,1,1,1,0,60
-4,kycklingburgare,chicken patty,1,1,0,0,40
-5,friterad halloumi,deep-fried halloumi,1,0,0,0,40
-6,fiskfilé,fish filet,1,1,0,0,40
-7,grillad aubergine,grilled eggplant,1,1,1,1,30
-8,hummer,lobster,1,1,1,0,80
-9,pulled jackfruit,pulled jackfruit,1,1,1,1,40
-10,pulled pork,pulled pork,1,1,1,0,40
+ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,selling_price,picture
+1,bönburgare,bean patty,1,1,1,1,40,beanpatty.png
+2,nötfärsburgare 100g,beef patty 100g,1,1,1,0,40,beef-patty_100.png
+3,nötfärsburgare 200g,beef patty 200g,1,1,1,0,60,beef_patty_200.png
+4,kycklingburgare,chicken patty,1,1,0,0,40,chicken_patty.png
+5,friterad halloumi,deep-fried halloumi,1,0,0,0,40,deep-fried-halloumi.png
+6,fiskfilé,fish filet,1,1,0,0,40,fish_filet.png
+7,grillad aubergine,grilled eggplant,1,1,1,1,30,grilled_eggplant.png
+8,hummer,lobster,1,1,1,0,80,lobster.png
+9,pulled jackfruit,pulled jackfruit,1,1,1,1,40,pulled_jackfruit.png
+10,pulled pork,pulled pork,1,1,1,0,40,pulled_pork.png
 11,avocado,avocado,2,1,1,1,10
 12,bacon,bacon,2,1,1,0,10
 13,banan,banana,2,1,1,1,5

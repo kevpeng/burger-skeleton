@@ -1,39 +1,21 @@
 <template>
-    <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <title>Kitchen Serving</title>
-            <meta charset="utf-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" type="text/css" href="css/style.css">  
-        </head>
-        <body>        
-            
-            <div class="container">
-                <div class="navi">
-                    <br>
-                    serving
-                    <button v-on:click="switchKitchenTab(kitchenStateOpposite)">SWTCH</button>
-                    <button>La</button>
-                </div>    
-                <div class="queue">
-                    {{qList.burgerQ.name}}<br>
-                    <hr>
-                    <p class="qNr">#{{qList.size-3}}</p>
-                </div>
-                <div class="queue">
-                    {{qList.saladQ.name}}<br>
-                    <hr>
-                    <p class="qNr">#{{qList.size-3}}</p>
-                </div>
-                <div class="queue">
-                    {{qList.saladQ.name}}<br>
-                    <hr>
-                    <p class="qNr">#{{qList.size-3}}</p>
-                </div>
-            </div>
-        </body>
-    </html>
+    <div class="container">
+        <div class="queue">
+            {{qList.customQ.name}}<br>
+            <hr>
+            <p class="qNr">#{{qList.size-3}}</p>
+        </div>
+        <div class="queue">
+            {{qList.premadeQ.name}}<br>
+            <hr>
+            <p class="qNr">#{{qList.size-3}}</p>
+        </div>
+        <div class="queue">
+            {{qList.quickQ.name}}<br>
+            <hr>
+            <p class="qNr">#{{qList.size-3}}</p>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -43,7 +25,9 @@
         name: "Serving",
         data: function() {
             return {
-                qList: {burgerQ: {"name": "burger"}, saladQ: {"name": "salad"}},
+                qList: {customQ: {"name": "custom"}, 
+                        premadeQ: {"name": "premade"}, 
+                        quickQ: {"name": "quick"}},
                 orderList: {},
                 itemList: {}
             }
@@ -57,25 +41,15 @@
 <style scoped>
     .container {
         display: grid;
-        grid-template-columns: 40px auto auto auto;
-        border-style: groove;
-        margin: 0 auto;
+        grid-template-columns: 31.666vmax 31.666vmax 31.666vmax;
+        max-width: 100%;
+        height: 100vh;
+        text-align: center;
     }
     
     .queue {
-        border-style: groove;
         padding: 0.5em 0.5em; 
-    }
-
-    .navi {
-        margin: 0 auto;
-    }
-
-    .qNr {
-        text-align: center;
-    }
-
-    button {
-        margin: 0 auto;
+        border-style: groove;
+        background-color: goldenrod;
     }
 </style>

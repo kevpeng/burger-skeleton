@@ -37,5 +37,7 @@
   "welcome" : "Welcome to myCreation",
   "whereToEat" : "Would you like to eat here or take away?",
   "takeaway" : "Take away",
-  "eatIn" : "Eat here"
+  "eatIn" : "Eat here",
+  "cooking": "Cooking",
+  "serving": "Serving"
 }
