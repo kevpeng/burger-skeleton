@@ -177,7 +177,7 @@ button:active{
   font-family: 'Amaranth';
   margin-top: 3vh;
   /* position: fixed; */
-  width: 100vw;
+  width: 100%;
   height: 70vh;
   left: 0;
 }

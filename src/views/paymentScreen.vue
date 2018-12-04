@@ -9,10 +9,10 @@
     </head>
     <body>
       <div class="theWholeBody">
-        <div class="header">
+        <!-- <div class="header">
           <button :class="['languageButton', 'language', lang]" v-on:click="switchLang()"></button>
           <span> Payment </span>
-        </div>
+        </div> -->
         <div class="middle">
           <div class="message">
             Waiting for payment...
@@ -66,8 +66,7 @@ export default {
   width: 10%;
   height: 5vh;
   font-size: calc(1vw + 1vh);
-  margin-top: 2.5%;
-  margin-left: 0.5%;
+  margin-left: 1.5%;
 }
 button:hover{
   background-color: #501811;
@@ -98,32 +97,25 @@ button:active{
 .middle{
   /* background-color: #FFF8DC; */
   margin-top: 15vh;
-  position:fixed;
+  /* position:fixed; */
   font-family: 'Amaranth';
   width: 100vw;
   height: 70vh;
   left: 0;
-
   border: 3px solid black;
-
-
 }
 
 /* Formatting for footers */
 .footer{
-  position:fixed;
   background-color: #DEB887;
   color:black;
 
   width: 100vw;
-  height:15vh;
+  height:9.5vh;
   left:0px;
   bottom: 0;
-
-	padding-left: 1vw;
-  padding-right: 1vw;
-  justify-content: center
-  /* font-size: 0.9em; */
+  display: flex;
+  align-items: center;
 }
 .languageButton {
     /*position: absolute;*/

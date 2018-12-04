@@ -2,19 +2,19 @@
 <div id="orders">
   <div class="kitchen_container">
     <div class="navigation">
-        <button v-on:click="switchKitchenTab(kitchenStateOpposite)"><p class="t">TAB</p></button>      
+        <button v-on:click="switchKitchenTab(kitchenStateOpposite)"><p class="t">TAB</p></button>
         <button :class="[lang]" v-on:click="switchLang()"></button>
         <hr>
         <h3 v-if="kitchenState === 'serving'"> {{ uiLabels.serving }}</h3>
         <h3 v-if="kitchenState === 'cooking'"> {{ uiLabels.cooking }}</h3>
-    </div>  
+    </div>
     <div class="tab">
       <div>
         <Serving v-if="kitchenState === 'serving'"></Serving>
       </div>
       <div>
-        <Cooking v-if="kitchenState === 'cooking'"></Cooking>    
-      </div> 
+        <Cooking v-if="kitchenState === 'cooking'"></Cooking>
+      </div>
     </div>
   </div>
   <!--hr>
@@ -25,7 +25,7 @@
       v-if="order.status !== 'done'"
       v-on:done="markDone(key)"
       :order-id="key"
-      :order="order" 
+      :order="order"
       :ui-labels="uiLabels"
       :lang="lang"
       :key="key">
@@ -43,7 +43,7 @@
       :key="key">
     </OrderItem>
   </div-->
-</div>	
+</div>
 </template>
 <script>
 import OrderItem from '@/components/OrderItem.vue'
@@ -62,7 +62,7 @@ export default {
     OrderItem,
     OrderItemToPrepare
   },
-  mixins: [sharedVueStuff], // include stuff that is used in both 
+  mixins: [sharedVueStuff], // include stuff that is used in both
                             //the ordering system and the kitchen
   data: function(){
     return {
@@ -70,6 +70,14 @@ export default {
       state: "serving",
     }
   },
+  // computed{
+  //   countBeef100: funtion(){
+  //     return countNumberOfIngredients(2);
+  //   },
+  //   countBeen: funtion(){
+  //     return countNumberOfIngredients(1);
+  //   }
+  // },
   methods: {
     switchTab: function (newState) {
       this.state = newState;
@@ -82,13 +90,24 @@ export default {
     switchKitchenTab: function (newState) {
       this.kitchenStateOpposite = this.kitchenState;
       this.kitchenState = newState;
+    },
+    countNumberOfIngredients: function(id){
+      let counter = 0;
+      for(let order in this.orders){
+        for(let i = 0; i < this.orders[order].ingredients.length; i += 1){
+          if(this.orders[order].ingredients[i].ingredient_id === id){
+            counter += 1;
+          }
+        }
+      }
+      return counter;
     }
   }
 }
 </script>
 <style scoped>
 	#orders {
-    background-color: beige;    
+    background-color: beige;
   }
 
   .kitchen_container {
@@ -97,7 +116,7 @@ export default {
     grid-template-rows: 100vh;
     }
 
-  .navigation { 
+  .navigation {
     border-style: groove;
     background-color: #666;
   }
@@ -144,7 +163,7 @@ export default {
   }
   /*---------END BUTTON---------*/
   /*
-  
+
     <img :src="getImage(item.imagepath)">
     in methods-vue:
     getImage: function(path){

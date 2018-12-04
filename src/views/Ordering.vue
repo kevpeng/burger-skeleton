@@ -178,17 +178,17 @@ export default {
   display: grid;
   /* background: url('~@/assets/exampleImage.jpg'); */
   border-style: groove;
+  width: 100%;
 }
 
 .header {
-  grid-template-columns: 13vh 13vh auto 13vh 13vh;
+  grid-template-columns: 13vw 13vw auto 13vw 13vw;
 
   /* top:0px; */
   color:black;
   /* position:fixed; */
   background-color: #DEB887;
-  /* width: 100vw;
-  height:15vh;
+  /*height:15vh;
   left:0px;*/
   font-size: calc(2.5vw + 2.5vh);
   /* padding-left: 1vw;
@@ -201,6 +201,7 @@ export default {
 }
 
 .page {
+  width: 100%;
 }
 
 
