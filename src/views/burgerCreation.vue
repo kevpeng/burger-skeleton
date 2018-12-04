@@ -17,13 +17,21 @@
       </div> -->
     </main>
 
-    <section>
-      <button class="burgerButtons" id="bread"> {{ uiLabels.bread }} </button>
-      <button class="burgerButtons" id="patty"> {{ uiLabels.patty }} </button>
-      <img class="burgerImage" src="../assets/burger.png">
-      <button class="burgerButtons" id="toppings"> {{ uiLabels.toppings }} </button>
-      <button class="burgerButtons" id="sauce"> {{ uiLabels.sauce }} </button>
-    </section>
+    <div class="gridContainer">
+      <div class="column1">
+        <button class="burgerButtons" id="bread"> {{ uiLabels.bread }} </button>
+        <br>
+        <button class="burgerButtons" id="patty"> {{ uiLabels.patty }} </button>
+      </div>
+      <div class="column2">
+        <img class="burgerImage" src="../assets/burger.png">
+      </div>
+      <div class="column3" >
+        <button class="burgerButtons" id="toppings"> {{ uiLabels.toppings }} </button>
+        <br>
+        <button class="burgerButtons" id="sauce"> {{ uiLabels.sauce }} </button>
+      </div>
+    </div>
 
 
     <footer>
@@ -54,6 +62,12 @@ footer{
 	color:black;
 	font-size: 0.9em;
 	padding-left:20px;
+}
+
+.gridContainer{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 400px);
+  width: 100%;
 }
 
 .back{
@@ -159,11 +173,34 @@ button:hover{
 .burgerImage{
   text-align: center;
   margin-top: 5vh;
+  width: 400px;
+  height: 350px;
+  margin: 5%;
+}
+
+/* .burgerButtons{
+  width: 20vw;
+  height: 15vh;
+  font-size: calc(1.5vw + 1.5vh);
+  background-color: #8B4513;
+  font-family: 'Amaranth';
+  border-radius: 10px;
+  color: #FFE4B5;
+  border: none;
+  font-size: 3em;
+} */
+
+button:active {
+    box-shadow: 0 1px #666;
+    transform: translateY(2px);
 }
 
 .burgerButtons{
-  width: 7em;
-  height: 2em;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-left: 5%;
+  width: 300px;
+  height: 75px;
   background-color: #8B4513;
   font-family: 'Amaranth';
   border-radius: 10px;
@@ -172,29 +209,33 @@ button:hover{
   font-size: 3em;
 }
 
-#bread{
+/* #bread{
   position: absolute;
   margin-top: 10vh;
   margin-left: -25vw;
+  font-size: calc(2.5vw + 2.5vh);
 }
 
 #toppings{
   position: absolute;
   margin-top: 10vh;
   margin-left: 5vw;
+  font-size: calc(2.5vw + 2.5vh);
 }
 
 #patty{
   position: absolute;
   margin-top: 40vh;
   margin-left: -25vw;
+  font-size: calc(2.5vw + 2.5vh);
 }
 
 #sauce{
   position: absolute;
   margin-top: 40vh;
   margin-left: 5vw;
-}
+  font-size: calc(2.5vw + 2.5vh);
+} */
 
 h1{
   text-align: center;
