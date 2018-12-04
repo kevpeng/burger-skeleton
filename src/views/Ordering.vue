@@ -6,7 +6,7 @@
     <div class="header">
       <div class="btn_cancel">
         <button :class="['btn_header']" v-on:click="switchLang()">
-          <img src="https://img.icons8.com/material/52/FFE4B5/delete-sign.png" height="70vh">
+          <img src="https://img.icons8.com/material/52/FFE4B5/delete-sign.png" height="50vh">
           </button>
       </div>
       <div class="btn_lang">
@@ -15,11 +15,9 @@
       <div class="title">
         {{ uiLabels.welcome }}
       </div>
-      <div class="nothing">
-      </div>
       <div class="btn_cart">
         <button :class="['btn_header']" v-on:click="switchLang()">
-          <img src="https://img.icons8.com/material/52/FFE4B5/shopping-cart.png" height="70vh">
+          <img src="https://img.icons8.com/material/52/FFE4B5/shopping-cart.png" height="50vh">
           </button>
       </div>
     </div>
@@ -169,7 +167,7 @@ export default {
 
 .container {
   display: grid;
-  grid-template-columns: 100vmax;
+  /* grid-template-columns: 100vw; */
   grid-template-rows: 13vh 74vh 13vh;
   text-align: center;
 }
@@ -177,12 +175,10 @@ export default {
 .header, .footer {
   display: grid;
   /* background: url('~@/assets/exampleImage.jpg'); */
-  border-style: groove;
-  width: 100%;
 }
 
 .header {
-  grid-template-columns: 13vw 13vw auto 13vw 13vw;
+  grid-template-columns: 13vh 13vh auto 13vh;
 
   /* top:0px; */
   color:black;
@@ -194,6 +190,7 @@ export default {
   /* padding-left: 1vw;
   padding-right: 1vw; */
   font-family: 'Amaranth';
+  width: 100%;
 }
 
 .footer {
@@ -233,7 +230,9 @@ export default {
 .title {
   /* font-size: 4vmax;
   font-family: 'Amaranth';*/
-  margin: 2vh 2vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  margin-right: 10vw;
 }
 
 button:hover {
@@ -251,6 +250,7 @@ button:active {
   margin: 1.5vh 1.5vh;
   border-radius: 10px;
   background-color: #8B4513;
+  border: none;
 }
 
 .btn_footer {

@@ -107,6 +107,7 @@ export default {
   color: #FFE4B5;
   /* margin : 0 auto; */
   /* border: 5px solid black; */
+
 }
 .button{
   width: 90%;
@@ -177,9 +178,9 @@ button:active{
   font-family: 'Amaranth';
   margin-top: 3vh;
   /* position: fixed; */
-  width: 100%;
+  /* width: 100%; */
   height: 70vh;
-  left: 0;
+  /* left: 0; */
 }
 
 /* Formatting for footers */
