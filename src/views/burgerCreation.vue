@@ -56,34 +56,59 @@ footer{
 	bottom:0px;
 	position:fixed;
 	background-color: #DEB887;
-	width:100%;
-	height:4em;
+	width:100vw;
+	height:9.5vh;
 	left:0px;
 	color:black;
-	font-size: 0.9em;
-	padding-left:20px;
+  display: flex;
+  align-items: center;
+
 }
 
 .gridContainer{
   display: grid;
   grid-template-columns: repeat(auto-fit, 400px);
-  width: 100%;
+  width: 97vw;
+  align-items: center;
+  text-align: center;
+  border: 5px solid black;
+
+
+
+}
+
+@media screen and (max-width:380px){
+  .gridContainer{
+    grid-template-columns: repeat(auto-fit, 300px);
+  }
+
+  .burgerButtons{
+    margin-left: 50%;
+  }
 }
 
 .back{
-  position: absolute;
+  /* position: absolute;
   left: 0;
-  margin-left: 3vw;
+  margin-left: 5%;
   width: 10%;
-  height: 2.5em;
-  margin-top: 0.75em;
+  height: 5vh;
+  margin-top: 0.75em; */
   background-color: #8B4513;
   border: none;
   font-weight: bold;
-  font-size: 15px;
+  font-size: calc(1vw + 1vh);
   font-family: 'Amaranth';
   color: #FFE4B5;
   border-radius: 10px;
+  text-align: center;
+
+
+  width: 10%;
+  height: 5vh;
+  font-size: calc(1vw + 1vh);
+
+  margin-left: 1.5%;
 
 }
 
@@ -93,19 +118,22 @@ button:hover{
 }
 
 .add{
-  width: 10%;
-  height: 2.5em;
-  margin-top: 0.75em;
   background-color: #8B4513;
   border: none;
   font-weight: bold;
-  font-size: 15px;
-  position: absolute;
-  right: 0;
-  margin-right: 3vw;
+  font-size: calc(1vw + 1vh);
   font-family: 'Amaranth';
   color: #FFE4B5;
   border-radius: 10px;
+
+
+  width: 10%;
+  height: 5vh;
+
+  margin-left: 1.5%;
+  position: absolute;
+  right: 0;
+  margin-right: 1.5%;
 
 }
 
@@ -173,8 +201,8 @@ button:hover{
 .burgerImage{
   text-align: center;
   margin-top: 5vh;
-  width: 400px;
-  height: 350px;
+  width: 350px;
+  height: 300px;
   margin: 5%;
 }
 
@@ -207,6 +235,11 @@ button:active {
   color: #FFE4B5;
   border: none;
   font-size: 3em;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+
 }
 
 /* #bread{

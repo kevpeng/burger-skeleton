@@ -186,20 +186,35 @@ export default {
   background-color: #DEB887;
   /*height:15vh;
   left:0px;*/
-  font-size: calc(2.5vw + 2.5vh);
+  font-size: calc(2.5vw + 1.5vh);
   /* padding-left: 1vw;
   padding-right: 1vw; */
   font-family: 'Amaranth';
-  width: 100%;
+  width: 100vw;
 }
 
+@media screen and (max-width:380px) {
+  .header{
+    font-size: 4.85vw;
+  }
+  
+  .btn_header{
+    width: 1vh;
+    height: 1vh;
+    margin: 1.5vh 1.5vh;
+    border-radius: 10px;
+    background-color: #8B4513;
+    border: none;
+  }
+}
 .footer {
   grid-template-columns: 20vw auto 20vw;
 }
 
 .page {
-  width: 100%;
+  width: 100vw;
 }
+
 
 
 /** PAGE START **/
