@@ -39,5 +39,7 @@
   "takeaway" : "Take away",
   "eatIn" : "Eat here",
   "cooking": "Cooking",
-  "serving": "Serving"
+  "serving": "Serving",
+  "paymentWaiting": "Waiting for payment...",
+  "paymentSuccesful": "Payment Succesful!"
 }

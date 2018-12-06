@@ -39,5 +39,7 @@
   "takeaway" : "Ta med",
   "eatIn" : "Äta här",
   "cooking": "Matlagning",
-  "serving": "Tjänande"
+  "serving": "Tjänande",
+  "paymentWaiting": "Väntar på betalning...",
+  "paymentSuccesful": "Betalning genomförd!"
 }

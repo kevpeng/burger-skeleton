@@ -180,6 +180,7 @@ export default {
 .header {
   grid-template-columns: 13vh 13vh auto 13vh;
 
+
   /* top:0px; */
   color:black;
   /* position:fixed; */
@@ -190,7 +191,7 @@ export default {
   /* padding-left: 1vw;
   padding-right: 1vw; */
   font-family: 'Amaranth';
-  width: 100%;
+  width: 100vw;
 }
 
 .footer {
@@ -198,7 +199,7 @@ export default {
 }
 
 .page {
-  width: 100%;
+  width: 100vw;
 }
 
 

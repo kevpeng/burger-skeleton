@@ -14,8 +14,8 @@
           <span> Payment </span>
         </div> -->
         <div class="middle">
-          <div class="message">
-            Waiting for payment...
+          <div id="message">
+          {{uiLabels.paymentWaiting}}
           </div>
       </div>
       <div class="footer">
@@ -31,7 +31,7 @@
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   // add the right name
-  name: 'paymentScreen.vue',
+  name: 'paymentScreen',
   mixins: [sharedVueStuff]
 }
 </script>
@@ -43,16 +43,16 @@ export default {
 }
 .button{
   width: 90%;
-  height: 17vh;
+  height: 15vh;
   font-family: 'Amaranth';
   font-size: calc(2.5vw + 2.5vh);
   background-color: #8B4513;
   color: #FFE4B5;
   border-radius: 10px;
-  border: 3px solid black;
+  border: none;
   vertical-align: bottom;
 }
-.message{
+#message{
   /* width: 100vw;
   height: 70vh;
   top: 15vh; */
@@ -89,9 +89,6 @@ button:active{
   top:0px;
   left:0px;
   font-size: calc(2.5vw + 2.5vh);
-  /* padding-left: 1vw;
-  padding-right: 1vw;
-  font-family: 'Amaranth'; */
 }
 /* Middle part of the page, includes background color and size... "Main" */
 .middle{
@@ -102,6 +99,7 @@ button:active{
   width: 100vw;
   height: 70vh;
   left: 0;
+  bottom: 0;
   border: 3px solid black;
 }
 
@@ -109,7 +107,6 @@ button:active{
 .footer{
   background-color: #DEB887;
   color:black;
-
   width: 100vw;
   height:9.5vh;
   left:0px;

@@ -74,7 +74,7 @@
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   // add the right name
-  name: 'selectionOverview.vue',
+  name: 'selectionOverview',
   mixins: [sharedVueStuff]
   // data: function() {
   //   return {
@@ -96,18 +96,17 @@ export default {
   /* background-color: #FFFFF0; */
 }
 .buttons {
-  /* width: 100%; */
+  width: 100vw;
   justify-items: center;
   display: grid;
-  grid-template-columns: 32vw 32vw 32vw;
-  grid-template-rows: auto 10px auto auto;
-  grid-gap: 2%;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto 1vh auto auto;
   /* grid-row-gap: 100%; */
   /* grid-column-gap: 5%; */
   color: #FFE4B5;
   /* margin : 0 auto; */
-  /* border: 5px solid black; */
-
+  border: 3px solid black;
+  height: 65vh;
 }
 .button{
   width: 90%;
@@ -122,30 +121,29 @@ export default {
 }
 .create{
   grid-column: 1 / 4;
-  width: 97%;
-  margin-bottom: 2%;
+  width: 97vw;
+
   /* grid-row: 1; */
   /* width: 187%; */
 }
 .line{
   grid-column: 1 / 4;
-  width: 97%;
+  width: 97vw;
   background-color: #8B4513;
   border-radius: 10px;
 }
 
 .menusTop {
   margin-top: 5vh;
-  margin-bottom: 5vh;
+
 }
 .menusDown{
-  margin-bottom: 8vh;
+
 }
 .back{
   width: 10%;
   height: 5vh;
   font-size: calc(1vw + 1vh);
-
   margin-left: 1.5%;
 }
 button:hover{
@@ -176,10 +174,10 @@ button:active{
 .middle{
   /* background-color: #FFF8DC; */
   font-family: 'Amaranth';
-  margin-top: 3vh;
+  /* margin-top: 3vh; */
   /* position: fixed; */
   /* width: 100%; */
-  height: 70vh;
+  height: 73vh;
   /* left: 0; */
 }
 
@@ -188,11 +186,10 @@ button:active{
   /* position:fixed; */
   background-color: #DEB887;
   color:black;
-
   width: 100vw;
   height:9.5vh;
-  left:0px;
-  bottom: 0;
+  /* border: 3px solid black; */
+
 
 	/* padding-left: 1vw;
   padding-right: 1vw; */
