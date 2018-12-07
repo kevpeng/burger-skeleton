@@ -42,6 +42,8 @@
   "serving": "Serving",
   "paymentWaiting": "Waiting for payment...",
   "paymentSuccesful": "Payment Succesful!",
+  "price": "Price: ",
+  "stock": "Stock: ",
   "selectionOverviewNext": "Next",
   "paymentNewOrder": "Start new order"
 }

@@ -66,26 +66,15 @@ footer{
 }
 
 .gridContainer{
-  display: grid;
+  display: inline-grid;
   grid-template-columns: repeat(auto-fit, 400px);
-  width: 97vw;
+  width: 98vw;
   align-items: center;
   text-align: center;
-  border: 5px solid black;
-
-
-
+  justify-items: center;
+  margin-bottom: 10vh;
 }
 
-@media screen and (max-width:380px){
-  .gridContainer{
-    grid-template-columns: repeat(auto-fit, 300px);
-  }
-
-  .burgerButtons{
-    margin-left: 50%;
-  }
-}
 
 .back{
   /* position: absolute;
@@ -102,14 +91,12 @@ footer{
   color: #FFE4B5;
   border-radius: 10px;
   text-align: center;
-
-
   width: 10%;
   height: 5vh;
   font-size: calc(1vw + 1vh);
-
   margin-left: 1.5%;
-
+  position: absolute;
+  left: 0;
 }
 
 button:hover{
@@ -125,16 +112,86 @@ button:hover{
   font-family: 'Amaranth';
   color: #FFE4B5;
   border-radius: 10px;
-
-
   width: 10%;
   height: 5vh;
-
   margin-left: 1.5%;
   position: absolute;
   right: 0;
   margin-right: 1.5%;
 
+}
+
+.burgerImage{
+  text-align: center;
+  margin-top: 5vh;
+  max-width: 350px;
+  min-width: 300px;
+  height: 300px;
+  margin: 10%;
+}
+
+button:active {
+    box-shadow: 0 1px #666;
+    transform: translateY(2px);
+}
+
+.burgerButtons{
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-left: 10%;
+  width: 300px;
+  height: 75px;
+  background-color: #8B4513;
+  font-family: 'Amaranth';
+  border-radius: 10px;
+  color: #FFE4B5;
+  border: none;
+  font-size: 3em;
+  text-align: center;
+  align-items: center;
+  justify-items: center;
+
+
+}
+
+h1{
+  text-align: center;
+  font-family: 'Amaranth';
+  color: #8B4513;
+  margin-top: -50px;
+}
+
+@media screen and (max-width:380px){
+  .gridContainer{
+    grid-template-columns: repeat(auto-fit, 300px);
+  }
+
+  .burgerImage{
+    width: 300px;
+    height: 250px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .back{
+    width: 20%;
+    height: 6vh;
+    font-size: calc(1.7vw + 1.7vh);
+    margin-left: 3%;
+    text-align: center;
+  }
+
+  .add{
+    width: 20%;
+    height: 6vh;
+    font-size: calc(1.7vw + 1.7vh);
+    margin-right: 3%;
+  }
+
+  .burgerButtons{
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
 }
 
 /* .header{
@@ -198,13 +255,6 @@ button:hover{
 
 } */
 
-.burgerImage{
-  text-align: center;
-  margin-top: 5vh;
-  width: 350px;
-  height: 300px;
-  margin: 5%;
-}
 
 /* .burgerButtons{
   width: 20vw;
@@ -217,30 +267,6 @@ button:hover{
   border: none;
   font-size: 3em;
 } */
-
-button:active {
-    box-shadow: 0 1px #666;
-    transform: translateY(2px);
-}
-
-.burgerButtons{
-  margin-top: 10%;
-  margin-bottom: 10%;
-  margin-left: 5%;
-  width: 300px;
-  height: 75px;
-  background-color: #8B4513;
-  font-family: 'Amaranth';
-  border-radius: 10px;
-  color: #FFE4B5;
-  border: none;
-  font-size: 3em;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-
-
-}
 
 /* #bread{
   position: absolute;
@@ -269,13 +295,6 @@ button:active {
   margin-left: 5vw;
   font-size: calc(2.5vw + 2.5vh);
 } */
-
-h1{
-  text-align: center;
-  font-family: 'Amaranth';
-  color: #8B4513;
-  margin-top: -50px;
-}
 
 /* .background {
   background-color: #FFFFF0;

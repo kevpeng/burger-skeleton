@@ -42,6 +42,8 @@
   "serving": "Tjänande",
   "paymentWaiting": "Väntar på betalning...",
   "paymentSuccesful": "Betalning genomförd!",
+  "price": "Pris: ",
+  "stock": "Lager: ",
   "selectionOverviewNext": "Nästa",
   "paymentNewOrder": "Starta ny ordning"
 }
