@@ -41,5 +41,7 @@
   "cooking": "Matlagning",
   "serving": "Tjänande",
   "paymentWaiting": "Väntar på betalning...",
-  "paymentSuccesful": "Betalning genomförd!"
+  "paymentSuccesful": "Betalning genomförd!",
+  "price": "Pris: ",
+  "stock": "Lager: "
 }

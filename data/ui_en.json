@@ -41,5 +41,7 @@
   "cooking": "Cooking",
   "serving": "Serving",
   "paymentWaiting": "Waiting for payment...",
-  "paymentSuccesful": "Payment Succesful!"
+  "paymentSuccesful": "Payment Succesful!",
+  "price": "Price: ",
+  "stock": "Stock: "
 }
