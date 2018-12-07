@@ -8,14 +8,14 @@
 
     <body>
       <div class="background">
-        <main>
+        <!-- <main>
           <div class="header">
-            <button  class="language" id="language" v-on:click="switchLang()"> {{ uiLabels.language }} </button> <!--use image-->
+            <button  class="language" id="language" v-on:click="switchLang()"> {{ uiLabels.language }} </button>
             <button  class="cancel" id="cancel"><img src="https://img.icons8.com/material/52/FFE4B5/delete-sign.png">  </button>
             <button  class="cart" id="language"><img src="https://img.icons8.com/material/52/FFE4B5/shopping-cart.png">  </button>
             <h1> {{ uiLabels.ingredientSelection }} </h1>
           </div>
-        </main>
+        </main> -->
 
         <div class="wrapper">
           <Ingredient class="ingredient"
@@ -92,29 +92,32 @@ export default {
 
 <style scoped>
 footer{
-  bottom:0px;
-  position:fixed;
-  background-color: #DEB887;
-  width:100%;
-  height:4em;
-  left:0px;
-  color:black;
-  font-size: 0.9em;
-  padding-left:20px;
+	bottom:0px;
+	position:fixed;
+	background-color: #DEB887;
+	width:100vw;
+	height:9.5vh;
+	left:0px;
+	color:black;
+  display: flex;
+  align-items: center;
 }
 
 .back{
-  width: 10%;
-  height: 2.5em;
-  margin-top: 0.75em;
   background-color: #8B4513;
   border: none;
   font-weight: bold;
-  font-size: 15px;
+  font-size: calc(1vw + 1vh);
   font-family: 'Amaranth';
   color: #FFE4B5;
   border-radius: 10px;
-
+  text-align: center;
+  width: 10%;
+  height: 5vh;
+  font-size: calc(1vw + 1vh);
+  margin-left: 1.5%;
+  position: absolute;
+  left: 0;
 }
 
 button:hover{
@@ -123,23 +126,23 @@ button:hover{
 }
 
 .add{
-  width: 10%;
-  height: 2.5em;
-  margin-top: 0.75em;
   background-color: #8B4513;
   border: none;
   font-weight: bold;
-  font-size: 15px;
-  position: absolute;
-  right: 0;
-  margin-right: 40px;
+  font-size: calc(1vw + 1vh);
   font-family: 'Amaranth';
   color: #FFE4B5;
   border-radius: 10px;
+  width: 10%;
+  height: 5vh;
+  margin-left: 1.5%;
+  position: absolute;
+  right: 0;
+  margin-right: 1.5%;
 
 }
 
-.header{
+/* .header{
   top:0px;
   position:fixed;
   background-color: #DEB887;
@@ -198,7 +201,7 @@ button:hover{
   margin-right: 40px;
   border-radius: 10px;
 
-}
+} */
 
 
 .burgerButtons{
@@ -213,7 +216,7 @@ button:hover{
 }
 
 
-h1{
+/* h1{
   text-align: center;
   font-family: 'Amaranth';
   color: #8B4513;
@@ -227,7 +230,7 @@ h1{
   height: 100%;
   margin-left: -3%;
 
-}
+} */
 
 .ingredient{
   margin-top: 5em;
@@ -243,13 +246,37 @@ h1{
 .wrapper {
   position: absolute;
   left: 0;
-  width: 100%;
+  width: 97%;
   display: grid;
   grid-gap: 20px;
   color: black;
   font-family: 'Amaranth';
   font-weight: lighter;
   margin-top: 7em;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(auto-fit, 23vw);
+}
+
+@media screen and (max-width:380px) {
+  .wrapper{
+    grid-template-columns: repeat(auto-fit, 45vw);
+    grid-gap: 3vw;
+    margin-bottom: 12vh;
+  }
+
+  .back{
+    width: 20%;
+    height: 6vh;
+    font-size: calc(1.7vw + 1.7vh);
+    margin-left: 3%;
+    text-align: center;
+  }
+
+  .add{
+    width: 20%;
+    height: 6vh;
+    font-size: calc(1.7vw + 1.7vh);
+    margin-right: 3%;
+  }
+
 }
 </style>
