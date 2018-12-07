@@ -11,6 +11,7 @@ var sharedVueStuff = {
       lang: "en",
       kitchenState: '',
       kitchenStateOpposite: '',
+      paymentState: '',
     }
   },
   created: function () {
@@ -21,6 +22,7 @@ var sharedVueStuff = {
       this.ingredients = data.ingredients;
       this.kitchenState = 'serving';
       this.kitchenStateOpposite = 'cooking';
+      this.paymentState = 'waiting';
     }.bind(this));
 
     this.$store.state.socket.on('switchLang', function (data) {

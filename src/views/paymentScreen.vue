@@ -15,7 +15,10 @@
         </div> -->
         <div class="middle">
           <div id="message">
-          {{uiLabels.paymentWaiting}}
+          <!-- {{uiLabels.paymentWaiting}} -->
+          <h3 v-if="paymentState === 'waiting'"> {{ uiLabels.paymentWaiting }}</h3>
+          <h3 v-if="paymentState === 'paid'"> {{ uiLabels.paymentSuccesful }}</h3>
+          <button class="button new" id="new"> {{uiLabels.paymentNewOrder}}  </button>
           </div>
       </div>
       <div class="footer">
@@ -32,7 +35,22 @@ import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   // add the right name
   name: 'paymentScreen',
-  mixins: [sharedVueStuff]
+  mixins: [sharedVueStuff],
+  methods: {
+    switchpaymentStatus: function (newState) {
+      this.paymentState = newState;
+    }
+  },
+  change: function() {
+      var timer = null;
+      function update() {
+        // var elem = document.getElementById("message");
+          clearTimeout(timer);
+          timer = setTimeout(function() { this.switchpaymentStatus('paid')}, 3000);
+          // console.log(paymentState);
+      }
+      update();
+  }
 }
 </script>
 
@@ -57,16 +75,21 @@ export default {
   height: 70vh;
   top: 15vh; */
   font-size: calc(5vw + 2.5vh);
-
+  /* border: 3px solid black; */
   text-align: center;
-  vertical-align: middle;
-  line-height: 70vh;
+
 }
 .back{
   width: 10%;
   height: 5vh;
   font-size: calc(1vw + 1vh);
   margin-left: 1.5%;
+}
+.new{
+  margin-top: 10vh;
+  width: 80%;
+  height: 10vh;
+  font-size: calc(3vw + 3vh);
 }
 button:hover{
   background-color: #501811;
@@ -93,26 +116,26 @@ button:active{
 /* Middle part of the page, includes background color and size... "Main" */
 .middle{
   /* background-color: #FFF8DC; */
-  margin-top: 15vh;
+  /* margin-top: 15vh; */
   /* position:fixed; */
   font-family: 'Amaranth';
-  width: 100vw;
-  height: 70vh;
+  /* width: 100vw; */
+  height: 73vh;
   left: 0;
   bottom: 0;
-  border: 3px solid black;
+  /* border: 3px solid black; */
 }
 
 /* Formatting for footers */
 .footer{
+  position:fixed;
   background-color: #DEB887;
   color:black;
-  width: 100vw;
+  width: 100%;
   height:9.5vh;
-  left:0px;
-  bottom: 0;
   display: flex;
   align-items: center;
+  bottom: 0;
 }
 .languageButton {
     /*position: absolute;*/
@@ -148,5 +171,19 @@ button:active{
 
 body {
   font-family: 'Amaranth';
+}
+
+@media screen and (max-width:380px){
+  #message{
+    font-size: calc(2vw + 2vh);
+    text-align: center;
+    vertical-align: middle;
+  }
+  .back{
+    width: 20%;
+    height: 6vh;
+    font-size: calc(1.7vw + 1.7vh);
+    margin-left: 3%;
+  }
 }
 </style>

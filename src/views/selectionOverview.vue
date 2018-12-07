@@ -21,7 +21,7 @@
             <button class="button menusTop" v-on:click="switchLang()"> {{uiLabels.menus}} </button>
             <button class="button menusTop" v-on:click="switchLang()"> {{uiLabels.burgers}} </button>
             <button class="button menusTop" v-on:click="switchLang()"> {{uiLabels.fries}} </button>
-            <button class="button menusDown" v-on:click="switchLang()"> {{uiLabels.iceCream}} </button>
+            <button class="button menusDown" id="iceCream" v-on:click="switchLang()"> {{uiLabels.iceCream}} </button>
             <button class="button menusDown" v-on:click="switchLang()"> {{uiLabels.salad}} </button>
             <button class="button menusDown" v-on:click="switchLang()"> {{uiLabels.drinks}} </button>
             <!-- <div class="button" v-for="b in buttonList">
@@ -31,6 +31,7 @@
       </div>
       <div class="footer">
         <button  class="button back" id="back"> {{uiLabels.back}}  </button>
+        <button  class="button forward" id="forward"> {{uiLabels.selectionOverviewNext}}  </button>
       </div>
     </div>
   </body>
@@ -96,17 +97,18 @@ export default {
   /* background-color: #FFFFF0; */
 }
 .buttons {
-  width: 100vw;
-  justify-items: center;
-  display: grid;
+  display: inline-grid;
+  /* display: grid; */
   grid-template-columns: auto auto auto;
   grid-template-rows: auto 1vh auto auto;
   /* grid-row-gap: 100%; */
   /* grid-column-gap: 5%; */
   color: #FFE4B5;
   /* margin : 0 auto; */
-  border: 3px solid black;
+  /* border: 3px solid black; */
   height: 65vh;
+  width: 98vw;
+  justify-items: center;
 }
 .button{
   width: 90%;
@@ -117,18 +119,21 @@ export default {
   color: #FFE4B5;
   border-radius: 10px;
   border: none;
-  vertical-align: bottom;
+  padding: 0;
+  text-align: center;
+  /* vertical-align: bottom; */
+  /* border: 3px solid black; */
 }
 .create{
   grid-column: 1 / 4;
-  width: 97vw;
+  width: 95vw;
 
   /* grid-row: 1; */
   /* width: 187%; */
 }
 .line{
   grid-column: 1 / 4;
-  width: 97vw;
+  width: 95vw;
   background-color: #8B4513;
   border-radius: 10px;
 }
@@ -144,8 +149,18 @@ export default {
   width: 10%;
   height: 5vh;
   font-size: calc(1vw + 1vh);
-  margin-left: 1.5%;
+  margin-left: 3%;
 }
+.forward{
+  width: 10%;
+  height: 5vh;
+  font-size: calc(1vw + 1vh);
+  margin-left: 3%;
+  position: absolute;
+  right: 0;
+  margin-right: 3%;
+}
+
 button:hover{
   background-color: #501811;
   cursor: pointer;
@@ -179,14 +194,16 @@ button:active{
   /* width: 100%; */
   height: 73vh;
   /* left: 0; */
+  /* border: 2px solid black; */
+  justify-items: center;
 }
 
 /* Formatting for footers */
 .footer{
-  /* position:fixed; */
+  position:fixed;
   background-color: #DEB887;
   color:black;
-  width: 100vw;
+  width: 100%;
   height:9.5vh;
   /* border: 3px solid black; */
 
@@ -196,6 +213,7 @@ button:active{
   /* justify-content: center; */
   display: flex;
   align-items: center;
+  bottom: 0;
   /* font-size: 0.9em; */
 }
 .languageButton {
@@ -229,5 +247,27 @@ button:active{
     background: #8b4513 url('~@/assets/ENG-select.png') no-repeat right 50% top 50%;
     background-size: 60%;
 }
+@media screen and (max-width:380px){
+  .menusTop {
+    margin-top: 2vh;
 
+  }
+  .back{
+    width: 20%;
+    height: 6vh;
+    font-size: calc(1.7vw + 1.7vh);
+    margin-left: 3%;
+  }
+  .forward{
+    width: 20%;
+    height: 6vh;
+    font-size: calc(1.7vw + 1.7vh);
+    margin-left: 3%;
+    position: absolute;
+    margin-right: 3%;
+  }
+  #iceCream{
+    font-size: calc(1.9vw + 1.9vh);
+  }
+}
 </style>

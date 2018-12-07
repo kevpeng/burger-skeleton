@@ -197,8 +197,9 @@ export default {
 @media screen and (max-width:380px) {
   .header{
     font-size: 4.85vw;
+
   }
-  
+
   .btn_header{
     width: 1vh;
     height: 1vh;
@@ -228,10 +229,11 @@ export default {
 }*/
 
 .tab-button {
-  padding: 6px 10px;
+  /* padding: 6px 10px; */
   border: 1px solid #ccc;
   cursor: pointer;
   background: #f0f0f0;
+  width: 25vw;
 }
 .tab-button:hover {
   background: #e0e0e0;
