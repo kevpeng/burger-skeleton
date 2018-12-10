@@ -48,7 +48,7 @@ import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
 
 export default {
-  name: "IngredientsSelection",
+  name: "Fries",
   components: {
     Ingredient,
     OrderItem
@@ -65,6 +65,7 @@ export default {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
     },
+
 /**    placeOrder: function () {
       var i;
       //Wrap the order in an object
@@ -168,7 +169,6 @@ button:hover{
 .wrapper {
   position: absolute;
   left: 0;
-  /* max-width: 900px; */
   width: 97%;
   display: grid;
   grid-gap: 20px;
@@ -201,84 +201,6 @@ button:hover{
     font-size: calc(1.7vw + 1.7vh);
     margin-right: 3%;
   }
-
-/* .header{
-  top:0px;
-  position:fixed;
-  background-color: #DEB887;
-  width:100%;
-  height:5em;
-  left:0px;
-  color:black;
-  font-size: 1em;
-  padding-left:20px;
-}
-
-.language{
-  width: 4em;
-  height: 4em;
-  position: absolute;
-  top: 0;
-  margin-top: 0.75em;
-  background-color: #8B4513;
-  border: none;
-  font-weight: bold;
-  font-size: 15px;
-  margin-right: 40px;
-  font-family: 'Amaranth';
-  color: #FFE4B5;
-  border-radius: 10px;
-}
-
-.cancel{
-  width: 4em;
-  height: 4em;
-  margin-top: 0.75em;
-  margin-left: 80px;
-  background-color: #8B4513;
-  border: none;
-  font-weight: bold;
-  font-size: 15px;
-  margin-right: 40px;
-  font-family: 'Amaranth';
-  color: #FFE4B5;
-  border-radius: 10px;
-}
-
-.cart{
-  width: 4em;
-  height: 4em;
-  margin-top: 0.75em;
-  background-color: #8B4513;
-  border: none;
-  font-weight: bold;
-  font-size: 15px;
-  margin-right: 40px;
-  font-family: 'Amaranth';
-  color: #FFE4B5;
-  position: absolute;
-  right: 0;
-  margin-right: 40px;
-  border-radius: 10px;
-
-} */
-
-
-/* h1{
-  text-align: center;
-  font-family: 'Amaranth';
-  color: #8B4513;
-  margin-top: -50px;
-}
-
-.background {
-  background-color: #FFFFF0;
-  font-family: 'Amaranth';
-  width: 110%;
-  height: 100%;
-  margin-left: -3%;
-
-} */
 
 }
 </style>
