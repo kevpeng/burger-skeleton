@@ -1,7 +1,8 @@
 <template>
   <div class="ingredient">
+    {{item}}
     <label>
-      <div class="ingredienTitle">
+      <div class="ingredientTitle">
         {{item["ingredient_"+lang]}} <br>
       </div>
       <img class="image" :src="require('../assets/' + item.picture)" /> <br>
@@ -11,7 +12,6 @@
         <button class="counter" v-on:click="incrementCounter">+</button> <br>
         {{uiLabels.price}}{{item.selling_price}} kr <br>
         {{uiLabels.stock}}{{item.stock}}
-
     </label>
   </div>
 </template>
@@ -94,7 +94,7 @@ export default {
     font-size: 5vw;
   }
 
-  .ingredienTitle{
+  .ingredientTitle{
     font-size: 5vw;
   }
 }

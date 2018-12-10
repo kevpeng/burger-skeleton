@@ -21,7 +21,6 @@
           <Ingredient class="ingredient"
           ref="ingredient"
           v-for="item in ingredients"
-          v-if="item.category == 1"
           v-on:increment="addToOrder(item)"
           :item="item"
           :lang="lang"
@@ -166,7 +165,7 @@ button:hover{
 }
 
 .wrapper {
-  position: absolute;
+  /*position: absolute;*/
   left: 0;
   /* max-width: 900px; */
   width: 97%;
@@ -176,7 +175,7 @@ button:hover{
   color: black;
   font-family: 'Amaranth';
   font-weight: lighter;
-  margin-top: 7em;
+  /*margin-top: 7em;*/
   grid-template-columns: repeat(auto-fit, 23.8%);
   padding-bottom: 15vh;
 }
