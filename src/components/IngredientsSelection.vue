@@ -177,7 +177,7 @@ button:hover{
   font-weight: lighter;
   margin-top: 7em;
   grid-template-columns: repeat(auto-fit, 23.8%);
-  margin-bottom: 15vh;
+  padding-bottom: 15vh;
 }
 
 @media screen and (max-width:380px) {
