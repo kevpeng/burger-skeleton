@@ -168,6 +168,7 @@ button:hover{
 .wrapper {
   position: absolute;
   left: 0;
+  /* max-width: 900px; */
   width: 97%;
   display: grid;
   grid-gap: 20px;
@@ -175,7 +176,7 @@ button:hover{
   font-family: 'Amaranth';
   font-weight: lighter;
   margin-top: 7em;
-  grid-template-columns: repeat(auto-fit, 23vw);
+  grid-template-columns: repeat(auto-fit, 23.8%);
   margin-bottom: 15vh;
 }
 
