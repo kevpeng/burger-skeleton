@@ -176,8 +176,8 @@ button:hover{
   font-family: 'Amaranth';
   font-weight: lighter;
   margin-top: 7em;
-  grid-template-columns: repeat(auto-fit, 27.5vw);
-  margin-bottom: 15vh;
+  grid-template-columns: repeat(auto-fit, 23.8%);
+  padding-bottom: 15vh;
 }
 
 @media screen and (max-width:380px) {
