@@ -21,7 +21,7 @@
           <Ingredient class="ingredient"
           ref="ingredient"
           v-for="item in ingredients"
-          v-if="item.category == 1"
+          v-if="item.category == 2"
           v-on:increment="addToOrder(item)"
           :item="item"
           :lang="lang"
