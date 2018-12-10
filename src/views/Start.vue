@@ -10,13 +10,13 @@
 
 
         <body>
-        <!-- <header class="header">
-            <button :class="['button', 'language', lang]" v-on:click="switchLang()"></button>
-            <span class="title"> {{ uiLabels.welcome }} </span>
+        <!--<header class="header">-->
+            <!--<button :class="['button', 'language', lang]" v-on:click="switchLang()"></button>-->
+            <!--<span class="title"> {{ uiLabels.welcome }} </span>-->
 
-            added this button as a way to pad the left/right 
-            <button class="button language clear"  style="float: right;" v-on:click="switchLang()"></button>
-        </header> -->
+            <!--&lt;!&ndash;added this button as a way to pad the left/right &ndash;&gt;-->
+            <!--<button class="button language clear"  style="float: right;" v-on:click="switchLang()"></button>-->
+        <!--</header>-->
         <div class="middle">
             <main>
                 <h2> {{ uiLabels.whereToEat }}</h2>
@@ -144,7 +144,8 @@
         font-family: 'Amaranth';
         border-radius: 10px;
         color: #FFE4B5;
-        border: black solid 3px;
+        /*border: black solid 3px;*/
+        border: none;
         font-size: calc(2vw + 2vh);
     }
     button:hover {
@@ -253,7 +254,7 @@
     /* Middle part of the page, includes background color and size... "Main" */
     .middle {
         /*border: black 2px solid;*/
-        margin-top: 15vh;
+        /*margin-top: 15vh;*/
         position: fixed;
         width: 100vw;
         height: 70vh;
