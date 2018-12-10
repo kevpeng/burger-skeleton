@@ -62,15 +62,13 @@ let router = new Router({
             name: 'ingredientsSelection',
             component: () => import(/* webpackChunkName: "read" */ './components/IngredientsSelection.vue')
         },
-
-        // not working here!!!
         {
-            path: '/test',
+            path: '/fries',
             meta: {
-                title: 'TEST',
+                title: 'Fries',
             },
-            name: 'tester',
-            component: () => import(/* webpackChunkName: "read" */ './views/test.vue')
+            name: 'Fries',
+            component: () => import(/* webpackChunkName: "read" */ './components/IngredientsSelection.vue')
         },
         {
             path: '/paymentScreen',
