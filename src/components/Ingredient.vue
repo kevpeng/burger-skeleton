@@ -1,9 +1,13 @@
 <template>
   <div class="ingredient">
-    {{item}}
+    {{lang}}
     <label>
-      <div class="ingredientTitle">
-        {{item["ingredient_"+lang]}} <br>
+      <div class="ingredientTitle" >
+        <!--We are unable to get the name to change with the language button. -->
+        <!--We think it has to do with the dependency of this file to the IngSelection.vue file-->
+        <!--and that it is only getting passed the default value and pressing the-->
+        <!--switchLang button is not updating the variable.-->
+        {{ getTitle(item) }}<br>
       </div>
       <img class="image" :src="require('../assets/' + item.picture)" /> <br>
         <button class="counter" v-on:click="decrementCounter">-</button>
@@ -43,7 +47,13 @@ export default {
       // sending 'increment' message to parent component or view so that it
       // can catch it with v-on:increment in the component declaration
       this.$emit('increment');
-    }
+      }
+    },
+    //  Just trying to get the thing to work... doesn't work
+    //  The "this.lang" is NOT updating after clicking the button.
+    getTitle: function(item) {
+        var x = "ingredient_" + this.lang;
+        return item[x];
     },
     getImage: function(path){
      return "../assets/" + path; //provide "missing picture" as default
@@ -60,7 +70,7 @@ export default {
   height: 100px;
 }
 
-.ingredienTitle{
+.ingredientTitle{
   font-size: 2.5vw;
   color: #FFE4B5;
 }

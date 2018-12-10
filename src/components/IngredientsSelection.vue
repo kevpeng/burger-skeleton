@@ -64,6 +64,7 @@ export default {
       this.chosenIngredients.push(item);
       this.price += +item.selling_price;
     },
+
 /**    placeOrder: function () {
       var i;
       //Wrap the order in an object

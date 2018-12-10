@@ -45,5 +45,6 @@
   "price": "Pris: ",
   "stock": "Lager: ",
   "selectionOverviewNext": "Nästa",
-  "paymentNewOrder": "Starta ny ordning"
+  "paymentNewOrder": "Starta ny ordning",
+  "ingredientTitle" : "ingredient_sv"
 }
