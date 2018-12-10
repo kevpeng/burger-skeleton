@@ -8,20 +8,20 @@
 
     <body>
       <div class="background">
-        <!-- <main>
+        <main>
           <div class="header">
-            <button  class="language" id="language" v-on:click="switchLang()"> {{ uiLabels.language }} </button>
-            <button  class="cancel" id="cancel"><img src="https://img.icons8.com/material/52/FFE4B5/delete-sign.png">  </button>
-            <button  class="cart" id="language"><img src="https://img.icons8.com/material/52/FFE4B5/shopping-cart.png">  </button>
-            <h1> {{ uiLabels.ingredientSelection }} </h1>
-          </div>
-        </main> -->
-
+                <button  class="language" id="language" v-on:click="switchLang()"> {{ uiLabels.language }} </button>
+                <button  class="cancel" id="cancel"><img src="https://img.icons8.com/material/52/FFE4B5/delete-sign.png">  </button>
+                <button  class="cart" id="language"><img src="https://img.icons8.com/material/52/FFE4B5/shopping-cart.png">  </button>
+                <h1> {{ uiLabels.ingredientSelection }} </h1>
+              </div>
+            </main>
+          <p>Ciao</p>
         <div class="wrapper">
+
           <Ingredient class="ingredient"
           ref="ingredient"
           v-for="item in ingredients"
-          v-if="item.category == 2"
           v-on:increment="addToOrder(item)"
           :item="item"
           :lang="lang"

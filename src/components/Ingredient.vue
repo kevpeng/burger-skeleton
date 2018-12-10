@@ -1,7 +1,7 @@
 <template>
   <div class="ingredient">
     <label>
-      <div class="ingredienTitle">
+      <div class="ingredientTitle">
         {{item["ingredient_"+lang]}} <br>
       </div>
       <img class="image" :src="require('../assets/' + item.picture)" /> <br>
@@ -94,7 +94,7 @@ export default {
     font-size: 5vw;
   }
 
-  .ingredienTitle{
+  .ingredientTitle{
     font-size: 5vw;
   }
 }
