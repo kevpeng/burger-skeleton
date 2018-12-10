@@ -174,7 +174,7 @@ h1{
   }
 
   .back{
-    width: 20%;
+    width: 25%;
     height: 6vh;
     font-size: calc(1.7vw + 1.7vh);
     margin-left: 3%;
@@ -182,7 +182,7 @@ h1{
   }
 
   .add{
-    width: 20%;
+    width: 25%;
     height: 6vh;
     font-size: calc(1.7vw + 1.7vh);
     margin-right: 3%;

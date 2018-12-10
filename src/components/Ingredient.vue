@@ -9,7 +9,7 @@
         <!-- <button v-on:click="incrementCounter">{{ counter }}</button> <br> -->
           {{counter}}
         <button class="counter" v-on:click="incrementCounter">+</button> <br>
-        {{uiLabels.price}}{{item.selling_price}}  &nbsp
+        {{uiLabels.price}}{{item.selling_price}} kr <br>
         {{uiLabels.stock}}{{item.stock}}
 
     </label>
@@ -61,15 +61,15 @@ export default {
 }
 
 .ingredienTitle{
-  font-size: calc(1.5vw + 1.5vh);
+  font-size: 2.5vw;
   color: #FFE4B5;
 }
 
 .counter{
-  font-size: calc(1vw + 1vh);
+  font-size: 2vw;
   text-align: center;
-  width: 2vw;
-  height: 2vw;
+  width: 3vw;
+  height: 3vw;
   border: none;
   border-radius: 50%;
   background-color: #FFE4B5;
@@ -77,19 +77,25 @@ export default {
 }
 
 .ingredient{
-  font-size: calc(1vw + 1vh);
+  font-size: 2vw;
+  color: #FFE6D2;
 }
 
 @media screen and (max-width:380px) {
   .counter{
     width: 15vw;
     height: 15vw;
-    font-size: 1em;
+    font-size: 5vw;
     text-align: center;
+    font-weight: bold;
   }
 
   .ingredient{
-    font-size: calc(3vw + 3vh);
+    font-size: 5vw;
+  }
+
+  .ingredienTitle{
+    font-size: 5vw;
   }
 }
 

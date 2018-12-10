@@ -34,7 +34,7 @@
 
   <footer>
     <button v-on:click="addToOrder()"  class="back" id="back"> {{ uiLabels.back }} </button>
-    <button  class="add" id="add"> {{ uiLabels.addToBurger }} </button>
+    <button  class="add" id="add"> {{ uiLabels.add }} </button>
   </footer>
 
 
@@ -103,6 +103,7 @@ footer{
   align-items: center;
 }
 
+
 .back{
   background-color: #8B4513;
   border: none;
@@ -141,6 +142,64 @@ button:hover{
   margin-right: 1.5%;
 
 }
+
+.burgerButtons{
+  width: 7em;
+  height: 2em;
+  background-color: #8B4513;
+  font-family: 'Amaranth';
+  border-radius: 10px;
+  color: #FFE4B5;
+  border: none;
+  font-size: 3em;
+}
+
+.ingredient{
+  margin-top: 5em;
+  margin: 0 auto;
+  margin-left: 5%;
+  padding-left: 2%;
+  background-color: #8B4513;
+  border-radius: 10px;
+  width: 100%;
+  min-width: 100px;
+}
+
+.wrapper {
+  position: absolute;
+  left: 0;
+  width: 97%;
+  display: grid;
+  grid-gap: 20px;
+  color: black;
+  font-family: 'Amaranth';
+  font-weight: lighter;
+  margin-top: 7em;
+  grid-template-columns: repeat(auto-fit, 23vw);
+  margin-bottom: 15vh;
+}
+
+@media screen and (max-width:380px) {
+  .wrapper{
+    grid-template-columns: repeat(auto-fit, 45vw);
+    grid-gap: 3vw;
+    /* margin-bottom: 100vh; */
+  }
+
+  .back{
+    width: 25%;
+    height: 6vh;
+    font-size: calc(1.7vw + 1.7vh);
+    margin-left: 3%;
+    text-align: center;
+  }
+
+  .add{
+    width: 25%;
+    height: 6vh;
+    font-size: calc(1.7vw + 1.7vh);
+    margin-right: 3%;
+  }
 
 /* .header{
   top:0px;
@@ -204,18 +263,6 @@ button:hover{
 } */
 
 
-.burgerButtons{
-  width: 7em;
-  height: 2em;
-  background-color: #8B4513;
-  font-family: 'Amaranth';
-  border-radius: 10px;
-  color: #FFE4B5;
-  border: none;
-  font-size: 3em;
-}
-
-
 /* h1{
   text-align: center;
   font-family: 'Amaranth';
@@ -231,52 +278,6 @@ button:hover{
   margin-left: -3%;
 
 } */
-
-.ingredient{
-  margin-top: 5em;
-  margin: 0 auto;
-  margin-left: 5%;
-  padding-left: 2%;
-  background-color: #8B4513;
-  border-radius: 10px;
-  width: 100%;
-  min-width: 100px;
-}
-
-.wrapper {
-  position: absolute;
-  left: 0;
-  width: 97%;
-  display: grid;
-  grid-gap: 20px;
-  color: black;
-  font-family: 'Amaranth';
-  font-weight: lighter;
-  margin-top: 7em;
-  grid-template-columns: repeat(auto-fit, 23vw);
-}
-
-@media screen and (max-width:380px) {
-  .wrapper{
-    grid-template-columns: repeat(auto-fit, 45vw);
-    grid-gap: 3vw;
-    margin-bottom: 12vh;
-  }
-
-  .back{
-    width: 20%;
-    height: 6vh;
-    font-size: calc(1.7vw + 1.7vh);
-    margin-left: 3%;
-    text-align: center;
-  }
-
-  .add{
-    width: 20%;
-    height: 6vh;
-    font-size: calc(1.7vw + 1.7vh);
-    margin-right: 3%;
-  }
 
 }
 </style>
