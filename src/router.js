@@ -70,7 +70,7 @@ let router = new Router({
                 title: 'Fries',
             },
             name: 'Fries',
-            component: () => import(/* webpackChunkName: "read" */ './views/fries.vue')
+            component: () => import(/* webpackChunkName: "read" */ './components/fries.vue')
         },
         {
             path: '/paymentScreen',
