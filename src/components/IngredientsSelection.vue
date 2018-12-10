@@ -170,7 +170,6 @@ button:hover{
   left: 0;
   /* max-width: 900px; */
   width: 97%;
-  min-width: 5px;
   display: grid;
   grid-gap: 20px;
   color: black;
