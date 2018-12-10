@@ -65,12 +65,12 @@ let router = new Router({
 
         // not working here!!!
         {
-            path: '/test',
+            path: '/fries',
             meta: {
-                title: 'TEST',
+                title: 'Fries',
             },
-            name: 'tester',
-            component: () => import(/* webpackChunkName: "read" */ './views/test.vue')
+            name: 'Fries',
+            component: () => import(/* webpackChunkName: "read" */ './views/fries.vue')
         },
         {
             path: '/paymentScreen',
