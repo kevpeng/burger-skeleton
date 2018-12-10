@@ -170,13 +170,14 @@ button:hover{
   left: 0;
   /* max-width: 900px; */
   width: 97%;
+  min-width: 5px;
   display: grid;
   grid-gap: 20px;
   color: black;
   font-family: 'Amaranth';
   font-weight: lighter;
   margin-top: 7em;
-  grid-template-columns: repeat(auto-fit, 23.8%);
+  grid-template-columns: repeat(auto-fit, 27.5vw);
   margin-bottom: 15vh;
 }
 
