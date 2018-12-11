@@ -18,12 +18,15 @@
         </main> -->
 
         <div class="wrapper">
+          {{lang}}
           <Ingredient class="ingredient"
-          ref="ingredient"
+          ref="Ingredient"
           v-for="item in ingredients"
+          v-if="item.category == 1"
           v-on:increment="addToOrder(item)"
           :item="item"
-          :lang="lang"
+
+
           :key="item.ingredient_id">
         </Ingredient>
       </div>
@@ -56,7 +59,7 @@ export default {
   data: function() {
     return {
       chosenIngredients:[],
-      price: 0
+      price: 0,
     }
   },
   methods: {
