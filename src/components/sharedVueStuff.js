@@ -8,7 +8,7 @@ var sharedVueStuff = {
       orders: {},
       uiLabels: {},
       ingredients: {},
-      lang: "en",
+      lang: "",
       kitchenState: '',
       kitchenStateOpposite: '',
       paymentState: '',
@@ -23,6 +23,7 @@ var sharedVueStuff = {
       this.kitchenState = 'serving';
       this.kitchenStateOpposite = 'cooking';
       this.paymentState = 'waiting';
+      this.lang = "en";
     }.bind(this));
 
     this.$store.state.socket.on('switchLang', function (data) {
