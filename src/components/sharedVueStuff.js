@@ -9,8 +9,6 @@ var sharedVueStuff = {
       uiLabels: {},
       ingredients: {},
       lang: "en",
-      kitchenState: '',
-      kitchenStateOpposite: '',
       paymentState: '',
     }
   },
@@ -20,8 +18,6 @@ var sharedVueStuff = {
       this.orders = data.orders;
       this.uiLabels = data.uiLabels;
       this.ingredients = data.ingredients;
-      this.kitchenState = 'serving';
-      this.kitchenStateOpposite = 'cooking';
       this.paymentState = 'waiting';
     }.bind(this));
 
