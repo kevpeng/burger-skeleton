@@ -49,6 +49,9 @@
 
       <component
         v-bind:is="currentTabComponent"
+        :ingredients="ingredients"
+        :lang="lang"
+        :ui-labels="uiLabels"
         class="tab"
         type="inline-template">
       </component>

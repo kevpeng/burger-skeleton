@@ -24,6 +24,7 @@ var sharedVueStuff = {
 
     this.$store.state.socket.on('switchLang', function (data) {
       this.uiLabels = data;
+
     }.bind(this));
 
     this.$store.state.socket.on('currentQueue', function (data) {
@@ -40,6 +41,7 @@ var sharedVueStuff = {
       } else {
         this.lang = "en";
       }
+      console.log(this.lang)
       this.$store.state.socket.emit('switchLang', this.lang);
       // this.$store.commit('changeHello', "Hi there again!");
     }

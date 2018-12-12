@@ -2,9 +2,10 @@
   <div class="ingredient">
     <label>
       <div class="ingredientTitle" >
+        {{lang}}
         {{item["ingredient_"+lang]}}
       </div>
-      <img class="image" :src="require('../assets/' + item.picture)" /> <br>
+      <!-- <img class="image" :src="require('../assets/' + item.picture)" /> <br> -->
         <button class="counter" v-on:click="decrementCounter">-</button>
           {{counter}}
         <button class="counter" v-on:click="incrementCounter">+</button> <br>
@@ -14,16 +15,14 @@
   </div>
 </template>
 <script>
-import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   name: 'Ingredient',
-  mixins: [sharedVueStuff],
   props: {
     item: Object,
-    // lang: String,
-    // uiLabels: Object,
+    lang: String,
+    uiLabels: Object,
   },
-    data: function () {
+  data: function () {
     return {
       counter: 0
 
@@ -31,6 +30,7 @@ export default {
   },
   methods: {
     incrementCounter: function () {
+      console.log("incremented", this.counter);
       this.counter += 1;
       // sending 'increment' message to parent component or view so that it
       // can catch it with v-on:increment in the component declaration
