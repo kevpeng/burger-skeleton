@@ -73,6 +73,7 @@ footer{
   text-align: center;
   justify-items: center;
   margin-bottom: 10vh;
+  margin-top: 10vh;
 }
 
 
