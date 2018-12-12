@@ -18,17 +18,15 @@
         </main> -->
 
         <div class="wrapper">
-          {{lang}}
           <Ingredient class="ingredient"
-          ref="Ingredient"
-          v-for="item in ingredients"
-          v-if="item.category == 1"
-          v-on:increment="addToOrder(item)"
-          :item="item"
-
-
-          :key="item.ingredient_id">
-        </Ingredient>
+           ref="Ingredient"
+           v-for="item in ingredients"
+           v-on:increment="addToOrder(item)"
+           :lang="lang"
+           :ui-labels="uiLabels"
+           :item="item"
+           :key="item.ingredient_id">
+         </Ingredient>
       </div>
 
     </div>
@@ -45,7 +43,6 @@
 
 <script>
 //import methods and data that are shared between ordering and kitchen views
-import sharedVueStuff from '@/components/sharedVueStuff.js'
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
 
@@ -55,7 +52,11 @@ export default {
     Ingredient,
     OrderItem
   },
-  mixins: [sharedVueStuff],
+  props: {
+   ingredients: Array,
+   lang: String,
+   uiLabels: Object,
+ },
   data: function() {
     return {
       chosenIngredients:[],

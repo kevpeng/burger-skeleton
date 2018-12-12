@@ -4,7 +4,7 @@
       <div class="ingredientTitle" >
         {{item["ingredient_"+lang]}}
       </div>
-      <img class="image" :src="require('../assets/' + item.picture)" /> <br>
+      <!-- <img class="image" :src="require('../assets/' + item.picture)" /> <br> -->
         <button class="counter" v-on:click="decrementCounter">-</button>
           {{counter}}
         <button class="counter" v-on:click="incrementCounter">+</button> <br>
@@ -14,14 +14,12 @@
   </div>
 </template>
 <script>
-import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   name: 'Ingredient',
-  mixins: [sharedVueStuff],
   props: {
     item: Object,
-    // lang: String,
-    // uiLabels: Object,
+    lang: String,
+    uiLabels: Object,
   },
     data: function () {
     return {
