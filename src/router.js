@@ -68,7 +68,7 @@ let router = new Router({
                 title: 'Fries',
             },
             name: 'Fries',
-            component: () => import(/* webpackChunkName: "read" */ './components/IngredientsSelection.vue')
+            component: () => import(/* webpackChunkName: "read" */ './components/fries.vue')
         },
         {
             path: '/paymentScreen',
@@ -77,6 +77,14 @@ let router = new Router({
             },
             name: 'paymentScreen',
             component: () => import(/* webpackChunkName: "read" */ './views/paymentScreen.vue')
+        },
+        {
+            path: '/burgers',
+            meta: {
+                title: 'Burgers',
+            },
+            name: 'burgers',
+            component: () => import(/* webpackChunkName: "read" */ './views/burgers.vue')
         }
     ]
 })
