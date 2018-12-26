@@ -9,7 +9,7 @@
         <div class="middle">
           <div class="burgers">
 
-
+<!-- This is where all the burgers should be generated -->
             <div class="wrapper">
               <Burger class="burger"
               ref="Burger"
@@ -21,8 +21,10 @@
               :key="b.burger_id">
             </Burger>
           </div>
+
         </div>
       </div>
+      <!-- The footer with a back and forward button -->
       <div class="footer">
         <button  class="button back" id="back"> {{uiLabels.back}}  </button>
         <button  class="button forward" id="forward"> {{uiLabels.selectionOverviewNext}}  </button>
@@ -34,7 +36,9 @@
 
 <script>
 import sharedVueStuff from '@/components/sharedVueStuff.js'
+// The Burger below this line is a file containing the properties for each burger
 import Burger from '@/components/Burger.vue'
+// I haven't yet understood the use of this OrderItem, but I think it must be useful
 import OrderItem from '@/components/OrderItem.vue'
 export default {
   name: 'burgers',
