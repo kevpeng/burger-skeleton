@@ -7,6 +7,8 @@ var sharedVueStuff = {
     return {
       orders: {},
       ingredients: {},
+      lang: "",
+      paymentState: '',
     }
   },
   computed: {
@@ -27,6 +29,8 @@ var sharedVueStuff = {
       this.orders = data.orders;
       this.$store.commit('setUiLabels', data.uiLabels);
       this.ingredients = data.ingredients;
+      this.paymentState = 'waiting';
+      this.lang = "en";
     }.bind(this));
 
     this.$store.state.socket.on('switchLang', function (data) {

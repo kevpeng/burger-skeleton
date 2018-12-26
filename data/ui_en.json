@@ -45,5 +45,6 @@
   "price": "Price: ",
   "stock": "Stock: ",
   "selectionOverviewNext": "Next",
-  "paymentNewOrder": "Start new order"
+  "paymentNewOrder": "Start new order",
+  "ingredientTitle" : "ingredient_en"
 }

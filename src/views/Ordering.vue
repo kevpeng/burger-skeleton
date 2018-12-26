@@ -16,9 +16,23 @@
         {{ uiLabels.welcome }}
       </div>
       <div class="btn_cart">
-        <button :class="['btn_header']" v-on:click="switchLang()">
+        <button :class="['btn_header']" v-on:click="toggleCart()" >
           <img src="https://img.icons8.com/material/52/FFE4B5/shopping-cart.png" height="50vh">
-          </button>
+        </button>
+      <div id="myCart" class="content">
+        - Cart is empty
+
+        <br>
+        TO DO:
+        <br>
+        - purchase button needs to be added
+        <br>
+        - blur background, gray buttons out
+        <!-- add code to print the items with a delete/add (-/+) button -->
+
+        <!-- <button class="purchase"></button-->
+      </div>
+
       </div>
     </div>
 
@@ -35,6 +49,9 @@
 
       <component
         v-bind:is="currentTabComponent"
+        :ingredients="ingredients"
+        :lang="lang"
+        :ui-labels="uiLabels"
         class="tab"
         type="inline-template">
       </component>
@@ -156,6 +173,20 @@ export default {
       }
       this.price = 0;
       this.chosenIngredients = [];
+    },
+    toggleCart: function () {
+        // 1. adding an overlay on the box
+        // 2. blur the background
+        // 3. include the cart items << need to determine proper data structure first. >>
+        // 4. if cart is empty, say "cart is empty"
+        // 5. purchase button
+        // 6. gray out the buttons on footer
+        // 7. (optional) add a red 'X' at top left to show you can exit
+        document.getElementById("myCart").classList.toggle("show");
+
+
+
+
     }
   }
 }
@@ -294,4 +325,27 @@ button:active {
 }
 
 /** HEADER END **/
+
+/*.cart {*/
+  /*position: absolute;*/
+  /*display: inline-block;*/
+/*}*/
+
+.content {
+  display: none;
+  position: absolute;
+  background: #f1f1f1;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+
+  z-index: 10;
+  right: 0;
+  width: 30vw;
+  height: 80vh;
+  border: 3px black solid;
+
+}
+
+.show {
+  display: block;
+}
 </style>

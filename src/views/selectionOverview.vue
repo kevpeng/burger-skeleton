@@ -20,7 +20,7 @@
             <div class="line">  </div>
             <button class="button menusTop" v-on:click="switchLang()"> {{uiLabels.menus}} </button>
             <button class="button menusTop" v-on:click="switchLang()"> {{uiLabels.burgers}} </button>
-            <button class="button menusTop" v-on:click="switchLang()"> {{uiLabels.fries}} </button>
+            <button class="button menusTop" onclick="location.href='http://localhost:8080/#/start'"> {{uiLabels.fries}} </button>
             <button class="button menusDown" id="iceCream" v-on:click="switchLang()"> {{uiLabels.iceCream}} </button>
             <button class="button menusDown" v-on:click="switchLang()"> {{uiLabels.salad}} </button>
             <button class="button menusDown" v-on:click="switchLang()"> {{uiLabels.drinks}} </button>

@@ -2,11 +2,13 @@
 <div id="orders">
   <div class="kitchen_container">
     <div class="navigation">
-        <button v-on:click="switchKitchenTab(kitchenStateOpposite)"><p class="t">TAB</p></button>
+        <button v-on:click="switchKitchenTab()"><p class="t">TAB</p></button>
         <button :class="[lang]" v-on:click="switchLang()"></button>
         <hr>
         <h3 v-if="kitchenState === 'serving'"> {{ uiLabels.serving }}</h3>
         <h3 v-if="kitchenState === 'cooking'"> {{ uiLabels.cooking }}</h3>
+        <br>
+        <h3> {{ this.$store.state.kitchenTabOpposite }}</h3>
     </div>
     <div class="tab">
       <div>
@@ -67,31 +69,30 @@ export default {
   data: function(){
     return {
       chosenIngredients: [],
-      state: "serving",
+      kitchenState: 'serving',
+      kitchenStateOpposite: 'cooking',
     }
   },
-  // computed{
+  computed: {
+    //load stuff from $store.state.xyz
+
   //   countBeef100: funtion(){
   //     return countNumberOfIngredients(2);
   //   },
   //   countBeen: funtion(){
   //     return countNumberOfIngredients(1);
   //   }
-  // },
+  },
   methods: {
-    switchTab: function (newState) {
-      this.state = newState;
+    switchKitchenTab: function () {
+      var tmp = this.kitchenState ;
+      this.kitchenState = this.kitchenStateOpposite;
+      this.kitchenStateOpposite = tmp;
     },
-
     markDone: function (orderid) {
       this.$store.state.socket.emit("orderDone", orderid);
     },
-
-    switchKitchenTab: function (newState) {
-      this.kitchenStateOpposite = this.kitchenState;
-      this.kitchenState = newState;
-    },
-    countNumberOfIngredients: function(id){
+    /*countNumberOfIngredients: function(id){
       let counter = 0;
       for(let order in this.orders){
         for(let i = 0; i < this.orders[order].ingredients.length; i += 1){
@@ -101,7 +102,7 @@ export default {
         }
       }
       return counter;
-    }
+    }*/
   }
 }
 </script>
@@ -155,8 +156,6 @@ export default {
       background: #8b4513 url('~@/assets/SV-select.png') no-repeat right 50% top 50%;
       background-size: 80%;
   }
-
-  /* swapped the images.. gonna have to take a look at it tomorrow */
   .en {
       background: #8b4513 url('~@/assets/ENG-select.png') no-repeat right 50% top 50%;
       background-size: 80%;
