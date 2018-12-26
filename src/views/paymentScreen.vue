@@ -18,11 +18,12 @@
           <!-- {{uiLabels.paymentWaiting}} -->
           <h3 v-if="paymentState === 'waiting'"> {{ uiLabels.paymentWaiting }}</h3>
           <h3 v-if="paymentState === 'paid'"> {{ uiLabels.paymentSuccesful }}</h3>
-          <button class="button new" id="new"> {{uiLabels.paymentNewOrder}}  </button>
+          <button class="button new" id="new" v-if="paymentState === 'paid'"> {{uiLabels.paymentNewOrder}}  </button>
+          <h6> {{this.$store.state.paymentState}} </h6>
           </div>
       </div>
       <div class="footer">
-        <button  class="button back" id="back"> {{uiLabels.back}}  </button>
+        <button  class="button back" id="back" v-if="paymentState === 'waiting'"> {{uiLabels.back}}  </button>
       </div>
     </div>
   </body>
@@ -36,17 +37,26 @@ export default {
   // add the right name
   name: 'paymentScreen',
   mixins: [sharedVueStuff],
-  methods: {
-    switchpaymentStatus: function (newState) {
-      this.paymentState = newState;
+  data: function(){
+    return {
+      paymentState: 'waiting',
+      paymentOppositeState: 'paid',
     }
   },
-  change: function() {
+  methods: {
+    switchpaymentStatus: function () {
+      var tempState = this.paymentState;
+      this.paymentState = this.paymentOppositeState;
+      this.paymentOppositeState = tempState;
+    }
+  },
+  created: function() {
       var timer = null;
+      var self = this;
       function update() {
         // var elem = document.getElementById("message");
           clearTimeout(timer);
-          timer = setTimeout(function() { this.switchpaymentStatus('paid')}, 3000);
+          timer = setTimeout(function() { self.switchpaymentStatus()}, 3000);
           // console.log(paymentState);
       }
       update();
@@ -87,7 +97,7 @@ export default {
 }
 .new{
   margin-top: 10vh;
-  width: 80%;
+  width: 50%;
   height: 10vh;
   font-size: calc(3vw + 3vh);
 }
@@ -184,6 +194,12 @@ body {
     height: 6vh;
     font-size: calc(1.7vw + 1.7vh);
     margin-left: 3%;
+  }
+  .new{
+    margin-top: 10vh;
+    width: 50%;
+    height: 10vh;
+    font-size: calc(2vw + 2vh);
   }
 }
 </style>

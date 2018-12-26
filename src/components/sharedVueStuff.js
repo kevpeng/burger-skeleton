@@ -6,27 +6,31 @@ var sharedVueStuff = {
   data: function () {
     return {
       orders: {},
-      uiLabels: {},
       ingredients: {},
-      lang: "en",
-      kitchenState: '',
-      kitchenStateOpposite: '',
-      paymentState: '',
     }
+  },
+  computed: {
+    uiLabels: function () {
+      return this.$store.state.uiLabels;
+    },
+    lang: {get: function (){
+      return this.$store.state.lang;
+    },
+    set: function (lang){
+      this.$store.commit('switchLang', lang);
+    }
+  }
   },
   created: function () {
     this.$store.state.socket.emit('pageLoaded');
     this.$store.state.socket.on('initialize', function (data) {
       this.orders = data.orders;
-      this.uiLabels = data.uiLabels;
+      this.$store.commit('setUiLabels', data.uiLabels);
       this.ingredients = data.ingredients;
-      this.kitchenState = 'serving';
-      this.kitchenStateOpposite = 'cooking';
-      this.paymentState = 'waiting';
     }.bind(this));
 
     this.$store.state.socket.on('switchLang', function (data) {
-      this.uiLabels = data;
+      this.$store.commit('setUiLabels', data);
     }.bind(this));
 
     this.$store.state.socket.on('currentQueue', function (data) {

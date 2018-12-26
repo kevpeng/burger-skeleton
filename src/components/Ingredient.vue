@@ -9,7 +9,7 @@
         <!-- <button v-on:click="incrementCounter">{{ counter }}</button> <br> -->
           {{counter}}
         <button class="counter" v-on:click="incrementCounter">+</button> <br>
-        {{uiLabels.price}}{{item.selling_price}}  &nbsp
+        {{uiLabels.price}}{{item.selling_price}}
         {{uiLabels.stock}}{{item.stock}}
 
     </label>

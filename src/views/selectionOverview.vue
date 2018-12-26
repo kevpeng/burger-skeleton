@@ -270,4 +270,19 @@ button:active{
     font-size: calc(1.9vw + 1.9vh);
   }
 }
+/*
+Big screen:
+grid-template-columns: repeat(auto-fit, calc(7em + 12px));
+
+Smaller screen:
+grid-template-columns: 1fr;
+
+Ingreditent:
+width: calc(100%-2em);
+
+computed:{
+  seats: function(){
+    return this.$store.state.seats;
+  }
+} */
 </style>
