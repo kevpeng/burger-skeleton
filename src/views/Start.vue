@@ -79,9 +79,11 @@
         methods: {
             chooseTakeAway: function() {
                 this.orderPreference = 'takeAway';
+                this.$emit('switchTo', 'SelectionOverview');
             },
             chooseEatIn: function() {
                 this.orderPreference = 'eatIn';
+                this.$emit('switchTo', 'SelectionOverview');
             }
         }
 

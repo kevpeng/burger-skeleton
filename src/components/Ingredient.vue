@@ -24,7 +24,6 @@ export default {
     data: function () {
     return {
       counter: 0
-
     };
   },
   methods: {
@@ -43,7 +42,7 @@ export default {
       }
     },
     getImage: function(path){
-     return "../assets/" + path; //provide "missing picture" as default
+     return "../assets/" + path; //ToDo provide "missing picture" as default
    },
     resetCounter: function () {
       this.counter = 0;

@@ -3,6 +3,17 @@
         <div class="queue1">
             {{qList.burgerQ.name}}<br>
             <hr>
+            {{orders}}
+                <OrderItemToPrepare
+                v-for="(order, key) in orders"
+                v-if="order.status !== 'done'"
+                v-on:done="markDone(key)"
+                :order-id="key"
+                :order="order"
+                :ui-labels="uiLabels"
+                :lang="lang"
+                :key="key">
+                </OrderItemToPrepare>
             <p class="qNr">#{{qList.size-3}}</p>
         </div>
         <div class="queue">

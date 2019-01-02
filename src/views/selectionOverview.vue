@@ -16,22 +16,23 @@
         </div>-->
         <div class="middle">
           <div class="buttons">
-            <button class="button create" v-on:click="switchLang()"> {{uiLabels.createOwnBurger}} </button>
+            <button class="button create" v-on:click="switchTo('BurgerCreation')"> {{uiLabels.createOwnBurger}} </button>
             <div class="line">  </div>
-            <button class="button menusTop" v-on:click="switchLang()"> {{uiLabels.menus}} </button>
-            <button class="button menusTop" v-on:click="switchLang()"> {{uiLabels.burgers}} </button>
-            <button class="button menusTop" onclick="location.href='http://localhost:8080/#/start'"> {{uiLabels.fries}} </button>
-            <button class="button menusDown" id="iceCream" v-on:click="switchLang()"> {{uiLabels.iceCream}} </button>
-            <button class="button menusDown" v-on:click="switchLang()"> {{uiLabels.salad}} </button>
-            <button class="button menusDown" v-on:click="switchLang()"> {{uiLabels.drinks}} </button>
+            <button class="button menusTop" v-on:click="switchTo('Menus')"> {{uiLabels.menus}} </button>
+            <button class="button menusTop" v-on:click="switchTo('Burgers')"> {{uiLabels.burgers}} </button>
+            <button class="button menusTop" v-on:click="switchTo('Fries')"> {{uiLabels.fries}} </button>
+            <!--button class="button menusTop" onclick="location.href='http://localhost:8080/#/start'"> {{uiLabels.fries}} </button-->
+            <button class="button menusDown" id="iceCream" v-on:click="switchTo('Icecream')"> {{uiLabels.iceCream}} </button>
+            <button class="button menusDown" v-on:click="switchTo('Salad')"> {{uiLabels.salad}} </button>
+            <button class="button menusDown" v-on:click="switchTo('Drinks')"> {{uiLabels.drinks}} </button>
             <!-- <div class="button" v-for="b in buttonList">
             <button class="button" v-on:click="b.methods"> {{b.title}} </button>
           </div> -->
         </div>
       </div>
       <div class="footer">
-        <button  class="button back" id="back"> {{uiLabels.back}}  </button>
-        <button  class="button forward" id="forward"> {{uiLabels.selectionOverviewNext}}  </button>
+        <button v-on:click="cancel()" class="button back" id="back"> {{uiLabels.back}}  </button>
+        <button v-on:click="placeOrder()" class="button forward" id="forward"> {{uiLabels.selectionOverviewNext}}  </button>
       </div>
     </div>
   </body>
@@ -76,18 +77,24 @@ import sharedVueStuff from '@/components/sharedVueStuff.js'
 export default {
   // add the right name
   name: 'selectionOverview',
-  mixins: [sharedVueStuff]
+  mixins: [sharedVueStuff],
   // data: function() {
   //   return {
   //     headLine: 'Selection Overview',
   //     buttonList: buttons,
   //   }
   // },
-  // methods: {
-  //   create: function(){
-  //
-  //   }
-  // }
+  methods: {
+     switchTo: function(newTab){
+       this.$emit('switchTo', newTab);
+     },
+     cancel: function(){
+       this.$emit('cancel');
+     },
+     placeOrder: function(){
+       this.$emit('placeOrder');
+     }
+  }
 }
 </script>
 

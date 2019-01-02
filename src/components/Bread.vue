@@ -9,9 +9,10 @@
     <body>
       <div class="wrapper">
         <Ingredient class="ingredient"
-          ref="Ingredient"
+          ref="Patty"
           v-for="item in ingredients"
-          v-on:increment="updateSelectedIngredients()"
+           v-if="item.category == 4"
+          v-on:increment="updateSelectedPatty()"
           :lang="lang"
           :ui-labels="uiLabels"
           :item="item"
@@ -34,7 +35,7 @@ import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
 
 export default {
-  name: "IngredientSelection",
+  name: "Patty",
   components: {
     Ingredient,
     OrderItem
@@ -48,41 +49,44 @@ export default {
 
   data: function() {
     return {
-      chosenIngredients: [],
+      chosenPatty: [],
       price: 0,
     }
   },
 
   methods: {
-    updateSelectedIngredients: function() {
-      this.chosenIngredients = [];
-      for (var i = 0; i < this.$refs.Ingredient.length; i += 1) {
-        if(this.$refs.Ingredient[i].counter > 0){
+    updateSelectedPatty: function() {
+      this.chosenPatty = [];
+      for (var i = 0; i < this.$refs.Patty.length; i += 1) {
+        if(this.$refs.Patty[i].counter > 0){
           var obj = {
-            name: this.$refs.Ingredient[i].item["ingredient_"+ this.lang],
-            amount: this.$refs.Ingredient[i].counter,
-            price: (this.$refs.Ingredient[i].item.selling_price * this.$refs.Ingredient[i].counter)
+            name: this.$refs.Patty[i].item["ingredient_"+ this.lang],
+            amount: this.$refs.Patty[i].counter,
+            price: (this.$refs.Patty[i].item.selling_price * this.$refs.Patty[i].counter)
           };
-          this.chosenIngredients.push(obj);
+          this.chosenPatty.push(obj);
         }
       }
       /* Check if everything is in the array
-      for(var i in this.chosenIngredients){
-      console.log(this.chosenIngredients[i].name);
-      console.log(this.chosenIngredients[i].amount);
-      console.log(this.chosenIngredients[i].price);
+      for(var i in this.chosenPatty){
+      console.log(this.chosenPatty[i].name);
+      console.log(this.chosenPatty[i].amount);
+      console.log(this.chosenPatty[i].price);
       }*/
     },
     addToIngredients: function() {
-      this.$emit('addToIngredients', this.chosenIngredients);
+      this.$emit('addToIngredients', this.chosenPatty);
       //set all counters to 0. Notice the use of $refs
-      // for (i = 0; i < this.$refs.Ingredient.length; i += 1) {
-      //   this.$refs.Ingredient[i].resetCounter();
+      // for (i = 0; i < this.$refs.Patty.length; i += 1) {
+      //   this.$refs.Patty[i].resetCounter();
       // }
       //this.price = 0;
       //this.chosenIngredients = [];
     },
     TODO_remove_or_addToIngredients: function() {
+    },
+    switchTo: function(newTab) {
+      this.$emit('switchTo', newTab);
     }
   }
 }

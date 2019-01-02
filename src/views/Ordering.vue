@@ -3,39 +3,43 @@
     <head>
       <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
     </head>
+
     <div class="header">
       <div class="btn_cancel">
-        <button :class="['btn_header']" v-on:click="switchLang()">
+        <button :class="['btn_header']" v-on:click="cancel()">
           <img src="https://img.icons8.com/material/52/FFE4B5/delete-sign.png" height="50vh">
-          </button>
+        </button>
       </div>
+
       <div class="btn_lang">
         <button :class="['btn_header', lang]" v-on:click="switchLang()"></button>
       </div>
+
       <div class="title">
         {{ uiLabels.welcome }}
       </div>
+      
       <div class="btn_cart">
         <button :class="['btn_header']" v-on:click="toggleCart()" >
           <img src="https://img.icons8.com/material/52/FFE4B5/shopping-cart.png" height="50vh">
         </button>
-      <div id="myCart" class="content">
-        - Cart is empty
+        <div id="myCart" class="cart_content">
+          selection: {{selection}}
+          chosenIngredients: {{chosenIngredients}}
+          <br>
+          - Cart is empty
+          <br>
+          TO DO:
+          <br>
+          - purchase button needs to be added
+          <br>
+          - blur background, gray buttons out
+          <!-- add code to print the items with a delete/add (-/+) button -->
 
-        <br>
-        TO DO:
-        <br>
-        - purchase button needs to be added
-        <br>
-        - blur background, gray buttons out
-        <!-- add code to print the items with a delete/add (-/+) button -->
-
-        <!-- <button class="purchase"></button-->
-      </div>
-
+          <!-- <button class="purchase"></button-->
+        </div>
       </div>
     </div>
-
 
     <div class="page">
       <button
@@ -46,9 +50,13 @@
         {{ tab }}
       </button>
 
-
       <component
         v-bind:is="currentTabComponent"
+        v-on:switchTo="switchTab"
+        v-on:addToIngredients="addToIngredients"
+        v-on:addToOrder="addToOrder"
+        v-on:cancel="cancel"
+        v-on:placeOrder="placeOrder"
         :ingredients="ingredients"
         :lang="lang"
         :ui-labels="uiLabels"
@@ -56,20 +64,6 @@
         type="inline-template">
       </component>
     </div>
-
-
-    <!-- <div class="footer">
-      <div class="btn_back">
-        <button :class="['btn_footer']" v-on:click="switchLang()">&lt;&lt; {{ uiLabels.back}} &lt;&lt;</button>
-      </div>
-      <div class="nothing">
-      </div>
-      <div class="btn_next">
-        <button :class="['btn_footer']" v-on:click="switchLang()">&gt;&gt; {{ uiLabels.next}} &gt;&gt;</button>
-      </div>
-    </div> -->
-
-
 
     <!--div>
       <img class="example-panel" src="@/assets/exampleImage.jpg">
@@ -116,6 +110,16 @@ import Start from '@/views/Start.vue'
 import SelectionOverview from '@/views/selectionOverview.vue'
 import BurgerCreation from '@/views/burgerCreation.vue'
 import IngredientsSelection from '@/components/IngredientsSelection.vue'
+import Bread from '@/components/Bread.vue'
+import Patty from '@/components/Patty.vue'
+import Toppings from '@/components/Toppings.vue'
+import Sauce from '@/components/Sauce.vue'
+import Menus from '@/components/Drinks.vue'
+import Burgers from '@/views/burgers.vue'
+import Fries from '@/components/Fries.vue'
+import Drinks from '@/components/Drinks.vue'
+import Salad from '@/components/Drinks.vue'
+import Icecream from '@/components/Drinks.vue'
 
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
@@ -124,56 +128,128 @@ import sharedVueStuff from '@/components/sharedVueStuff.js'
 necessary Vue instance (found in main.js) to import your data and methods */
 export default {
   name: 'Ordering',
+
   components: {
     Ingredient,
     OrderItem,
     Start,
     SelectionOverview,
     BurgerCreation,
-    IngredientsSelection
+    IngredientsSelection,
+    Bread,
+    Patty,
+    Toppings,
+    Sauce,
+    Menus,
+    Burgers,
+    Fries,
+    Drinks,
+    Salad,
+    Icecream
   },
-  mixins: [sharedVueStuff], // include stuff that is used in both
-                            // the ordering system and the kitchen
+
+  // include stuff that is used in both the ordering system and the kitchen
+  mixins: [sharedVueStuff], 
+  
   data: function() { //Not that data is a function!
     return {
+      //tab/component navigation elements
       currentTab: '',
-      tabs: ['Start', 'SelectionOverview', 'BurgerCreation', 'IngredientsSelection'],
+      tabs: ['Start', 'SelectionOverview', 
+             'BurgerCreation', 'IngredientsSelection', 
+             'Bread', 'Patty', 'Toppings', 'Sauce',
+             'Menus', 'Burgers', 'Fries', 'Drinks', 'Salad', 'Icecream'],
+      
+      //for the self created burger
       chosenIngredients: [],
+      chosenIngredientsPrice: 0,
+      
+      //for all selected items (before they get ordered)
+      selection: [],
       price: 0,
       orderNumber: "",
     }
   },
+
   computed: {
+    //allows to have the components dynamically on the screen
     currentTabComponent: function () {
       return this.currentTab;
     }
   },
+
   created: function () {
+    //Todo explain what this function is doing
     this.$store.state.socket.on('orderNumber', function (data) {
       this.orderNumber = data;
     }.bind(this));
   },
+
   methods: {
-    addToOrder: function (item) {
-      this.chosenIngredients.push(item);
-      this.price += +item.selling_price;
+    //to switch the tab to another component
+    //can be called from the components itself with "this.$emit('switchTo', newTab);"
+    switchTab: function (newTab) {
+      this.currentTab = newTab;
     },
+
+    //to cancel from any tab/component and return to the Start
+    //can be called from the components itself with "this.$emit('cancel');"
+    cancel: function () {
+      //ToDo add popup "do you really want to cancel?"
+      this.currentTab = 'Start';
+    },    
+
+    //to add ingredients to the self created burger
+    //should only be used in the Patty/Toppings/Sauce/Bread selection !
+    //can be called from the components itself with "this.$emit('addToIngredients', ingredients);"
+    addToIngredients: function (items) {
+      this.chosenIngredients = [];
+      for (var i=0; i<items.length; i++) {
+        this.chosenIngredients.push(items[i]);
+        this.chosenIngredientsPrice += +items[i].price;
+      }
+      this.currentTab = 'BurgerCreation';
+    },
+
+    //to add selected items directly to the order
+    //should only be used for all NOT self-created-burger items !
+    //can be called from the components itself with "this.$emit('addToOrder', items);"
+    addToOrder: function (items) {
+      for (var i=0; i<items.length; i++) {
+        this.selection.push(items[i]);
+        this.price += +items[i].price;
+      }
+      this.currentTab = 'SelectionOverview';
+    },
+
+    //to submit the order finally
+    //should only be used in SelectionOverview and the Cart!
     placeOrder: function () {
-      var i,
+      var i;
       //Wrap the order in an object
-        order = {
-          ingredients: this.chosenIngredients,
-          price: this.price
-        };
+      var order = {
+        //Todo just testiong values !
+          ingredients: this.chosenIngredients, //should be this.selection
+          price: this.chosenIngredientsPrice //should be this.price
+      };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', {order: order});
+      console.log("order placed!");
+
+      //not needed in the Ordering.vue, but I would leave it to have a reference when needed
       //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+      /*for (i = 0; i < this.$refs.ingredient.length; i += 1) {
         this.$refs.ingredient[i].resetCounter();
-      }
+      }*/
+
       this.price = 0;
-      this.chosenIngredients = [];
+      this.selection = [];
+
+      //Todo continue to payment screen
     },
+
+    //Todo write a short description of what the function does
+    //
     toggleCart: function () {
         // 1. adding an overlay on the box
         // 2. blur the background
@@ -184,98 +260,35 @@ export default {
         // 7. (optional) add a red 'X' at top left to show you can exit
         document.getElementById("myCart").classList.toggle("show");
 
-
-
-
     }
   }
 }
 </script>
+
 <style scoped>
-/* scoped in the style tag means that these rules will only apply to elements, classes and ids in this template and no other templates. */
+/* scoped in the style tag means that these rules will only apply to elements, 
+   classes and ids in this template and no other templates. */
 #ordering {
 }
 
 .container {
   display: grid;
-  /* grid-template-columns: 100vw; */
   grid-template-rows: 13vh 74vh 13vh;
   text-align: center;
 }
 
-.header, .footer {
-  display: grid;
-  /* background: url('~@/assets/exampleImage.jpg'); */
-}
-
 .header {
+  display: grid;
   grid-template-columns: 13vh 13vh auto 13vh;
-
-
-  /* top:0px; */
-  color:black;
-  /* position:fixed; */
+  color: black;
+  position: fixed;
   background-color: #DEB887;
-  /*height:15vh;
-  left:0px;*/
   font-size: calc(2.5vw + 1.5vh);
-  /* padding-left: 1vw;
-  padding-right: 1vw; */
   font-family: 'Amaranth';
   width: 100vw;
 }
 
-@media screen and (max-width:380px) {
-  .header{
-    font-size: 4.85vw;
-
-  }
-
-  .btn_header{
-    width: 1vh;
-    height: 1vh;
-    margin: 1.5vh 1.5vh;
-    border-radius: 10px;
-    background-color: #8B4513;
-    border: none;
-  }
-}
-.footer {
-  grid-template-columns: 20vw auto 20vw;
-}
-
-.page {
-  width: 100vw;
-}
-
-
-
-/** PAGE START **/
-/*
-.ingredient {
-  border: 1px solid #ccd;
-  padding: 1em;
-  background-image: url('~@/assets/exampleImage.jpg');
-  color: white;
-}*/
-
-.tab-button {
-  /* padding: 6px 10px; */
-  border: 1px solid #ccc;
-  cursor: pointer;
-  background: #f0f0f0;
-  width: 25vw;
-}
-.tab-button:hover {
-  background: #e0e0e0;
-}
-.tab-button.active {
-  background: #e0e0e0;
-}
-
-/** PAGE END **/
-
-/** HEADER&FOOTER START **/
+/** HEADER START **/
 .title {
   /* font-size: 4vmax;
   font-family: 'Amaranth';*/
@@ -289,10 +302,6 @@ button:hover {
   cursor: pointer;
 }
 
-button:active {
-  box-shadow: 0 1px #666;
-  transform: translateY(2px);
-}
 .btn_header {
   width: 10vh;
   height: 10vh;
@@ -300,16 +309,6 @@ button:active {
   border-radius: 10px;
   background-color: #8B4513;
   border: none;
-}
-
-.btn_footer {
-  min-width: 18vh;
-  width: 90%;
-  height: 6vh;
-  margin: 3vh 5%;
-  border-radius: 10px;
-  background-color: #8B4513;
-  font-size: 2vmax;
 }
 
 /* these 2 classes are used to select language flag. */
@@ -324,14 +323,13 @@ button:active {
   background-size: 80%;
 }
 
+/*.cart {
+  position: absolute;
+  display: inline-block;
+}*/
 /** HEADER END **/
 
-/*.cart {*/
-  /*position: absolute;*/
-  /*display: inline-block;*/
-/*}*/
-
-.content {
+.cart_content {
   display: none;
   position: absolute;
   background: #f1f1f1;
@@ -342,10 +340,45 @@ button:active {
   width: 30vw;
   height: 80vh;
   border: 3px black solid;
-
 }
 
 .show {
   display: block;
 }
+
+@media screen and (max-width:380px) {
+  .header{
+    font-size: 4.85vw;
+  }
+
+  .btn_header{
+    margin: 1.5vh 1.5vh;
+    border-radius: 10px;
+    background-color: #8B4513;
+    border: none;
+  }
+}
+
+/** PAGE START **/
+.page {
+  width: 100vw;
+  padding-top: 13vh;
+}
+/*.ingredient {
+  border: 1px solid #ccd;
+  padding: 1em;
+  background-image: url('~@/assets/exampleImage.jpg');
+  color: white;
+}*/
+.tab-button {
+  cursor: pointer;
+  width: 20vw;
+}
+.tab-button:hover {
+  background: #e0e0e0;
+}
+.tab-button.active {
+  background: #e0e0e0;
+}
+/** PAGE END **/
 </style>

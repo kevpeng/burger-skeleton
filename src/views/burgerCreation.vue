@@ -19,17 +19,17 @@
 
     <div class="gridContainer">
       <div class="column1">
-        <button class="burgerButtons" id="bread"> {{ uiLabels.bread }} </button>
+        <button v-on:click="switchTo('Bread')" class="burgerButtons" id="bread"> {{ uiLabels.bread }} </button>
         <br>
-        <button class="burgerButtons" id="patty"> {{ uiLabels.patty }} </button>
+        <button v-on:click="switchTo('Patty')" class="burgerButtons" id="patty"> {{ uiLabels.patty }} </button>
       </div>
       <div class="column2">
         <img class="burgerImage" src="../assets/burger.png">
       </div>
       <div class="column3" >
-        <button class="burgerButtons" id="toppings"> {{ uiLabels.toppings }} </button>
+        <button v-on:click="switchTo('Toppings')" class="burgerButtons" id="toppings"> {{ uiLabels.toppings }} </button>
         <br>
-        <button class="burgerButtons" id="sauce"> {{ uiLabels.sauce }} </button>
+        <button v-on:click="switchTo('Sauce')" class="burgerButtons" id="sauce"> {{ uiLabels.sauce }} </button>
       </div>
     </div>
 
@@ -45,10 +45,15 @@
 
 <script>
 import sharedVueStuff from '@/components/sharedVueStuff.js'
-    export default {
-        name: "burgerCreation.vue",
-        mixins: [sharedVueStuff]
+export default {
+  name: "burgerCreation.vue",
+  mixins: [sharedVueStuff],
+  methods: {
+    switchTo: function(newTab) {
+      this.$emit('switchTo', newTab);
     }
+  }
+}
 </script>
 
 <style scoped>
