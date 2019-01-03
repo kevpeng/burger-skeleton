@@ -2,7 +2,7 @@
   <div class="burger">
     <label>
       <div class="burgerTitle" >
-        {{b["burger_"+lang]}}
+        {{["burger_"+lang]}}
       </div>
       <!-- <img class="image" :src="require('../assets/' + item.picture)" /> <br> -->
         <button class="counter" v-on:click="decrementCounter">-</button>
