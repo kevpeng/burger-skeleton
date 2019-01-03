@@ -201,25 +201,19 @@ export default {
     //can be called from the components itself with "this.$emit('cancel');"
     cancel: function () {
       var message = 'Do you really want to leave the ordering process? All your selections will be lost.';
-      var txt;
       if (window.confirm(message)) {
-        txt = "Yes.";
         this.chosenIngredients = [];
         this.chosenIngredientsPrice = 0;
         this.selection = [];
         this.price = 0;
 
-        this.currentTab = newTab;
-
-      } else {
-        txt = "No!";
+        this.currentTab = 'Start';
       }
     },    
 
     //show a pop up alert before continue cancelling because then the
     //choosen ingredients will be reset
     cancelTo: function(newTab, msg) {
-      var txt;
       if (window.confirm(msg)) {
         this.chosenIngredients = [];
         this.chosenIngredientsPrice = 0;
@@ -230,9 +224,7 @@ export default {
         }
 
         this.currentTab = newTab;
-
-      } else {
-      } 
+      }
     },
 
     //to add ingredients to the self created burger
@@ -249,13 +241,13 @@ export default {
     //to add the chosenIngredients of the created burger to the overall selection
     //should only be used in the BurgerCreation tab
     addCreatedBurgerToOrder: function() {
-      var items = this.chosenIngredients;
       var createdBurger = {
         name: "Created Burger",
         price: this.chosenIngredientsPrice,
         ingredients: this.chosenIngredients
       };
       this.selection.push(createdBurger);
+
       this.chosenIngredients = [];
       this.chosenIngredientsPrice = 0;
       this.currentTab = 'SelectionOverview';
@@ -279,7 +271,6 @@ export default {
       //ToDo view selection before final payment
       //maybe simply open the cart and continue there?
 
-      var i;
       //Wrap the order in an object
       var order = {
         //Todo just testiong values !
