@@ -71,6 +71,14 @@ let router = new Router({
             component: () => import(/* webpackChunkName: "read" */ './components/Fries.vue')
         },
         {
+            path: '/IceCream',
+            meta: {
+                title: 'IceCream',
+            },
+            name: 'IceCream',
+            component: () => import(/* webpackChunkName: "read" */ './components/IceCream.vue')
+        },
+        {
             path: '/paymentScreen',
             meta: {
                 title: 'Payment',

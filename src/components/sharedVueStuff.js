@@ -7,7 +7,6 @@ var sharedVueStuff = {
     return {
       orders: {},
       ingredients: {},
-      lang: "",
       paymentState: '',
     }
   },
