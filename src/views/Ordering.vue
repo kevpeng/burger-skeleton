@@ -25,6 +25,7 @@
         </button>
         <div id="myCart" class="cart_content">
           selection: {{selection}}
+          <br>
           chosenIngredients: {{chosenIngredients}}
           <br>
           - Cart is empty
@@ -219,17 +220,7 @@ export default {
     //choosen ingredients will be reset
     cancelTo: function(newTab, msg) {
       var txt;
-      if (window.confirm({
-        message: msg, 
-        buttons: { 
-          confirm: {
-              label: 'Yes'
-          },
-          cancel: {
-              label: 'No'
-          }
-        }})) {
-        txt = "Yes.";
+      if (window.confirm(msg)) {
         this.chosenIngredients = [];
         this.chosenIngredientsPrice = 0;
 
@@ -241,7 +232,6 @@ export default {
         this.currentTab = newTab;
 
       } else {
-        txt = "No!";
       } 
     },
 
@@ -249,7 +239,6 @@ export default {
     //should only be used in the Patty/Toppings/Sauce/Bread selection !
     //can be called from the components itself with "this.$emit('addToIngredients', ingredients);"
     addToIngredients: function (items) {
-      this.chosenIngredients = [];
       for (var i=0; i<items.length; i++) {
         this.chosenIngredients.push(items[i]);
         this.chosenIngredientsPrice += +items[i].price;
@@ -261,10 +250,12 @@ export default {
     //should only be used in the BurgerCreation tab
     addCreatedBurgerToOrder: function() {
       var items = this.chosenIngredients;
-      for (var i=0; i<items.length; i++) {
-        this.selection.push(items[i]);
-        this.price += +items[i].price;
-      }
+      var createdBurger = {
+        name: "Created Burger",
+        price: this.chosenIngredientsPrice,
+        ingredients: this.chosenIngredients
+      };
+      this.selection.push(createdBurger);
       this.chosenIngredients = [];
       this.chosenIngredientsPrice = 0;
       this.currentTab = 'SelectionOverview';
@@ -396,6 +387,7 @@ button:hover {
   display: none;
   position: absolute;
   background: #f1f1f1;
+  font-size: 1.5vw;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 
   z-index: 10;
