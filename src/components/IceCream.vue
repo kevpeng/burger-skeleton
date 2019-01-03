@@ -7,11 +7,11 @@
     </head>
 
     <body>
-    <!-- change 99 to IceCream number DONE -->
+    <!-- change 99 to Icecream number DONE -->
     <!-- I created the cat. 7 for the Ice Creams into the ingredients.csv file -->
     <div class="wrapper">
         <Ingredient class="ingredient"
-          ref="IceCream"
+          ref="Icecream"
           v-for="item in ingredients"
            v-if="item.category == 7"
           v-on:increment="updateSelectedIceCream()"
@@ -37,7 +37,7 @@ import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
 
 export default {
-  name: "IceCream",
+  name: "Icecream",
   components: {
     Ingredient,
     OrderItem
@@ -59,12 +59,12 @@ export default {
   methods: {
     updateSelectedIceCream: function() {
       this.chosenIceCream = [];
-      for (var i = 0; i < this.$refs.IceCream.length; i += 1) {
-        if(this.$refs.IceCream[i].counter > 0){
+      for (var i = 0; i < this.$refs.Icecream.length; i += 1) {
+        if(this.$refs.Icecream[i].counter > 0){
           var obj = {
-            name: this.$refs.IceCream[i].item["ingredient_"+ this.lang],
-            amount: this.$refs.IceCream[i].counter,
-            price: (this.$refs.IceCream[i].item.selling_price * this.$refs.IceCream[i].counter)
+            name: this.$refs.Icecream[i].item["ingredient_"+ this.lang],
+            amount: this.$refs.Icecream[i].counter,
+            price: (this.$refs.Icecream[i].item.selling_price * this.$refs.Icecream[i].counter)
           };
           this.chosenIceCream.push(obj);
         }
@@ -79,8 +79,8 @@ export default {
     addToOrder: function() {
       this.$emit('addToOrder', this.chosenIceCream);
       //set all counters to 0. Notice the use of $refs
-      // for (i = 0; i < this.$refs.IceCream.length; i += 1) {
-      //   this.$refs.IceCream[i].resetCounter();
+      // for (i = 0; i < this.$refs.Icecream.length; i += 1) {
+      //   this.$refs.Icecream[i].resetCounter();
       // }
       //this.price = 0;
       //this.chosenIngredients = [];
