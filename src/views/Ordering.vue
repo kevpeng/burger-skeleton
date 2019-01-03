@@ -257,9 +257,17 @@ export default {
       this.currentTab = 'BurgerCreation';
     },
 
-    //todo comments
+    //to add the chosenIngredients of the created burger to the overall selection
+    //should only be used in the BurgerCreation tab
     addCreatedBurgerToOrder: function() {
-      addToOrder(this.chosenIngredients);
+      var items = this.chosenIngredients;
+      for (var i=0; i<items.length; i++) {
+        this.selection.push(items[i]);
+        this.price += +items[i].price;
+      }
+      this.chosenIngredients = [];
+      this.chosenIngredientsPrice = 0;
+      this.currentTab = 'SelectionOverview';
     },
 
     //to add selected items directly to the order
