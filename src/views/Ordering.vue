@@ -57,6 +57,8 @@
         v-on:addToOrder="addToOrder"
         v-on:cancel="cancel"
         v-on:placeOrder="placeOrder"
+        v-on:cancelTo="cancelTo"
+        v-on:addCreatedBurgerToOrder="addCreatedBurgerToOrder"
         :ingredients="ingredients"
         :lang="lang"
         :ui-labels="uiLabels"
@@ -108,6 +110,7 @@ import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
 import Start from '@/views/Start.vue'
 import SelectionOverview from '@/views/selectionOverview.vue'
+import Payment from '@/views/paymentScreen.vue'
 import BurgerCreation from '@/views/burgerCreation.vue'
 import IngredientsSelection from '@/components/IngredientsSelection.vue'
 import Bread from '@/components/Bread.vue'
@@ -134,6 +137,7 @@ export default {
     OrderItem,
     Start,
     SelectionOverview,
+    Payment,
     BurgerCreation,
     IngredientsSelection,
     Bread,
@@ -155,7 +159,7 @@ export default {
     return {
       //tab/component navigation elements
       currentTab: '',
-      tabs: ['Start', 'SelectionOverview', 
+      tabs: ['Start', 'SelectionOverview', 'Payment',
              'BurgerCreation', 'IngredientsSelection', 
              'Bread', 'Patty', 'Toppings', 'Sauce',
              'Menus', 'Burgers', 'Fries', 'Drinks', 'Salad', 'Icecream'],
@@ -195,9 +199,51 @@ export default {
     //to cancel from any tab/component and return to the Start
     //can be called from the components itself with "this.$emit('cancel');"
     cancel: function () {
-      //ToDo add popup "do you really want to cancel?"
-      this.currentTab = 'Start';
+      var message = 'Do you really want to leave the ordering process? All your selections will be lost.';
+      var txt;
+      if (window.confirm(message)) {
+        txt = "Yes.";
+        this.chosenIngredients = [];
+        this.chosenIngredientsPrice = 0;
+        this.selection = [];
+        this.price = 0;
+
+        this.currentTab = newTab;
+
+      } else {
+        txt = "No!";
+      }
     },    
+
+    //show a pop up alert before continue cancelling because then the
+    //choosen ingredients will be reset
+    cancelTo: function(newTab, msg) {
+      var txt;
+      if (window.confirm({
+        message: msg, 
+        buttons: { 
+          confirm: {
+              label: 'Yes'
+          },
+          cancel: {
+              label: 'No'
+          }
+        }})) {
+        txt = "Yes.";
+        this.chosenIngredients = [];
+        this.chosenIngredientsPrice = 0;
+
+        if(newTab == 'Start'){
+          this.selection = [];
+          this.price = 0;
+        }
+
+        this.currentTab = newTab;
+
+      } else {
+        txt = "No!";
+      } 
+    },
 
     //to add ingredients to the self created burger
     //should only be used in the Patty/Toppings/Sauce/Bread selection !
@@ -211,6 +257,11 @@ export default {
       this.currentTab = 'BurgerCreation';
     },
 
+    //todo comments
+    addCreatedBurgerToOrder: function() {
+      addToOrder(this.chosenIngredients);
+    },
+
     //to add selected items directly to the order
     //should only be used for all NOT self-created-burger items !
     //can be called from the components itself with "this.$emit('addToOrder', items);"
@@ -222,9 +273,13 @@ export default {
       this.currentTab = 'SelectionOverview';
     },
 
-    //to submit the order finally
+    //to submit the order
     //should only be used in SelectionOverview and the Cart!
     placeOrder: function () {
+
+      //ToDo view selection before final payment
+      //maybe simply open the cart and continue there?
+
       var i;
       //Wrap the order in an object
       var order = {
@@ -245,7 +300,8 @@ export default {
       this.price = 0;
       this.selection = [];
 
-      //Todo continue to payment screen
+      //continue with payment screen
+      this.currentTab = 'Payment';
     },
 
     //Todo write a short description of what the function does
@@ -259,7 +315,6 @@ export default {
         // 6. gray out the buttons on footer
         // 7. (optional) add a red 'X' at top left to show you can exit
         document.getElementById("myCart").classList.toggle("show");
-
     }
   }
 }

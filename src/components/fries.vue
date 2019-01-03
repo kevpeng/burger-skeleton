@@ -22,8 +22,8 @@
     </body>
 
   <footer>
-    <button v-on:click="switchTo('BurgerCreation')" class="back"> {{ uiLabels.back }} </button>
-    <button v-on:click="addToIngredients()" class="add"> {{ uiLabels.add }} </button>
+    <button v-on:click="switchTo('SelectionOverview')" class="back"> {{ uiLabels.back }} </button>
+    <button v-on:click="addToOrder()" class="add"> {{ uiLabels.add }} </button>
   </footer>
 
 </div>
@@ -74,8 +74,8 @@ export default {
       console.log(this.chosenFries[i].price);
       }*/
     },
-    addToIngredients: function() {
-      this.$emit('addToIngredients', this.chosenFries);
+    addToOrder: function() {
+      this.$emit('addToOrder', this.chosenFries);
       //set all counters to 0. Notice the use of $refs
       // for (i = 0; i < this.$refs.Fries.length; i += 1) {
       //   this.$refs.Fries[i].resetCounter();

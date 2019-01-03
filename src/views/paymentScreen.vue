@@ -18,7 +18,7 @@
           <!-- {{uiLabels.paymentWaiting}} -->
           <h3 v-if="paymentState === 'waiting'"> {{ uiLabels.paymentWaiting }}</h3>
           <h3 v-if="paymentState === 'paid'"> {{ uiLabels.paymentSuccesful }}</h3>
-          <button class="button new" id="new" v-if="paymentState === 'paid'"> {{uiLabels.paymentNewOrder}}  </button>
+          <button v-on:click="switchTo('Start')" class="button new" id="new" v-if="paymentState === 'paid'"> {{uiLabels.paymentNewOrder}}  </button>
           <h6> {{this.$store.state.paymentState}} </h6>
           </div>
       </div>
@@ -48,6 +48,9 @@ export default {
       var tempState = this.paymentState;
       this.paymentState = this.paymentOppositeState;
       this.paymentOppositeState = tempState;
+    },
+    switchTo: function(newTab) {
+      this.$emit('switchTo', newTab);
     }
   },
   created: function() {

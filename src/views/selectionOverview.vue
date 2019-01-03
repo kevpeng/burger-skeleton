@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="footer">
-        <button v-on:click="cancel()" class="button back" id="back"> {{uiLabels.back}}  </button>
+        <button v-on:click="cancelTo('Start')" class="button back" id="back"> {{uiLabels.back}}  </button>
         <button v-on:click="placeOrder()" class="button forward" id="forward"> {{uiLabels.selectionOverviewNext}}  </button>
       </div>
     </div>
@@ -90,6 +90,9 @@ export default {
      },
      cancel: function(){
        this.$emit('cancel');
+     },
+     cancelTo: function(newTab){
+       this.$emit('cancelTo', newTab, "Do you really want to cancel your Order?");
      },
      placeOrder: function(){
        this.$emit('placeOrder');

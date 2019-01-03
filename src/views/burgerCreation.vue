@@ -35,8 +35,8 @@
 
 
     <footer>
-      <button  class="back" id="back"> {{ uiLabels.back }} </button>
-      <button  class="add" id="add"> {{ uiLabels.add }} </button>
+      <button v-on:click="cancelTo('SelectionOverview')" class="back" id="back"> {{ uiLabels.back }} </button>
+      <button v-on:click="addToOrder()" class="add" id="add"> {{ uiLabels.add }} </button>
     </footer>
   </div>
   </body>
@@ -51,6 +51,12 @@ export default {
   methods: {
     switchTo: function(newTab) {
       this.$emit('switchTo', newTab);
+    },
+    cancelTo: function(newTab) {
+      this.$emit('cancelTo', newTab, "Do you really want to cancel the Creation of your Burger?  All your selections will be lost.");
+    },
+    addToOrder: function() {
+      this.$emit('addCreatedBurgerToOrder');
     }
   }
 }
