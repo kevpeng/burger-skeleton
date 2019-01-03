@@ -2,6 +2,7 @@
   <div>
     <head>
       <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
     </head>
     <body>
@@ -35,14 +36,14 @@
 </template>
 
 <script>
-import sharedVueStuff from '@/components/sharedVueStuff.js'
+// import sharedVueStuff from '@/components/sharedVueStuff.js'
 // The Burger below this line is a file containing the properties for each burger
 import Burger from '@/components/Burger.vue'
 // I haven't yet understood the use of this OrderItem, but I think it must be useful
 import OrderItem from '@/components/OrderItem.vue'
 export default {
   name: 'burgers',
-  mixins: [sharedVueStuff],
+  // mixins: [sharedVueStuff],
   components: {
     Burger,
     OrderItem
