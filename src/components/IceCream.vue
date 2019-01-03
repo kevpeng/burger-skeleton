@@ -1,98 +1,179 @@
 <template>
-  <div class="ingredient">
-    <label>
-      <div class="ingredientTitle" >
-        {{item["ingredient_"+lang]}}
+  <div>
+    <head>
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
+    </head>
+
+    <body>
+    <!-- change 99 to iceCream number DONE -->
+    <div class="wrapper">
+        <Ingredient class="ingredient"
+          ref="iceCream"
+          v-for="item in ingredients"
+           v-if="item.category == 7"
+          v-on:increment="updateSelectedIceCream()"
+          :lang="lang"
+          :ui-labels="uiLabels"
+          :item="item"
+          :key="item.ingredient_id">
+        </Ingredient>
       </div>
-      <!-- <img class="image" :src="require('../assets/' + item.picture)" /> <br> -->
-        <button class="counter" v-on:click="decrementCounter">-</button>
-          {{counter}}
-        <button class="counter" v-on:click="incrementCounter">+</button> <br>
-        {{uiLabels.price}}{{item.selling_price}} kr <br>
-        {{uiLabels.stock}}{{item.stock}}
-    </label>
-  </div>
+    </body>
+
+  <footer>
+    <button v-on:click="switchTo('SelectionOverview')" class="back"> {{ uiLabels.back }} </button>
+    <button v-on:click="addToOrder()" class="add"> {{ uiLabels.add }} </button>
+  </footer>
+
+</div>
 </template>
+
 <script>
+//import methods and data that are shared between ordering and kitchen views
+import Ingredient from '@/components/Ingredient.vue'
+import OrderItem from '@/components/OrderItem.vue'
+
 export default {
-  name: 'IceCream',
+  name: "iceCream",
+  components: {
+    Ingredient,
+    OrderItem
+  },
+
   props: {
-    item: Object,
-    lang: String,
-    uiLabels: Object,
+   ingredients: Array,
+   lang: String,
+   uiLabels: Object,
   },
-    data: function () {
+
+  data: function() {
     return {
-      counter: 0
-    };
+      chosenIceCream: [],
+      price: 0,
+    }
   },
+
   methods: {
-    incrementCounter: function () {
-      this.counter += 1;
-      // sending 'increment' message to parent component or view so that it
-      // can catch it with v-on:increment in the component declaration
-      this.$emit('increment');
-    },
-    decrementCounter: function () {
-      if(this.counter > 0) {
-      this.counter -= 1;
-      // sending 'increment' message to parent component or view so that it
-      // can catch it with v-on:increment in the component declaration
-      this.$emit('increment');
+    updateSelectedIceCream: function() {
+      this.chosenIceCream = [];
+      for (var i = 0; i < this.$refs.iceCream.length; i += 1) {
+        if(this.$refs.iceCream[i].counter > 0){
+          var obj = {
+            name: this.$refs.iceCream[i].item["ingredient_"+ this.lang],
+            amount: this.$refs.iceCream[i].counter,
+            price: (this.$refs.iceCream[i].item.selling_price * this.$refs.iceCream[i].counter)
+          };
+          this.chosenIceCream.push(obj);
+        }
       }
+      /* Check if everything is in the array
+      for(var i in this.chosenIceCream){
+      console.log(this.chosenIceCream[i].name);
+      console.log(this.chosenIceCream[i].amount);
+      console.log(this.chosenIceCream[i].price);
+      }*/
     },
-    getImage: function(path){
-     return "../assets/" + path; //ToDo provide "missing picture" as default
-   },
-    resetCounter: function () {
-      this.counter = 0;
+    addToOrder: function() {
+      this.$emit('addToOrder', this.chosenIceCream);
+      //set all counters to 0. Notice the use of $refs
+      // for (i = 0; i < this.$refs.iceCream.length; i += 1) {
+      //   this.$refs.iceCream[i].resetCounter();
+      // }
+      //this.price = 0;
+      //this.chosenIngredients = [];
+    },
+    TODO_remove_or_addToIngredients: function() {
+    },
+    switchTo: function(newTab) {
+      this.$emit('switchTo', newTab);
     }
   }
 }
 </script>
+
 <style scoped>
-.image{
-  width: 100px;
-  height: 100px;
+.wrapper {
+  left: 0;
+  width: 97%;
+  display: grid;
+  grid-gap: 20px;
+  color: black;
+  font-family: 'Amaranth';
+  font-weight: lighter;
+  grid-template-columns: repeat(auto-fit, 23.8%);
+  padding-bottom: 15vh;
 }
 
-.ingredientTitle{
-  font-size: 2.5vw;
-  color: #FFE4B5;
+footer{
+	bottom:0px;
+	width:100vw;
+	height:9.5vh;
+	position:fixed;
+  display: flex;
+	background-color: #DEB887;
+  align-items: center;
 }
 
-.counter{
-  font-size: 2vw;
-  text-align: center;
-  width: 3vw;
-  height: 3vw;
+.back, .add{
+  background-color: #8B4513;
   border: none;
-  border-radius: 50%;
-  background-color: #FFE4B5;
-  margin-bottom: 2vh;
+  color: #FFE4B5;
+  border-radius: 10px;
+  font-family: 'Amaranth';
+  font-weight: bold;
+  font-size: calc(1vw + 1vh);
+  position: absolute;
+  width: 10%;
+  height: 5vh;
+}
+
+.back{
+  left: 0;
+  margin-left: 1.5%;
+}
+
+.add{
+  right: 0;
+  margin-right: 1.5%;
+}
+
+button:hover{
+  background-color: #501811;
+  cursor: pointer;
 }
 
 .ingredient{
-  font-size: 2vw;
-  color: #FFE6D2;
+  margin-top: 5em;
+  margin: 0 auto;
+  margin-left: 5%;
+  padding-left: 2%;
+  background-color: #8B4513;
+  border-radius: 10px;
+  width: 100%;
+  min-width: 100px;
 }
 
 @media screen and (max-width:380px) {
-  .counter{
-    width: 15vw;
-    height: 15vw;
-    font-size: 5vw;
-    text-align: center;
-    font-weight: bold;
+  .wrapper{
+    grid-template-columns: repeat(auto-fit, 45vw);
+    grid-gap: 3vw;
+    /* margin-bottom: 100vh; */
   }
 
-  .ingredient{
-    font-size: 5vw;
+  .back, .add{
+    width: 25%;
+    height: 6vh;
+    font-size: calc(1.7vw + 1.7vh);
   }
 
-  .ingredientTitle{
-    font-size: 5vw;
+  .back{
+    margin-left: 3%;
+  }
+
+  .add{
+    margin-right: 3%;
   }
 }
-
 </style>
