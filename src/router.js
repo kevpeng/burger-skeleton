@@ -71,11 +71,11 @@ let router = new Router({
             component: () => import(/* webpackChunkName: "read" */ './components/Fries.vue')
         },
         {
-            path: '/IceCream',
+            path: '/Icecream',
             meta: {
-                title: 'IceCream',
+                title: 'Icecream',
             },
-            name: 'IceCream',
+            name: 'Icecream',
             component: () => import(/* webpackChunkName: "read" */ './components/IceCream.vue')
         },
         {

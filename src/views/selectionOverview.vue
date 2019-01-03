@@ -22,7 +22,7 @@
             <button class="button menusTop" v-on:click="switchTo('Burgers')"> {{uiLabels.burgers}} </button>
             <button class="button menusTop" v-on:click="switchTo('Fries')"> {{uiLabels.fries}} </button>
             <!--button class="button menusTop" onclick="location.href='http://localhost:8080/#/start'"> {{uiLabels.fries}} </button-->
-            <button class="button menusDown" v-on:click="switchTo('IceCream')"> {{uiLabels.iceCream}} </button>
+            <button class="button menusDown" v-on:click="switchTo('Icecream')"> {{uiLabels.iceCream}} </button>
             <button class="button menusDown" v-on:click="switchTo('Salad')"> {{uiLabels.salad}} </button>
             <button class="button menusDown" v-on:click="switchTo('Drinks')"> {{uiLabels.drinks}} </button>
             <!-- <div class="button" v-for="b in buttonList">
