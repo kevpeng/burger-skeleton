@@ -60,3 +60,8 @@ ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,s
 59,läsk,soda,6,1,1,1,20
 60,jordgubbsmilkshake,strawberry milk shake,6,0,1,0,40
 61,vegansk mango lassi,vegan mango lassi,6,1,1,1,40
+62,Vit Glass,White Ice Cream,7,0,0,0,35
+63,Hasselnöts glass,Hazelnut Ice Cream,7,0,0,0,35
+64,Chokladglass,Chocolate Ice Cream,7,0,0,0,35
+65,Mango Eko Glass,Mango Eko Ice Cream,7,1,1,1,45
+66,Hallon Eko glass,Raspberry Eko Ice Cream,7,1,1,1,45

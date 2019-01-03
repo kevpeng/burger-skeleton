@@ -76,7 +76,7 @@ let router = new Router({
                 title: 'IceCream',
             },
             name: 'IceCream',
-            component: () => import(/* webpackChunkName: "read" */ './components/IceCream.vue')
+            component: () => import(/* webpackChunkName: "read" */ './components/old_IceCream.vue')
         },
         {
             path: '/paymentScreen',
