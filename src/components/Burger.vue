@@ -18,7 +18,7 @@ export default {
   name: 'Burger',
   props: {
     b: Object,
-    lang: String,
+    blang: String,
     uiLabels: Object,
   },
     data: function () {
