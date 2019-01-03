@@ -7,12 +7,14 @@
     </head>
 
     <body>
-      <div class="wrapper">
+    <!-- change 99 to Icecream number DONE -->
+    <!-- I created the cat. 7 for the Ice Creams into the ingredients.csv file -->
+    <div class="wrapper">
         <Ingredient class="ingredient"
-          ref="Fries"
+          ref="Icecream"
           v-for="item in ingredients"
-           v-if="item.category == 5"
-          v-on:increment="updateSelectedFries()"
+           v-if="item.category == 7"
+          v-on:increment="updateSelectedIceCream()"
           :lang="lang"
           :ui-labels="uiLabels"
           :item="item"
@@ -35,7 +37,7 @@ import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
 
 export default {
-  name: "Fries",
+  name: "Icecream",
   components: {
     Ingredient,
     OrderItem
@@ -49,36 +51,36 @@ export default {
 
   data: function() {
     return {
-      chosenFries: [],
+      chosenIceCream: [],
       price: 0,
     }
   },
 
   methods: {
-    updateSelectedFries: function() {
-      this.chosenFries = [];
-      for (var i = 0; i < this.$refs.Fries.length; i += 1) {
-        if(this.$refs.Fries[i].counter > 0){
+    updateSelectedIceCream: function() {
+      this.chosenIceCream = [];
+      for (var i = 0; i < this.$refs.Icecream.length; i += 1) {
+        if(this.$refs.Icecream[i].counter > 0){
           var obj = {
-            name: this.$refs.Fries[i].item["ingredient_"+ this.lang],
-            amount: this.$refs.Fries[i].counter,
-            price: (this.$refs.Fries[i].item.selling_price * this.$refs.Fries[i].counter)
+            name: this.$refs.Icecream[i].item["ingredient_"+ this.lang],
+            amount: this.$refs.Icecream[i].counter,
+            price: (this.$refs.Icecream[i].item.selling_price * this.$refs.Icecream[i].counter)
           };
-          this.chosenFries.push(obj);
+          this.chosenIceCream.push(obj);
         }
       }
       /* Check if everything is in the array
-      for(var i in this.chosenFries){
-      console.log(this.chosenFries[i].name);
-      console.log(this.chosenFries[i].amount);
-      console.log(this.chosenFries[i].price);
+      for(var i in this.chosenIceCream){
+      console.log(this.chosenIceCream[i].name);
+      console.log(this.chosenIceCream[i].amount);
+      console.log(this.chosenIceCream[i].price);
       }*/
     },
     addToOrder: function() {
-      this.$emit('addToOrder', this.chosenFries);
+      this.$emit('addToOrder', this.chosenIceCream);
       //set all counters to 0. Notice the use of $refs
-      // for (i = 0; i < this.$refs.Fries.length; i += 1) {
-      //   this.$refs.Fries[i].resetCounter();
+      // for (i = 0; i < this.$refs.Icecream.length; i += 1) {
+      //   this.$refs.Icecream[i].resetCounter();
       // }
       //this.price = 0;
       //this.chosenIngredients = [];

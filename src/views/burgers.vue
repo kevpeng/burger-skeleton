@@ -2,6 +2,7 @@
   <div>
     <head>
       <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
     </head>
     <body>
@@ -35,14 +36,14 @@
 </template>
 
 <script>
-import sharedVueStuff from '@/components/sharedVueStuff.js'
+// import sharedVueStuff from '@/components/sharedVueStuff.js'
 // The Burger below this line is a file containing the properties for each burger
 import Burger from '@/components/Burger.vue'
 // I haven't yet understood the use of this OrderItem, but I think it must be useful
 import OrderItem from '@/components/OrderItem.vue'
 export default {
   name: 'burgers',
-  mixins: [sharedVueStuff],
+  // mixins: [sharedVueStuff],
   components: {
     Burger,
     OrderItem
@@ -104,20 +105,27 @@ export default {
   /* vertical-align: bottom; */
   /* border: 3px solid black; */
 }
-.back{
-  width: 10%;
-  height: 5vh;
+.back, .forward{
+  background-color: #8B4513;
+  border: none;
+  color: #FFE4B5;
+  border-radius: 10px;
+  font-family: 'Amaranth';
+  font-weight: bold;
   font-size: calc(1vw + 1vh);
-  margin-left: 3%;
-}
-.forward{
-  width: 10%;
-  height: 5vh;
-  font-size: calc(1vw + 1vh);
-  margin-left: 3%;
   position: absolute;
+  width: 10%;
+  height: 5vh;
+}
+
+.back{
+  left: 0;
+  margin-left: 1.5%;
+}
+
+.forward{
   right: 0;
-  margin-right: 3%;
+  margin-right: 1.5%;
 }
 button:hover{
   background-color: #501811;
@@ -180,18 +188,17 @@ button:active{
   background-size: 60%;
 }
 @media screen and (max-width:380px){
-  .back{
-    width: 20%;
+  .back, .forward{
+    width: 25%;
     height: 6vh;
     font-size: calc(1.7vw + 1.7vh);
+  }
+
+  .back{
     margin-left: 3%;
   }
+
   .forward{
-    width: 20%;
-    height: 6vh;
-    font-size: calc(1.7vw + 1.7vh);
-    margin-left: 3%;
-    position: absolute;
     margin-right: 3%;
   }
 }
