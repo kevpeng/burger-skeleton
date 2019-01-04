@@ -121,7 +121,7 @@ import Burgers from '@/views/burgers.vue'
 import Fries from '@/components/Fries.vue'
 import Drinks from '@/components/Drinks.vue'
 import Salad from '@/components/Drinks.vue'
-import Icecream from '@/components/Drinks.vue'
+import Icecream from '@/components/IceCream.vue'
 
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
