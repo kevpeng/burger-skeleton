@@ -1,105 +1,103 @@
 <template>
-  <div id="ordering" class="container">
+  <div id="ordering">
     <head>
       <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
     </head>
+    <div class="container">
+      <div class="header">
+        <div class="cancel">
+          <button :class="['btn_header', 'btn_cancel']" v-on:click="cancel()"></button>
+        </div>
 
-    <div class="header">
-      <div class="btn_cancel">
-        <button :class="['btn_header']" v-on:click="cancel()">
-          <img src="https://img.icons8.com/material/52/FFE4B5/delete-sign.png" height="50vh">
-        </button>
-      </div>
+        <div class="language">
+          <button :class="['btn_header', lang]" v-on:click="switchLang()"></button>
+        </div>
 
-      <div class="btn_lang">
-        <button :class="['btn_header', lang]" v-on:click="switchLang()"></button>
-      </div>
+        <div class="title">
+          {{ currentTabName }}
+        </div>
+        
+        <div class="cart">
+          <button :class="['btn_header', 'btn_cart']" v-on:click="toggleCart()" ></button>
+          <div id="myCart" class="cart_content">
+            selection: {{selection}}
+            <br>
+            chosenIngredients: {{chosenIngredients}}
+            <br>
+            - Cart is empty
+            <br>
+            TO DO:
+            <br>
+            - purchase button needs to be added
+            <br>
+            - blur background, gray buttons out
+            <!-- add code to print the items with a delete/add (-/+) button -->
 
-      <div class="title">
-        {{ uiLabels.welcome }}
-      </div>
-      
-      <div class="btn_cart">
-        <button :class="['btn_header']" v-on:click="toggleCart()" >
-          <img src="https://img.icons8.com/material/52/FFE4B5/shopping-cart.png" height="50vh">
-        </button>
-        <div id="myCart" class="cart_content">
-          selection: {{selection}}
-          <br>
-          chosenIngredients: {{chosenIngredients}}
-          <br>
-          - Cart is empty
-          <br>
-          TO DO:
-          <br>
-          - purchase button needs to be added
-          <br>
-          - blur background, gray buttons out
-          <!-- add code to print the items with a delete/add (-/+) button -->
-
-          <!-- <button class="purchase"></button-->
+            <!-- <button class="purchase"></button-->
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="page">
-      <button
-        v-for="tab in tabs"
-        v-bind:key="tab"
-        v-bind:class="['tab-button', { active: currentTab === tab }]"
-        v-on:click="currentTab = tab">
-        {{ tab }}
-      </button>
-
-      <component
-        v-bind:is="currentTabComponent"
-        v-on:switchTo="switchTab"
-        v-on:addToIngredients="addToIngredients"
-        v-on:addToOrder="addToOrder"
-        v-on:cancel="cancel"
-        v-on:placeOrder="placeOrder"
-        v-on:cancelTo="cancelTo"
-        v-on:addCreatedBurgerToOrder="addCreatedBurgerToOrder"
-        :ingredients="ingredients"
-        :lang="lang"
-        :ui-labels="uiLabels"
-        class="tab"
-        type="inline-template">
-      </component>
-    </div>
-
-    <!--div>
-      <img class="example-panel" src="@/assets/exampleImage.jpg">
-      <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
-
-      <h1>{{ uiLabels.ingredients }}</h1>
-
-      <Ingredient
-        ref="ingredient"
-        v-for="item in ingredients"
-        v-on:increment="addToOrder(item)"
-        :item="item"
-        :lang="lang"
-        :key="item.ingredient_id">
-      </Ingredient>
-
-      <h1>{{ uiLabels.order }}</h1>
-      {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
-      <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
-
-      <h1>{{ uiLabels.ordersInQueue }}</h1>
-      <div>
-        <OrderItem
-          v-for="(order, key) in orders"
-          v-if="order.status !== 'done'"
-          :order-id="key"
-          :order="order"
-          :ui-labels="uiLabels"
-          :lang="lang"
-          :key="key">
-        </OrderItem>
+      <div class="navigation">
+        <button
+          v-for="tab in tabs"
+          v-bind:key="tab"
+          v-bind:class="['tab-button', { active: currentTab === tab }]"
+          v-on:click="currentTab = tab">
+          {{ tab }}
+        </button>
       </div>
-    </div-->
+      <div class="page">
+        <component
+          v-bind:is="currentTabComponent"
+          v-on:switchTo="switchTab"
+          v-on:addToIngredients="addToIngredients"
+          v-on:addToOrder="addToOrder"
+          v-on:cancel="cancel"
+          v-on:placeOrder="placeOrder"
+          v-on:cancelTo="cancelTo"
+          v-on:addCreatedBurgerToOrder="addCreatedBurgerToOrder"
+          :ingredients="ingredients"
+          :lang="lang"
+          :ui-labels="uiLabels"
+          class="tab"
+          type="inline-template">
+        </component>
+      </div>
+
+      <!--div>
+        <img class="example-panel" src="@/assets/exampleImage.jpg">
+        <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
+
+        <h1>{{ uiLabels.ingredients }}</h1>
+
+        <Ingredient
+          ref="ingredient"
+          v-for="item in ingredients"
+          v-on:increment="addToOrder(item)"
+          :item="item"
+          :lang="lang"
+          :key="item.ingredient_id">
+        </Ingredient>
+
+        <h1>{{ uiLabels.order }}</h1>
+        {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
+        <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
+
+        <h1>{{ uiLabels.ordersInQueue }}</h1>
+        <div>
+          <OrderItem
+            v-for="(order, key) in orders"
+            v-if="order.status !== 'done'"
+            :order-id="key"
+            :order="order"
+            :ui-labels="uiLabels"
+            :lang="lang"
+            :key="key">
+          </OrderItem>
+        </div>
+      </div-->
+    </div>
   </div>
 </template>
 <script>
@@ -159,7 +157,7 @@ export default {
   data: function() { //Not that data is a function!
     return {
       //tab/component navigation elements
-      currentTab: '',
+      currentTab: 'Start',
       tabs: ['Start', 'SelectionOverview', 'Payment',
              'BurgerCreation', 'IngredientsSelection', 
              'Bread', 'Patty', 'Toppings', 'Sauce',
@@ -180,6 +178,9 @@ export default {
     //allows to have the components dynamically on the screen
     currentTabComponent: function () {
       return this.currentTab;
+    },
+    currentTabName: function () {
+      return this.uiLabels[(this.currentTab)];
     }
   },
 
@@ -314,32 +315,31 @@ export default {
 /* scoped in the style tag means that these rules will only apply to elements, 
    classes and ids in this template and no other templates. */
 #ordering {
+  --header-scale: 70px;
 }
 
 .container {
   display: grid;
-  grid-template-rows: 13vh 74vh 13vh;
+  grid-template-rows: var(--header-scale) var(--header-scale) auto;
   text-align: center;
 }
 
+/** HEADER START **/
 .header {
   display: grid;
-  grid-template-columns: 13vh 13vh auto 13vh;
-  color: black;
+  grid-template-columns: var(--header-scale) var(--header-scale) auto var(--header-scale);
   position: fixed;
   background-color: #DEB887;
-  font-size: calc(2.5vw + 1.5vh);
   font-family: 'Amaranth';
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
 }
 
-/** HEADER START **/
 .title {
-  /* font-size: 4vmax;
-  font-family: 'Amaranth';*/
-  margin-top: 2vh;
-  margin-bottom: 2vh;
-  margin-right: 10vw;
+  font-size: 40px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: var(--header-scale);
 }
 
 button:hover {
@@ -348,12 +348,22 @@ button:hover {
 }
 
 .btn_header {
-  width: 10vh;
-  height: 10vh;
-  margin: 1.5vh 1.5vh;
+  width: calc(0.8 * var(--header-scale));
+  height: calc(0.8 * var(--header-scale));
+  margin: calc(0.1 * var(--header-scale));
   border-radius: 10px;
   background-color: #8B4513;
   border: none;
+}
+
+.btn_cancel {
+  background: #8b4513 url('https://img.icons8.com/material/52/FFE4B5/delete-sign.png') no-repeat right 50% top 50%;
+  background-size: 80%;
+}
+
+.btn_cart {
+  background: #8b4513 url('https://img.icons8.com/material/52/FFE4B5/shopping-cart.png') no-repeat right 50% top 50%;
+  background-size: 80%;
 }
 
 /* these 2 classes are used to select language flag. */
@@ -372,7 +382,6 @@ button:hover {
   position: absolute;
   display: inline-block;
 }*/
-/** HEADER END **/
 
 .cart_content {
   display: none;
@@ -387,29 +396,26 @@ button:hover {
   height: 80vh;
   border: 3px black solid;
 }
+/** HEADER END **/
 
+/*ToDo What is this for?!?*/
 .show {
   display: block;
 }
 
-@media screen and (max-width:380px) {
-  .header{
-    font-size: 4.85vw;
-  }
-
-  .btn_header{
-    margin: 1.5vh 1.5vh;
-    border-radius: 10px;
-    background-color: #8B4513;
-    border: none;
-  }
-}
-
 /** PAGE START **/
-.page {
-  width: 100vw;
-  padding-top: 13vh;
+.navigation {
+  margin-top: var(--header-scale);
+  max-width: 100vw;
+  background-color: aqua;
 }
+
+.page {
+  margin-top: var(--header-scale);
+  height: calc(94vh - 2*var(--header-scale)); 
+  /*do not really know why 3x, would have expected only 2x ...hmm...*/
+}
+
 /*.ingredient {
   border: 1px solid #ccd;
   padding: 1em;
@@ -418,7 +424,7 @@ button:hover {
 }*/
 .tab-button {
   cursor: pointer;
-  width: 20vw;
+  width: 10vw;
 }
 .tab-button:hover {
   background: #e0e0e0;
@@ -427,4 +433,25 @@ button:hover {
   background: #e0e0e0;
 }
 /** PAGE END **/
+
+/** MEDIA SCALING END **/
+@media screen and (max-width:818px){
+  .title {
+    margin-right: 0px;
+  }    
+}
+@media screen and (max-width:612px){
+  .title {
+    font-size: 28px;
+  }    
+}
+@media screen and (max-width:380px){
+  #ordering {
+    --header-scale: 50px;
+  }  
+  .title {
+    font-size: calc(100vw/22);
+  }    
+} 
+/** MEDIA SCALING END **/
 </style>

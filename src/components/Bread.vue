@@ -7,25 +7,29 @@
     </head>
 
     <body>
-      <div class="wrapper">
-        <Ingredient class="ingredient"
-          ref="Patty"
-          v-for="item in ingredients"
-           v-if="item.category == 4"
-          v-on:increment="updateSelectedPatty()"
-          :lang="lang"
-          :ui-labels="uiLabels"
-          :item="item"
-          :key="item.ingredient_id">
-        </Ingredient>
+      <div class="pageGrid">
+        <div class="filterContainer">
+          <div class="filter">TODO FILTER</div>
+          <div class="line"></div>
+        </div>
+        <div class="gridContainer">          
+          <Ingredient class="gridElement"
+            ref="Patty"
+            v-for="item in ingredients"
+            v-if="item.category == 4"
+            v-on:increment="updateSelectedPatty()"
+            :lang="lang"
+            :ui-labels="uiLabels"
+            :item="item"
+            :key="item.ingredient_id">
+          </Ingredient>
+        </div>
+        <footer>
+          <button v-on:click="switchTo('BurgerCreation')" class="back"> {{ uiLabels.back }} </button>
+          <button v-on:click="addToIngredients()" class="add"> {{ uiLabels.add }} </button>
+        </footer>
       </div>
     </body>
-
-  <footer>
-    <button v-on:click="switchTo('BurgerCreation')" class="back"> {{ uiLabels.back }} </button>
-    <button v-on:click="addToIngredients()" class="add"> {{ uiLabels.add }} </button>
-  </footer>
-
 </div>
 </template>
 
@@ -93,25 +97,51 @@ export default {
 </script>
 
 <style scoped>
-.wrapper {
-  left: 0;
-  width: 97%;
+.pageGrid{
+  --footer-scale: 70px;
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 3vh;
+}
+.gridContainer {
+  display: grid;
   color: black;
   font-family: 'Amaranth';
   font-weight: lighter;
-  grid-template-columns: repeat(auto-fit, 23.8%);
-  padding-bottom: 15vh;
+  grid-template-columns: repeat(auto-fit, 33vw);
+  padding-bottom: var(--footer-scale);
+}
+.gridElement{
+  margin: 1vw;
+  background-color: #8B4513;
+  border-radius: 10px;
+}
+
+.filterContainer {
+  display: grid;
+  grid-template-rows: 8vh 1vh;
+  width: 100%;
+  grid-gap: 2vh;
+}
+.line, .filter{
+  margin: 1vw;
+  grid-column: 1 / 4;
+  border-radius: 10px;
+  height: 1vh;
+  background-color: #8B4513;
+}
+.filter {
+  height: 8vh;
 }
 
 footer{
-	bottom:0px;
-	width:100vw;
-	height:9.5vh;
-	position:fixed;
-  display: flex;
+	bottom: 0;
+	height: var(--footer-scale);  
+  display: grid;
+  grid-template-columns: 100px auto 100px;
+	position: fixed;
 	background-color: #DEB887;
+  width: 100%;
+  max-width: 100vw;
   align-items: center;
 }
 
@@ -122,20 +152,20 @@ footer{
   border-radius: 10px;
   font-family: 'Amaranth';
   font-weight: bold;
-  font-size: calc(1vw + 1vh);
+  font-size: calc(1vw + 2vh);
   position: absolute;
-  width: 10%;
-  height: 5vh;
+  width: 20%;
+  height: 6vh;
 }
 
 .back{
   left: 0;
-  margin-left: 1.5%;
+  margin-left: 3%;
 }
 
 .add{
   right: 0;
-  margin-right: 1.5%;
+  margin-right: 3%;
 }
 
 button:hover{
@@ -143,36 +173,11 @@ button:hover{
   cursor: pointer;
 }
 
-.ingredient{
-  margin-top: 5em;
-  margin: 0 auto;
-  margin-left: 5%;
-  padding-left: 2%;
-  background-color: #8B4513;
-  border-radius: 10px;
-  width: 100%;
-  min-width: 100px;
-}
 
 @media screen and (max-width:380px) {
-  .wrapper{
-    grid-template-columns: repeat(auto-fit, 45vw);
-    grid-gap: 3vw;
-    /* margin-bottom: 100vh; */
-  }
-
-  .back, .add{
-    width: 25%;
-    height: 6vh;
-    font-size: calc(1.7vw + 1.7vh);
-  }
-
-  .back{
-    margin-left: 3%;
-  }
-
-  .add{
-    margin-right: 3%;
+  .gridContainer{
+    grid-template-columns: repeat(auto-fit, 49vw);
+    grid-gap: 2vw;
   }
 }
 </style>
