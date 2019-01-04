@@ -389,7 +389,7 @@ button:hover {
   background: #f1f1f1;
   font-size: 1.5vw;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-
+  margin-top: 13vh;
   z-index: 10;
   right: 0;
   width: 30vw;
