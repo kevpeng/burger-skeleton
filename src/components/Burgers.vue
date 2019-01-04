@@ -1,10 +1,5 @@
 <template>
   <div>
-    <head>
-      <meta charset="utf-8"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
-    </head>
     <body>
       <div class="pageGrid">
         <div class="filterContainer">
@@ -19,14 +14,15 @@
             <div class="line"></div>
         </div>
         <div class="gridContainer">
+          <!-- Category 2 for Burgers in the premades.csv file -->
             <Ingredient class="gridElement"
-                ref="Sauce"
-                v-for="item in ingredients"
-                v-if="item.category == 3 &
+                ref="Burgers"
+                v-for="item in premades"
+                v-if="item.category == 2 &
                 (gluten != 1 || gluten == item.gluten_free) &
                 (vegan != 1 || vegan == item.vegan) &
                 (lactose != 1 || lactose == item.milk_free)"
-                v-on:increment="updateSelectedSauce()"
+                v-on:increment="updateSelectedBurgers()"
                 :lang="lang"
                 :ui-labels="uiLabels"
                 :item="item"
@@ -34,12 +30,12 @@
             </Ingredient>
         </div>
         <footer>
-            <button v-on:click="switchTo('BurgerCreation')" class="back"> {{ uiLabels.back }}</button>
-            <button v-on:click="addToIngredients()" class="add"> {{ uiLabels.add }}</button>
+            <button v-on:click="switchTo('SelectionOverview')" class="back"> {{ uiLabels.back }}</button>
+            <button v-on:click="addToOrder()" class="add"> {{ uiLabels.add }}</button>
         </footer>
       </div>
     </body>
-</div>
+  </div>
 </template>
 
 <script>
@@ -48,7 +44,7 @@ import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
 
 export default {
-  name: "Sauce",
+  name: "Burgers",
   components: {
     Ingredient,
     OrderItem
@@ -58,11 +54,12 @@ export default {
    ingredients: Array,
    lang: String,
    uiLabels: Object,
+   premades: Array
   },
 
   data: function() {
     return {
-      chosenSauce: [],
+      chosenBurgers: [],
       price: 0,
       gluten: 0,
       vegan: 0,
@@ -71,33 +68,27 @@ export default {
   },
 
   methods: {
-    updateSelectedSauce: function() {
-      this.chosenSauce = [];
-      for (var i = 0; i < this.$refs.Sauce.length; i += 1) {
-        if(this.$refs.Sauce[i].counter > 0){
+    updateSelectedBurgers: function() {
+      this.chosenBurgers = [];
+      for (var i = 0; i < this.$refs.Burgers.length; i += 1) {
+        if(this.$refs.Burgers[i].counter > 0){
           var obj = {
-            name: this.$refs.Sauce[i].item["ingredient_"+ this.lang],
-            amount: this.$refs.Sauce[i].counter,
-            price: (this.$refs.Sauce[i].item.selling_price * this.$refs.Sauce[i].counter)
+            name: this.$refs.Burgers[i].item["ingredient_"+ this.lang],
+            amount: this.$refs.Burgers[i].counter,
+            price: (this.$refs.Burgers[i].item.selling_price * this.$refs.Burgers[i].counter)
           };
-          this.chosenSauce.push(obj);
+          this.chosenBurgers.push(obj);
         }
       }
-      /* Check if everything is in the array
-      for(var i in this.chosenSauce){
-      console.log(this.chosenSauce[i].name);
-      console.log(this.chosenSauce[i].amount);
-      console.log(this.chosenSauce[i].price);
-      }*/
     },
-    switchTo: function (newTab) {
-        this.$emit('switchTo', newTab);
+    switchTo: function(newTab) {
+      this.$emit('switchTo', newTab);
     },
-    addToIngredients: function() {
-      this.$emit('addToIngredients', this.chosenSauce);
+    addToOrder: function() {
+      this.$emit('addToOrder', this.chosenBurgers);
       //set all counters to 0. Notice the use of $refs
-      // for (i = 0; i < this.$refs.Sauce.length; i += 1) {
-      //   this.$refs.Sauce[i].resetCounter();
+      // for (i = 0; i < this.$refs.Icecream.length; i += 1) {
+      //   this.$refs.Icecream[i].resetCounter();
       // }
       //this.price = 0;
       //this.chosenIngredients = [];

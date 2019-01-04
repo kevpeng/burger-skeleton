@@ -3,6 +3,7 @@
 let csv = require("csvtojson");
 
 let ingredientsDataName = "ingredients";
+let premadesDataName = "premades";
 let transactionsDataName = "transactions";
 let defaultLanguage = "en";
 
@@ -20,8 +21,7 @@ Data.prototype.getUILabels = function (lang) {
 
 /*
   Returns a JSON object array of ingredients with the fields from
-  the CSV file, plus a calculated amount in stock, based on
-  transactions.
+  the CSV file, plus a calculated amount in stock, based on transactions.
 */
 Data.prototype.getIngredients = function () {
   var d = this.data;
@@ -33,6 +33,25 @@ Data.prototype.getIngredients = function () {
         return sum;
       }
     }, 0);
+    return obj;
+  });
+};
+
+/*
+  Returns a JSON object array of premades with the fields from
+  the CSV file
+  TODO, plus a calculated amount in stock, based on transactions.
+*/
+Data.prototype.getPremades = function () {
+  var d = this.data;
+  return d[premadesDataName].map(function (obj) {
+    obj.stock = 10;/*d[transactionsDataName].reduce(function (sum, trans) {
+      if (trans.ingredient_id === obj.ingredient_id) {
+        return sum + trans.change;
+      } else {
+        return sum;
+      }
+    }, 0);*/
     return obj;
   });
 };
@@ -53,6 +72,8 @@ Data.prototype.initializeData = function() {
   console.log("Starting to build data tables");
   // Load initial ingredients. If you want to add columns, do it in the CSV file.
   this.initializeTable(ingredientsDataName);
+  // Load initial premades. If you want to add columns, do it in the CSV file.
+  this.initializeTable(premadesDataName);
   // Load initial stock. Make alterations in the CSV file.
   this.initializeTable(transactionsDataName);
 }

@@ -1,6 +1,8 @@
 <template>
   <div id="ordering">
     <head>
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
     </head>
     <div class="container">
@@ -34,6 +36,10 @@
             <!-- add code to print the items with a delete/add (-/+) button -->
 
             <!-- <button class="purchase"></button-->
+            <button class="tab-button"
+              v-on:click="placeOrder()">
+              {{ uiLabels.pay }}
+            </button>
           </div>
         </div>
       </div>
@@ -54,12 +60,13 @@
           v-on:addToIngredients="addToIngredients"
           v-on:addToOrder="addToOrder"
           v-on:cancel="cancel"
-          v-on:placeOrder="placeOrder"
+          v-on:toggleCart="toggleCart"
           v-on:cancelTo="cancelTo"
           v-on:addCreatedBurgerToOrder="addCreatedBurgerToOrder"
           :ingredients="ingredients"
           :lang="lang"
           :ui-labels="uiLabels"
+          :premades="premades"
           class="tab"
           type="inline-template">
         </component>
@@ -108,20 +115,20 @@
 import Ingredient from '@/components/Ingredient.vue'
 import OrderItem from '@/components/OrderItem.vue'
 import Start from '@/views/Start.vue'
-import SelectionOverview from '@/views/selectionOverview.vue'
-import Payment from '@/views/paymentScreen.vue'
-import BurgerCreation from '@/views/burgerCreation.vue'
+import SelectionOverview from '@/views/SelectionOverview.vue'
+import Payment from '@/views/PaymentScreen.vue'
+import BurgerCreation from '@/views/BurgerCreation.vue'
 import IngredientsSelection from '@/components/IngredientsSelection.vue'
 import Bread from '@/components/Bread.vue'
 import Patty from '@/components/Patty.vue'
 import Toppings from '@/components/Toppings.vue'
 import Sauce from '@/components/Sauce.vue'
-import Menus from '@/components/Drinks.vue'
-import Burgers from '@/views/burgers.vue'
+import Menus from '@/components/Menus.vue'
+import Burgers from '@/components/Burgers.vue'
 import Fries from '@/components/Fries.vue'
 import Drinks from '@/components/Drinks.vue'
-import Salad from '@/components/Drinks.vue'
-import Icecream from '@/components/IceCream.vue'
+import Salad from '@/components/Salads.vue'
+import Icecream from '@/components/Icecreams.vue'
 
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
@@ -268,7 +275,7 @@ export default {
     //to submit the order
     //should only be used in SelectionOverview and the Cart!
     placeOrder: function () {
-
+      document.getElementById("myCart").classList.toggle("show");
       //ToDo view selection before final payment
       //maybe simply open the cart and continue there?
 
@@ -434,7 +441,7 @@ button:hover {
 }
 /** PAGE END **/
 
-/** MEDIA SCALING END **/
+/** MEDIA SCALING START **/
 @media screen and (max-width:818px){
   .title {
     margin-right: 0px;

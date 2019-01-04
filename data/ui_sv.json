@@ -46,5 +46,21 @@
   "stock": "Lager: ",
   "selectionOverviewNext": "Betala",
   "paymentNewOrder": "Starta ny ordning",
-  "ingredientTitle" : "ingredient_sv"
+  "ingredientTitle" : "ingredient_sv",
+  "Start": "Välkommen till myCreation",
+  "SelectionOverview": "Välj din mat",
+  "Payment": "Betalning",
+  "BurgerCreation": "Burger Skapande",
+  "IngredientsSelection": "Ingredienser",
+  "Bread": "Bröd",
+  "Patty": "Bulle",
+  "Toppings": "Beläggningar",
+  "Sauce": "Sås",
+  "Menus": "Menyer",
+  "Burgers": "Burgare",
+  "Fries": "Frites",
+  "Drinks": "Drycker",
+  "Salad": "Sallader",
+  "Icecream": "Glassar",
+  "continue": "Fortsätta"
 }

@@ -20,13 +20,13 @@ export default new Vuex.Store({
     changeHello: function(state, msg){
       state.hello = msg;
     },
-  setUiLabels: function(store, labels){
-    store.uiLabels = labels;
+    setUiLabels: function(store, labels){
+      store.uiLabels = labels;
+    },
+    switchLang: function (store, lang){
+      store.lang = lang;
+    }
   },
-  switchLang: function (store, lang){
-    store.lang = lang;
-  }
-},
   actions: {
 
   }

@@ -46,5 +46,21 @@
   "stock": "Stock: ",
   "selectionOverviewNext": "Pay",
   "paymentNewOrder": "Start new order",
-  "ingredientTitle" : "ingredient_en"
+  "ingredientTitle" : "ingredient_en",
+  "Start": "Welcome to myCreation",
+  "SelectionOverview": "Select your Food",
+  "Payment": "Payment",
+  "BurgerCreation": "Burger Creation",
+  "IngredientsSelection": "Ingredients",
+  "Bread": "Bread",
+  "Patty": "Patty",
+  "Toppings": "Toppings",
+  "Sauce": "Sauce",
+  "Menus": "Menus",
+  "Burgers": "Burgers",
+  "Fries": "Fries",
+  "Drinks": "Drinks",
+  "Salad": "Salads",
+  "Icecream": "Ice creams",
+  "continue": "Continue"
 }

@@ -1,12 +1,12 @@
 'use strict';
 
-
 // Stuff that is used both in the ordering system and in the kitchen
 var sharedVueStuff = {
   data: function () {
     return {
       orders: {},
       ingredients: {},
+      premades: {},
       paymentState: '',
     }
   },
@@ -28,6 +28,7 @@ var sharedVueStuff = {
       this.orders = data.orders;
       this.$store.commit('setUiLabels', data.uiLabels);
       this.ingredients = data.ingredients;
+      this.premades = data.premades;
       this.paymentState = 'waiting';
       this.lang = "en";
     }.bind(this));
@@ -40,6 +41,9 @@ var sharedVueStuff = {
       this.orders = data.orders;
       if (typeof data.ingredients !== 'undefined') {
         this.ingredients = data.ingredients;
+      }
+      if (typeof data.premades !== 'undefined') {
+        this.premades = data.premades;
       }
     }.bind(this));
   },
