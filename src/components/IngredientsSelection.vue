@@ -7,10 +7,31 @@
     </head>
 
     <body>
+      <div class="filter">
+        <div>
+          {{uiLabels.Filter}}:
+        </div>
+        <div>
+          <input type="checkbox"
+              v-model="gluten" value="1">{{uiLabels.glutenfree}}
+        </div>
+        <div>
+          <input type="checkbox"
+              v-model="vegan" value="1">{{uiLabels.vegan}}
+        </div>
+        <div>
+          <input type="checkbox"
+              v-model="lactose" value="1">{{uiLabels.lactosefree}}
+        </div>
+      </div>
+      <div class="line"></div>
       <div class="wrapper">
         <Ingredient class="ingredient"
           ref="Ingredient"
           v-for="item in ingredients"
+          v-if="(gluten != 1 || gluten == item.gluten_free) &
+          (vegan != 1 || vegan == item.vegan) &
+          (lactose != 1 || lactose == item.milk_free)"
           v-on:increment="updateSelectedIngredients()"
           :lang="lang"
           :ui-labels="uiLabels"
@@ -50,6 +71,9 @@ export default {
     return {
       chosenIngredients: [],
       price: 0,
+      gluten: 0,
+      vegan: 0,
+      lactose: 0
     }
   },
 

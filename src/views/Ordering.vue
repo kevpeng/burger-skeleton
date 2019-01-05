@@ -22,24 +22,38 @@
         <div class="cart">
           <button :class="['btn_header', 'btn_cart']" v-on:click="toggleCart()" ></button>
           <div id="myCart" class="cart_content">
-            selection: {{selection}}
-            <br>
-            chosenIngredients: {{chosenIngredients}}
-            <br>
-            - Cart is empty
-            <br>
-            TO DO:
-            <br>
-            - purchase button needs to be added
-            <br>
-            - blur background, gray buttons out
-            <!-- add code to print the items with a delete/add (-/+) button -->
-
-            <!-- <button class="purchase"></button-->
-            <button class="tab-button"
-              v-on:click="placeOrder()">
-              {{ uiLabels.pay }}
-            </button>
+            <div class="cartGrid">
+              <div class="selected">
+              {{uiLabels.yourOrder}}: 
+              <Cartitem class="selection"
+                v-for="item in selection"
+                :item="item"
+                :key="item.name">
+              </Cartitem>
+              <hr class="hr">
+              {{this.price}}SEK
+              <hr>
+              chosenIngredients:
+              <Cartitem class="selection"
+                v-for="item in chosenIngredients"
+                :item="item"
+                :key="item.name">
+              </Cartitem>
+              <hr class="hr">
+              {{this.chosenIngredientsPrice}}SEK
+              </div>
+              <div class="payment">
+                <hr class="hr_sum">
+                <b>{{uiLabels.sum}}: {{this.chosenIngredientsPrice+this.price}}SEK</b>
+                <br>
+                <!-- TO DO: blur background, gray buttons out
+                add code to print the items with a delete/add (-/+) button -->
+                <button class="payButton"
+                  v-on:click="placeOrder()">
+                  {{ uiLabels.pay }}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -112,7 +126,9 @@
 //import the components that are used in the template, the name that you
 //use for importing will be used in the template above and also below in
 //components
+import Cartitem from '@/components/Cartitem.vue'
 import Ingredient from '@/components/Ingredient.vue'
+import IngredientRadio from '@/components/IngredientRadio.vue'
 import OrderItem from '@/components/OrderItem.vue'
 import Start from '@/views/Start.vue'
 import SelectionOverview from '@/views/SelectionOverview.vue'
@@ -140,6 +156,8 @@ export default {
 
   components: {
     Ingredient,
+    IngredientRadio,
+    Cartitem,
     OrderItem,
     Start,
     SelectionOverview,
@@ -240,6 +258,14 @@ export default {
     //can be called from the components itself with "this.$emit('addToIngredients', ingredients);"
     addToIngredients: function (items) {
       for (var i=0; i<items.length; i++) {
+        if(items[i].category > 0){
+          for(var j=0; j<this.chosenIngredients.length; j++){
+            if(items[i].category == this.chosenIngredients[j].category){
+              this.chosenIngredients.splice(j, 1);
+              break;
+            }
+          }
+        }        
         this.chosenIngredients.push(items[i]);
         this.chosenIngredientsPrice += +items[i].price;
       }
@@ -276,18 +302,14 @@ export default {
     //should only be used in SelectionOverview and the Cart!
     placeOrder: function () {
       document.getElementById("myCart").classList.toggle("show");
-      //ToDo view selection before final payment
-      //maybe simply open the cart and continue there?
-
       //Wrap the order in an object
       var order = {
         //Todo just testiong values !
-          ingredients: this.chosenIngredients, //should be this.selection
-          price: this.chosenIngredientsPrice //should be this.price
+          ingredients: this.selection,
+          price: this.price
       };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', {order: order});
-      console.log("order placed!");
 
       //not needed in the Ordering.vue, but I would leave it to have a reference when needed
       //set all counters to 0. Notice the use of $refs
@@ -393,15 +415,42 @@ button:hover {
 .cart_content {
   display: none;
   position: absolute;
-  background: #f1f1f1;
-  font-size: 1.5vw;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  margin-top: 13vh;
-  z-index: 10;
+  background: #DEB887;
+  margin: 1vw;
   right: 0;
-  width: 30vw;
-  height: 80vh;
+  top: var(--header-scale);
+  height: calc(96vh - 2*var(--header-scale));
   border: 3px black solid;
+  box-shadow: 10px 8px 16px 10px rgba(0,0,0,0.6);
+  width: 30vw;
+  font-size: 2vw;
+}
+.cartGrid {
+  display: grid;
+  height: calc(100% - 2vw);
+  grid-template-rows: auto 22vh;
+  margin: 1vw;
+}
+.hr {
+  width: 15vw;
+}
+.hr_sum {
+  height: 4px;
+  background-color: #8b4513;
+}
+.payment {
+  font-size: calc(1vw + 3vh);
+  height: 22vh;
+}
+.payButton{
+  font-family: 'Amaranth';
+  background-color: #8B4513;
+  color: #FFE4B5;
+  font-size: calc(1vw + 3vh);
+  border-radius: 10px;
+  border: none;
+  width: 20vw;
+  height: 10vh;
 }
 /** HEADER END **/
 
@@ -420,7 +469,7 @@ button:hover {
 .page {
   margin-top: var(--header-scale);
   height: calc(94vh - 2*var(--header-scale)); 
-  /*do not really know why 3x, would have expected only 2x ...hmm...*/
+  /*ToDo do not really know why 3x, would have expected only 2x ...hmm...*/
 }
 
 /*.ingredient {
@@ -458,7 +507,10 @@ button:hover {
   }  
   .title {
     font-size: calc(100vw/22);
-  }    
+  }  
+  .payButton{
+    height: 8vh;
+  }  
 } 
 /** MEDIA SCALING END **/
 </style>

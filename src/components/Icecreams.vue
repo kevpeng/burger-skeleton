@@ -4,12 +4,21 @@
       <div class="pageGrid">
         <div class="filterContainer">
             <div class="filter">
+              <div>
+                {{uiLabels.Filter}}:
+              </div>
+              <div>
                 <input type="checkbox"
-                    v-model="gluten" value="1">Gluten-Free
+                    v-model="gluten" value="1">{{uiLabels.glutenfree}}
+              </div>
+              <div>
                 <input type="checkbox"
-                    v-model="vegan" value="1">Vegan
+                    v-model="vegan" value="1">{{uiLabels.vegan}}
+              </div>
+              <div>
                 <input type="checkbox"
-                    v-model="lactose" value="1">Lactose-Free
+                    v-model="lactose" value="1">{{uiLabels.lactosefree}}
+              </div>
             </div>
             <div class="line"></div>
         </div>
@@ -67,14 +76,15 @@ export default {
   },
 
   methods: {
-    updateSelectedIceCreams: function() {
-      this.chosenIceCreams = [];
+    updateSelectedIcecreams: function() {
+      this.chosenIcecreams = [];
       for (var i = 0; i < this.$refs.Icecreams.length; i += 1) {
         if(this.$refs.Icecreams[i].counter > 0){
           var obj = {
             name: this.$refs.Icecreams[i].item["ingredient_"+ this.lang],
             amount: this.$refs.Icecreams[i].counter,
-            price: (this.$refs.Icecreams[i].item.selling_price * this.$refs.Icecream[i].counter)
+            price: (this.$refs.Icecreams[i].item.selling_price * this.$refs.Icecreams[i].counter),
+            category: this.$refs.Icecreams[i].item.category
           };
           this.chosenIcecreams.push(obj);
         }

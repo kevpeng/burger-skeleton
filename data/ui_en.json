@@ -62,5 +62,9 @@
   "Drinks": "Drinks",
   "Salad": "Salads",
   "Icecream": "Ice creams",
-  "continue": "Continue"
+  "continue": "Continue",
+  "glutenfree": "gluten free",
+  "lactosefree": "lactose free",
+  "vegan": "vegan",
+  "Filter": "Filter"
 }

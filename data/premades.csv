@@ -1,21 +1,21 @@
 ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,selling_price,picture
-1,Banansallad,Banana Salad,1,1,0,1,70,
-2,Ceasarsallad,Ceasar Salad,1,0,0,0,75,
-3,Kychlingsallad,Chicken Salad,1,0,0,0,80,
-4,Äggsallad,Egg Salad,1,1,1,0,70,
-5,Grekisk Sallad,Greek Salad,1,0,0,0,75,
-6,Svamp Sallad,Mushroom Salad,1,1,1,1,70,
-7,Pastasallad,Pasta Salad,1,0,0,0,65,
-8,Potatissallad,Potato Salad,1,1,0,1,65,
+1,Banansallad,Banana Salad,1,1,0,1,70,beanpatty.png
+2,Ceasarsallad,Ceasar Salad,1,0,0,0,75,beanpatty.png
+3,Kychlingsallad,Chicken Salad,1,0,0,0,80,beanpatty.png
+4,Äggsallad,Egg Salad,1,1,1,0,70,beanpatty.png
+5,Grekisk Sallad,Greek Salad,1,0,0,0,75,beanpatty.png
+6,Svamp Sallad,Mushroom Salad,1,1,1,1,70,beanpatty.png
+7,Pastasallad,Pasta Salad,1,0,0,0,65,beanpatty.png
+8,Potatissallad,Potato Salad,1,1,0,1,65,beanpatty.png
 9,Basisk Burgare,Basic Burger,2,1,1,1,40,beanpatty.png
-10,Hamburgare,Hamburger,2,1,1,1,40,beanpatty.png
-11,Ostburgare,Cheeseburger,2,1,1,1,40,beanpatty.png
-12,Double Burgare,Double Burger,2,1,1,1,40,beanpatty.png
-13,Chiliburgare,Chili Burger,2,1,1,1,40,beanpatty.png
-14,XXL Burger,XXL Burger,2,1,1,1,40,beanpatty.png
+10,Hamburgare,Hamburger,2,1,0,0,40,beanpatty.png
+11,Ostburgare,Cheeseburger,2,0,0,0,40,beanpatty.png
+12,Double Burgare,Double Burger,2,1,0,0,40,beanpatty.png
+13,Chiliburgare,Chili Burger,2,0,1,0,40,beanpatty.png
+14,XXL Burger,XXL Burger,2,0,0,0,40,beanpatty.png
 15,Basisk Meny,Basic Burger Menu,3,1,1,1,40,beanpatty.png
-16,Hamburgare Meny,Hamburger Menu,3,1,1,1,40,beanpatty.png
-17,Ostburgare Meny,Cheeseburger Menu,3,1,1,1,40,beanpatty.png
-18,Double Burgare Meny,Double Burger Menu,3,1,1,1,40,beanpatty.png
-19,Chiliburgare Meny,Chili Burger Menu,3,1,1,1,40,beanpatty.png
-20,XXL Burger,XXL Burger Menu,3,1,1,1,40,beanpatty.png
+16,Hamburgare Meny,Hamburger Menu,3,1,0,0,40,beanpatty.png
+17,Ostburgare Meny,Cheeseburger Menu,3,0,0,0,40,beanpatty.png
+18,Double Burgare Meny,Double Burger Menu,3,1,0,0,40,beanpatty.png
+19,Chiliburgare Meny,Chili Burger Menu,3,0,1,0,40,beanpatty.png
+20,XXL Burger,XXL Burger Menu,3,0,0,0,40,beanpatty.png

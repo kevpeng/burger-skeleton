@@ -10,29 +10,38 @@
       <div class="pageGrid">
         <div class="filterContainer">
             <div class="filter">
+              <div>
+                {{uiLabels.Filter}}:
+              </div>
+              <div>
                 <input type="checkbox"
-                    v-model="gluten" value="1">Gluten-Free
+                    v-model="gluten" value="1">{{uiLabels.glutenfree}}
+              </div>
+              <div>
                 <input type="checkbox"
-                    v-model="vegan" value="1">Vegan
+                    v-model="vegan" value="1">{{uiLabels.vegan}}
+              </div>
+              <div>
                 <input type="checkbox"
-                    v-model="lactose" value="1">Lactose-Free
+                    v-model="lactose" value="1">{{uiLabels.lactosefree}}
+              </div>
             </div>
             <div class="line"></div>
         </div>
         <div class="gridContainer">
-            <Ingredient class="gridElement"
+            <IngredientRadio class="gridElement"
                 ref="Patty"
                 v-for="item in ingredients"
                 v-if="item.category == 1 &
                 (gluten != 1 || gluten == item.gluten_free) &
                 (vegan != 1 || vegan == item.vegan) &
                 (lactose != 1 || lactose == item.milk_free)"
-                v-on:increment="updateSelectedPatty()"
+                v-on:increment="updateSelectedPatty(item)"
                 :lang="lang"
                 :ui-labels="uiLabels"
                 :item="item"
                 :key="item.ingredient_id">
-            </Ingredient>
+            </IngredientRadio>
         </div>
         <footer>
             <button v-on:click="switchTo('BurgerCreation')" class="back"> {{ uiLabels.back }}</button>
@@ -45,13 +54,13 @@
 
 <script>
 //import methods and data that are shared between ordering and kitchen views
-import Ingredient from '@/components/Ingredient.vue'
+import IngredientRadio from '@/components/IngredientRadio.vue'
 import OrderItem from '@/components/OrderItem.vue'
 
 export default {
   name: "Patty",
   components: {
-    Ingredient,
+    IngredientRadio,
     OrderItem
   },
 
@@ -72,36 +81,21 @@ export default {
   },
 
   methods: {
-    updateSelectedPatty: function() {
+    updateSelectedPatty: function(item) {
       this.chosenPatty = [];
-      for (var i = 0; i < this.$refs.Patty.length; i += 1) {
-        if(this.$refs.Patty[i].counter > 0){
-          var obj = {
-            name: this.$refs.Patty[i].item["ingredient_"+ this.lang],
-            amount: this.$refs.Patty[i].counter,
-            price: (this.$refs.Patty[i].item.selling_price * this.$refs.Patty[i].counter)
-          };
-          this.chosenPatty.push(obj);
-        }
-      }
-      /* Check if everything is in the array
-      for(var i in this.chosenPatty){
-      console.log(this.chosenPatty[i].name);
-      console.log(this.chosenPatty[i].amount);
-      console.log(this.chosenPatty[i].price);
-      }*/
+      var obj = {
+          name: item["ingredient_"+ this.lang],
+          amount: 1,
+          price: item.selling_price,
+          category: item.category
+      };
+      this.chosenPatty.push(obj);
     },
     switchTo: function (newTab) {
         this.$emit('switchTo', newTab);
     },
     addToIngredients: function() {
       this.$emit('addToIngredients', this.chosenPatty);
-      //set all counters to 0. Notice the use of $refs
-      // for (i = 0; i < this.$refs.Patty.length; i += 1) {
-      //   this.$refs.Patty[i].resetCounter();
-      // }
-      //this.price = 0;
-      //this.chosenIngredients = [];
     }
   }
 }

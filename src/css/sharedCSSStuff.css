@@ -39,11 +39,14 @@
 }
 
 .filter {
+  display: grid;
+  grid-template-columns: auto auto auto auto; 
   height: 5vh;
   padding: 7px 0;
   text-align: center;
   font-family: 'Amaranth';
   color: #DEB887;
+  font-size: 4vh;
 }
 
 footer {
@@ -93,5 +96,8 @@ button:hover {
   .gridContainer {
       grid-template-columns: repeat(auto-fit, 49vw);
       grid-gap: 2vw;
+  }
+  .filter {    
+    font-size: 2vh;
   }
 }

@@ -1,50 +1,34 @@
 <template>
   <div class="ingredient">
-      <div class="ingredientTitle" >
-        {{item["ingredient_"+lang]}}
-      </div>
-      <!-- <img class="image" :src="require('../assets/' + item.picture)" /> <br> -->
-        <button class="counter" v-on:click="decrementCounter">-</button>
-          {{counter}}
-        <button class="counter" v-on:click="incrementCounter">+</button> <br>
-        {{uiLabels.price}}{{item.selling_price}} kr <br>
-        {{uiLabels.stock}}{{item.stock}}
+    <div class="ingredientTitle" >
+        <input type="radio" name="radioButton" class="counter" v-on:click="select()">{{item["ingredient_"+lang]}}
+    </div>
+    <!-- <img class="image" :src="require('../assets/' + item.picture)" /> <br> -->
+    
+    {{uiLabels.price}}{{item.selling_price}} kr <br>
+    {{uiLabels.stock}}{{item.stock}}
   </div>
 </template>
 <script>
 export default {
-  name: 'Ingredient',
+  name: 'IngredientRadio',
   props: {
     item: Object,
     lang: String,
-    uiLabels: Object,
+    uiLabels: Object
   },
-    data: function () {
-    return {
-      counter: 0
-    };
+  data: function () {
+      return {};
   },
   methods: {
-    incrementCounter: function () {
-      this.counter += 1;
+    select: function () {
       // sending 'increment' message to parent component or view so that it
       // can catch it with v-on:increment in the component declaration
-      this.$emit('increment');
-    },
-    decrementCounter: function () {
-      if(this.counter > 0) {
-      this.counter -= 1;
-      // sending 'increment' message to parent component or view so that it
-      // can catch it with v-on:increment in the component declaration
-      this.$emit('increment');
-      }
+      this.$emit('increment', this);
     },
     getImage: function(path){
      return "../assets/" + path; //ToDo provide "missing picture" as default
-   },
-    resetCounter: function () {
-      this.counter = 0;
-    }
+   }
   }
 }
 </script>

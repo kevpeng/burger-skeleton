@@ -4,12 +4,21 @@
       <div class="pageGrid">
         <div class="filterContainer">
             <div class="filter">
+              <div>
+                {{uiLabels.Filter}}:
+              </div>
+              <div>
                 <input type="checkbox"
-                    v-model="gluten" value="1">Gluten-Free
+                    v-model="gluten" value="1">{{uiLabels.glutenfree}}
+              </div>
+              <div>
                 <input type="checkbox"
-                    v-model="vegan" value="1">Vegan
+                    v-model="vegan" value="1">{{uiLabels.vegan}}
+              </div>
+              <div>
                 <input type="checkbox"
-                    v-model="lactose" value="1">Lactose-Free
+                    v-model="lactose" value="1">{{uiLabels.lactosefree}}
+              </div>
             </div>
             <div class="line"></div>
         </div>
@@ -73,7 +82,8 @@ export default {
           var obj = {
             name: this.$refs.Fries[i].item["ingredient_"+ this.lang],
             amount: this.$refs.Fries[i].counter,
-            price: (this.$refs.Fries[i].item.selling_price * this.$refs.Fries[i].counter)
+            price: (this.$refs.Fries[i].item.selling_price * this.$refs.Fries[i].counter),
+            category: this.$refs.Fries[i].item.category
           };
           this.chosenFries.push(obj);
         }

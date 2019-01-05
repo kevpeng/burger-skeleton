@@ -62,5 +62,9 @@
   "Drinks": "Drycker",
   "Salad": "Sallader",
   "Icecream": "Glassar",
-  "continue": "Fortsätta"
+  "continue": "Fortsätta",
+  "glutenfree": "glutenfri",
+  "lactosefree": "lactosefri",
+  "vegan": "vegan",
+  "Filter": "Filter"
 }
