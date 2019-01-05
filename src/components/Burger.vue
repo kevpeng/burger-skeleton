@@ -4,7 +4,7 @@
       <div class="burgerTitle" >
         {{["burger_"+lang]}}
       </div>
-      <!-- <img class="image" :src="require('../assets/' + item.picture)" /> <br> -->
+      <img class="image" :src="require('../assets/' + item.picture)" /> <br>
         <button class="counter" v-on:click="decrementCounter">-</button>
           {{counter}}
         <button class="counter" v-on:click="incrementCounter">+</button> <br>

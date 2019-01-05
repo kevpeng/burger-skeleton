@@ -3,8 +3,8 @@
     <div class="ingredientTitle" >
         <input type="radio" name="radioButton" class="counter" v-on:click="select()">{{item["ingredient_"+lang]}}
     </div>
-    <!-- <img class="image" :src="require('../assets/' + item.picture)" /> <br> -->
-    
+    <img class="image" :src="require('../assets/' + item.picture)" /> <br>
+
     {{uiLabels.price}}{{item.selling_price}} kr <br>
     {{uiLabels.stock}}{{item.stock}}
   </div>
