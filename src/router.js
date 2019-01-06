@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Ordering from './views/Ordering.vue'
-// import selectionOverview from '.views/selectionOverview.vue'
+// import selectionOverview from '.views/SelectionOverview.vue'
 
 Vue.use(Router)
 
