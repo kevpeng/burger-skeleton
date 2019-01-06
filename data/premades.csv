@@ -7,12 +7,12 @@ ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,b
 6,Svamp Sallad,Mushroom Salad,1,1,1,1,70,Mushroom_Salad.png
 7,Pastasallad,Pasta Salad,1,0,0,0,65,Pasta_Salad_3.png
 8,Potatissallad,Potato Salad,1,1,0,1,65,Potato_Salad.png
-9,Basisk Burgare,Basic Burger,2,1,1,1,glutenfritt bröd,gluten free bread,bönburgare,bean patty,krispsallad,lettuce,tomat,tomato,inlagd gurka,pickled cucumber,40,Basic_Burger.png
-10,Hamburgare,Hamburger,2,1,0,0,glutenfritt bröd,gluten free bread,nötfärsburgare 100g,beef patty 100g,krispsallad,lettuce,tomat,tomato,vegansk ost,vegan cheese,40,Hamburger.png
-11,Ostburgare,Cheeseburger,2,0,0,0,brioche,brioche,nötfärsburgare 100g,beef patty 100g,inlagd gurka,pickled cucumber,pepper jack-ost,pepper jack cheese,rå gul lök,raw yellow onion,40,Cheeseburger.png
-12,Double Burgare,Double Burger,2,1,0,0,glutenfritt bröd,gluten free bread,nötfärsburgare 100g,beef patty 100g,krispsallad,lettuce,inlagd gurka,pickled cucumber,vegansk ost,vegan cheese,40,Double_Burger.png
-13,Chiliburgare,Chili Burger,2,0,1,0,glutenfritt bröd,gluten free bread,pulled pork,pulled pork,jalapeño,jalapeño,tomat,tomato,krispsallad,lettuce,40,Chili_Burger.png
-14,XXL Burger,XXL Burger,2,0,0,0,fullkornsbrioche,whole wheat brioche,nötfärsburgare 200g,beef patty 200g,bacon,bacon,cheddar,cheddar cheese,krispsallad,lettuce,40,XXL_Burger.png
+9,Basisk Burgare,Basic Burger,2,1,1,1,Glutenfritt Bröd,Gluten Free Bread,Bönburgare,Bean Patty,Krispsallad,Lettuce,Tomat,Tomato,Inlagd Gurka,Pickled Cucumber,40,Basic_Burger.png
+10,Hamburgare,Hamburger,2,1,0,0,Glutenfritt Bröd,Gluten Free Bread,Nötfärsburgare 100g,Beef Patty 100g,Krispsallad,Lettuce,Tomat,tomato,Vegansk Ost,Vegan Cheese,40,Hamburger.png
+11,Ostburgare,Cheeseburger,2,0,0,0,Brioche,Brioche,Nötfärsburgare 100g,Beef Patty 100g,Inlagd Gurka,Pickled Cucumber,Pepper Jack-Ost,Pepper Jack Cheese,Rå Gul Lök,Raw Yellow Onion,40,Cheeseburger.png
+12,Double Burgare,Double Burger,2,1,0,0,Glutenfritt Bröd,Gluten Free Bread,Nötfärsburgare 100g,Beef Patty 100g,Krispsallad,Lettuce,Inlagd Gurka,Pickled Cucumber,Vegansk Ost,Vegan Cheese,40,Double_Burger.png
+13,Chiliburgare,Chili Burger,2,0,1,0,Glutenfritt Bröd,Gluten Free Bread,Pulled Pork,Pulled Pork,Jalapeño,Jalapeño,Tomat,Tomato,Krispsallad,Lettuce,40,Chili_Burger.png
+14,XXL Burger,XXL Burger,2,0,0,0,Fullkornsbrioche,Whole Wheat Brioche,Nötfärsburgare 200g,Beef Patty 200g,Bacon,Bacon,Cheddar,Cheddar Cheese,Krispsallad,Lettuce,40,XXL_Burger.png
 15,Basisk Meny,Basic Burger Menu,3,1,1,1,40,Basic_Burger_Menu.png
 16,Hamburgare Meny,Hamburger Menu,3,1,0,0,40,Hamburger_Menu.png
 17,Ostburgare Meny,Cheeseburger Menu,3,0,0,0,40,Cheese_Burger_Menu.png

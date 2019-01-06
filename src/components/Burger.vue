@@ -2,9 +2,18 @@
   <div class="burger">
     <label>
       <div class="burgerTitle" >
-        {{["burger_"+lang]}}
+        {{item["ingredient_"+lang]}}
+        <!-- {{["burger_"+lang]}} -->
+        <!-- {{["burger_en"]}} -->
       </div>
       <img class="image" :src="require('../assets/' + item.picture)" /> <br>
+      <div class="burgerIngredients" >
+        {{item["bread_"+lang]}}<br>
+        {{item["patty_"+lang]}}<br>
+        {{item["toppingOne_"+lang]}},
+        {{item["toppingTwo_"+lang]}},
+        {{item["toppingThree_"+lang]}}
+      </div>
         <button class="counter" v-on:click="decrementCounter">-</button>
           {{counter}}
         <button class="counter" v-on:click="incrementCounter">+</button> <br>
@@ -17,8 +26,8 @@
 export default {
   name: 'Burger',
   props: {
-    b: Object,
-    blang: String,
+    item: Object,
+    lang: String,
     uiLabels: Object,
   },
     data: function () {
@@ -61,7 +70,10 @@ export default {
   font-size: 2.5vw;
   color: #FFE4B5;
 }
-
+.burgerIngredients{
+  font-size: 1.5vw;
+  color: #FFE4B5;
+}
 .counter{
   font-size: 2vw;
   text-align: center;
