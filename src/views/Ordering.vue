@@ -18,40 +18,45 @@
         <div class="title">
           {{ currentTabName }}
         </div>
-        
+
         <div class="cart">
           <button :class="['btn_header', 'btn_cart']" v-on:click="toggleCart()" ></button>
           <div id="myCart" class="cart_content">
             <div class="cartGrid">
-              <div class="selected">
-              {{uiLabels.yourOrder}}: 
-              <Cartitem class="selection"
-                v-for="item in selection"
-                :item="item"
-                :key="item.name">
-              </Cartitem>
-              <hr class="hr">
-              {{this.price}}SEK
-              <hr>
-              chosenIngredients:
-              <Cartitem class="selection"
-                v-for="item in chosenIngredients"
-                :item="item"
-                :key="item.name">
-              </Cartitem>
-              <hr class="hr">
-              {{this.chosenIngredientsPrice}}SEK
+              <div v-if="selection.length > 0">
+                <div class="selected">
+                {{uiLabels.yourOrder}}:
+                <Cartitem class="selection"
+                  v-for="item in selection"
+                  :item="item"
+                  :key="item.name">
+                </Cartitem>
+                <hr class="hr">
+                {{this.price}} SEK
+                <hr>
+                {{uiLabels.chosenIngredients}}
+                <Cartitem class="selection"
+                  v-for="item in chosenIngredients"
+                  :item="item"
+                  :key="item.name">
+                </Cartitem>
+                <hr class="hr">
+                {{this.chosenIngredientsPrice}} SEK
+                </div>
+                <div class="payment">
+                  <hr class="hr_sum">
+                  <b>{{uiLabels.sum}}: {{this.chosenIngredientsPrice+this.price}} SEK</b>
+                  <br>
+                  <!-- TO DO: blur background, gray buttons out
+                  add code to print the items with a delete/add (-/+) button -->
+                  <button class="payButton"
+                    v-on:click="placeOrder()">
+                    {{ uiLabels.pay }}
+                  </button>
+                </div>
               </div>
-              <div class="payment">
-                <hr class="hr_sum">
-                <b>{{uiLabels.sum}}: {{this.chosenIngredientsPrice+this.price}}SEK</b>
-                <br>
-                <!-- TO DO: blur background, gray buttons out
-                add code to print the items with a delete/add (-/+) button -->
-                <button class="payButton"
-                  v-on:click="placeOrder()">
-                  {{ uiLabels.pay }}
-                </button>
+              <div v-else>
+                You cart is waiting to be filled
               </div>
             </div>
           </div>
@@ -177,21 +182,21 @@ export default {
   },
 
   // include stuff that is used in both the ordering system and the kitchen
-  mixins: [sharedVueStuff], 
-  
+  mixins: [sharedVueStuff],
+
   data: function() { //Not that data is a function!
     return {
       //tab/component navigation elements
       currentTab: 'Start',
       tabs: ['Start', 'SelectionOverview', 'Payment',
-             'BurgerCreation', 'IngredientsSelection', 
+             'BurgerCreation', 'IngredientsSelection',
              'Bread', 'Patty', 'Toppings', 'Sauce',
              'Menus', 'Burgers', 'Fries', 'Drinks', 'Salad', 'Icecream'],
-      
+
       //for the self created burger
       chosenIngredients: [],
       chosenIngredientsPrice: 0,
-      
+
       //for all selected items (before they get ordered)
       selection: [],
       price: 0,
@@ -247,7 +252,7 @@ export default {
 
         this.currentTab = 'Start';
       }
-    },    
+    },
 
     //show a pop up alert before continue cancelling because then the
     //choosen ingredients will be reset
@@ -277,7 +282,7 @@ export default {
               break;
             }
           }
-        }        
+        }
         this.chosenIngredients.push(items[i]);
         this.chosenIngredientsPrice += +items[i].price;
       }
@@ -355,7 +360,7 @@ export default {
 </script>
 
 <style scoped>
-/* scoped in the style tag means that these rules will only apply to elements, 
+/* scoped in the style tag means that these rules will only apply to elements,
    classes and ids in this template and no other templates. */
 #ordering {
   --header-scale: 70px;
@@ -482,7 +487,7 @@ button:hover {
 
 .page {
   margin-top: var(--header-scale);
-  height: calc(94vh - 2*var(--header-scale)); 
+  height: calc(94vh - 2*var(--header-scale));
   /*ToDo do not really know why 3x, would have expected only 2x ...hmm...*/
 }
 
@@ -508,23 +513,23 @@ button:hover {
 @media screen and (max-width:818px){
   .title {
     margin-right: 0px;
-  }    
+  }
 }
 @media screen and (max-width:612px){
   .title {
     font-size: 28px;
-  }    
+  }
 }
 @media screen and (max-width:380px){
   #ordering {
     --header-scale: 50px;
-  }  
+  }
   .title {
     font-size: calc(100vw/22);
-  }  
+  }
   .payButton{
     height: 8vh;
-  }  
-} 
+  }
+}
 /** MEDIA SCALING END **/
 </style>
