@@ -214,6 +214,18 @@ export default {
     this.$store.state.socket.on('orderNumber', function (data) {
       this.orderNumber = data;
     }.bind(this));
+
+      // refreshes page after 1 minute
+      var timer = null;
+      function refresh() {
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+              window.location.reload();
+          }.bind(this), 60000);
+      }
+      window.addEventListener('mousemove', refresh, true);
+      refresh();
+
   },
 
   methods: {
@@ -276,11 +288,13 @@ export default {
     //should only be used in the BurgerCreation tab
     addCreatedBurgerToOrder: function() {
       var createdBurger = {
+        amount: 1,
         name: "Created Burger",
         price: this.chosenIngredientsPrice,
         ingredients: this.chosenIngredients
       };
       this.selection.push(createdBurger);
+      this.price += createdBurger.price;
 
       this.chosenIngredients = [];
       this.chosenIngredientsPrice = 0;

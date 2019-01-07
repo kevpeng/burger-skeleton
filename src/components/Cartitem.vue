@@ -1,6 +1,6 @@
 <template>
 	<div>
-		{{item.amount}}x {{item.name}} ({{item.category}}): {{item.price}}SEK
+		{{item.amount}} x {{item.name}} ({{item.category}}): {{item.price}}SEK
 	</div>
 </template>
 <script>

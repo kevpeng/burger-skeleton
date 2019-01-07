@@ -67,6 +67,7 @@ body {
 }
 .new{
   margin-top: 10vh;
+  padding: auto auto;
   width: 50%;
   height: 10vh;
   font-size: calc(3vw + 3vh);
