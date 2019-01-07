@@ -12,7 +12,8 @@
         {{item["patty_"+lang]}}<br>
         {{item["toppingOne_"+lang]}},
         {{item["toppingTwo_"+lang]}},
-        {{item["toppingThree_"+lang]}}
+        {{item["toppingThree_"+lang]}}<br>
+        {{item["sauce_"+lang]}}
       </div>
         <button class="counter" v-on:click="decrementCounter">-</button>
           {{counter}}
