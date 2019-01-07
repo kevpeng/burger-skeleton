@@ -288,11 +288,13 @@ export default {
     //should only be used in the BurgerCreation tab
     addCreatedBurgerToOrder: function() {
       var createdBurger = {
+        amount: 1,
         name: "Created Burger",
         price: this.chosenIngredientsPrice,
         ingredients: this.chosenIngredients
       };
       this.selection.push(createdBurger);
+      this.price += createdBurger.price;
 
       this.chosenIngredients = [];
       this.chosenIngredientsPrice = 0;
