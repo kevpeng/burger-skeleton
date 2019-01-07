@@ -22,7 +22,7 @@
         <div class="cart">
           <button :class="['btn_header', 'btn_cart']" v-on:click="toggleCart()" ></button>
           <div id="myCart" class="cart_content">
-            <div class="cartGrid" v-click-outside="outside" @click="inside">
+            <div class="cartGrid">
               <div v-if="selection.length > 0">
                 <div class="selected">
                 {{uiLabels.yourOrder}}:
@@ -355,6 +355,7 @@ export default {
         // 7. (optional) add a red 'X' at top left to show you can exit
         document.getElementById("myCart").classList.toggle("show");
     }
+     // v-click-outside="outside" @click="inside"
     // outside: function(e) {
     // 	this.clickOutside += 1
     //     console.log('clicked outside!')
