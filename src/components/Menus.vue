@@ -24,7 +24,7 @@
         </div>
         <div class="gridContainer">
           <!-- Category 3 for Menus in the ingredients.csv file -->
-            <Ingredient class="gridElement"
+            <Menu class="gridElement"
                 ref="Menus"
                 v-for="item in premades"
                 v-if="item.category == 3 &
@@ -36,7 +36,7 @@
                 :ui-labels="uiLabels"
                 :item="item"
                 :key="item.ingredient_id">
-            </Ingredient>
+            </Menu>
         </div>
         <footer>
             <button v-on:click="switchTo('SelectionOverview')" class="back"> {{ uiLabels.back }}</button>
@@ -49,13 +49,13 @@
 
 <script>
 //import methods and data that are shared between ordering and kitchen views
-import Ingredient from '@/components/Ingredient.vue'
+import Menu from '@/components/Menu.vue'
 import OrderItem from '@/components/OrderItem.vue'
 
 export default {
   name: "Menus",
   components: {
-    Ingredient,
+    Menu,
     OrderItem
   },
 
