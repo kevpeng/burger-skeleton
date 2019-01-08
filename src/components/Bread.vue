@@ -71,7 +71,7 @@ export default {
     },
 
     data: function() {
-        return { 
+        return {
             chosenBread: [],
             price: 0,
             gluten: 0,
@@ -87,7 +87,8 @@ export default {
                 name: item["ingredient_"+ this.lang],
                 amount: 1,
                 price: item.selling_price,
-                category: item.category
+                category: item.category,
+                id: Math.floor(Math.random() * Math.floor(9999999999))
             };
             this.chosenBread.push(obj);
         },

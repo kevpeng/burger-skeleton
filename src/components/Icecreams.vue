@@ -1,5 +1,5 @@
 <template>
-  <div>    
+  <div>
     <body>
       <div class="pageGrid">
         <div class="filterContainer">
@@ -84,7 +84,8 @@ export default {
             name: this.$refs.Icecreams[i].item["ingredient_"+ this.lang],
             amount: this.$refs.Icecreams[i].counter,
             price: (this.$refs.Icecreams[i].item.selling_price * this.$refs.Icecreams[i].counter),
-            category: this.$refs.Icecreams[i].item.category
+            category: this.$refs.Icecreams[i].item.category,
+            id: Math.floor(Math.random() * Math.floor(9999999999))
           };
           this.chosenIcecreams.push(obj);
         }

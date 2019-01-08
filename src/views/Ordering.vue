@@ -28,6 +28,7 @@
                   {{uiLabels.yourOrder}}:
                   <Cartitem class="selection"
                     v-for="item in selection"
+                    v-on:click="removeFromOrder(item)"
                     :item="item"
                     :key="item.name">
                   </Cartitem>
@@ -37,6 +38,7 @@
                   {{uiLabels.chosenIngredients}}
                   <Cartitem class="selection"
                     v-for="item in chosenIngredients"
+                    v-on:click="removeIngredientFromOrder(item)"
                     :item="item"
                     :key="item.name">
                   </Cartitem>
@@ -316,11 +318,36 @@ export default {
       }
       this.currentTab = 'SelectionOverview';
     },
-
-    // removeFromOrder: function (item) {
-    //   this.$delete(this.selection, index)
-    //     this.price -= -item.price;
-    // },
+    //to delete selected item directly from the order
+    //should only be used for all NOT self-created-burger items !
+    removeFromOrder: function (item) {
+      // var i = this.selection.indexOf(item.id);
+      var i = this.selection.findIndex(s => s.id === item.id);
+      if(item.amount == 1){
+        this.selection.splice(i, 1);
+        this.price -= item.price;
+      }
+      else if(item.amount > 1){
+        this.price -= item.price/item.amount;
+        this.selection[i].price -= item.price/item.amount;
+        this.selection[i].amount -= 1;
+      }
+    },
+    //to delete an ingredient from the self created burger
+    //should only be used in the Patty/Toppings/Sauce/Bread selection !
+    removeIngredientFromOrder: function (item) {
+      // var i = this.selection.indexOf(item.id);
+      var i = this.chosenIngredients.findIndex(s => s.id === item.id);
+      if(item.amount == 1){
+        this.chosenIngredients.splice(i, 1);
+        this.chosenIngredientsPrice -= item.price;
+      }
+      else if(item.amount > 1){
+        this.chosenIngredientsPrice -= item.price/item.amount;
+        this.chosenIngredients[i].price -= item.price/item.amount;
+        this.chosenIngredients[i].amount -= 1;
+      }
+    },
 
     //to submit the order
     //should only be used in SelectionOverview and the Cart!

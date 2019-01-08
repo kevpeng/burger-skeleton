@@ -85,7 +85,8 @@ export default {
             name: this.$refs.Salads[i].item["ingredient_"+ this.lang],
             amount: this.$refs.Salads[i].counter,
             price: (this.$refs.Salads[i].item.selling_price * this.$refs.Salads[i].counter),
-            category: this.$refs.Salads[i].item.category
+            category: this.$refs.Salads[i].item.category,
+            id: Math.floor(Math.random() * Math.floor(9999999999))
           };
           this.chosenSalads.push(obj);
         }

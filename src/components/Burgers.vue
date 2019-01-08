@@ -85,7 +85,8 @@ export default {
             name: this.$refs.Burgers[i].item["ingredient_"+ this.lang],
             amount: this.$refs.Burgers[i].counter,
             price: (this.$refs.Burgers[i].item.selling_price * this.$refs.Burgers[i].counter),
-            category: this.$refs.Burgers[i].item.category
+            category: this.$refs.Burgers[i].item.category,
+            id: Math.floor(Math.random() * Math.floor(9999999999))
           };
           this.chosenBurgers.push(obj);
         }

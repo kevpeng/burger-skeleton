@@ -83,7 +83,8 @@ export default {
             name: this.$refs.Fries[i].item["ingredient_"+ this.lang],
             amount: this.$refs.Fries[i].counter,
             price: (this.$refs.Fries[i].item.selling_price * this.$refs.Fries[i].counter),
-            category: this.$refs.Fries[i].item.category
+            category: this.$refs.Fries[i].item.category,
+            id: Math.floor(Math.random() * Math.floor(9999999999))
           };
           this.chosenFries.push(obj);
         }

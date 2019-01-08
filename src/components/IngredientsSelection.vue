@@ -85,7 +85,8 @@ export default {
           var obj = {
             name: this.$refs.Ingredient[i].item["ingredient_"+ this.lang],
             amount: this.$refs.Ingredient[i].counter,
-            price: (this.$refs.Ingredient[i].item.selling_price * this.$refs.Ingredient[i].counter)
+            price: (this.$refs.Ingredient[i].item.selling_price * this.$refs.Ingredient[i].counter),
+            id: Math.floor(Math.random() * Math.floor(9999999999))
           };
           this.chosenIngredients.push(obj);
         }

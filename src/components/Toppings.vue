@@ -89,7 +89,8 @@ export default {
             name: this.$refs.Toppings[i].item["ingredient_"+ this.lang],
             amount: this.$refs.Toppings[i].counter,
             price: (this.$refs.Toppings[i].item.selling_price * this.$refs.Toppings[i].counter),
-            category: -1
+            category: -1,
+            id: Math.floor(Math.random() * Math.floor(9999999999))
           };
           this.chosenToppings.push(obj);
         }

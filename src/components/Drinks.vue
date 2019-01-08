@@ -80,9 +80,10 @@ export default {
             name: this.$refs.Drinks[i].item["ingredient_"+ this.lang],
             amount: this.$refs.Drinks[i].counter,
             price: (this.$refs.Drinks[i].item.selling_price * this.$refs.Drinks[i].counter),
-            category: this.$refs.Drinks[i].item.category
+            category: this.$refs.Drinks[i].item.category,
+            id: Math.floor(Math.random() * Math.floor(9999999999))
           };
-          
+
           this.chosenDrinks.push(obj);
         }
       }
