@@ -23,7 +23,7 @@
           <button :class="['btn_header', 'btn_cart']" v-on:click="toggleCart()" ></button>
           <div id="myCart" class="cart_content">
             <div class="cartGrid">
-              <div v-if="selection.length > 0">
+              <div v-if="selection.length > 0 || chosenIngredients.length > 0">
                 <div class="selected">
                   {{uiLabels.yourOrder}}:
                   <Cartitem class="selection"
@@ -316,6 +316,11 @@ export default {
       }
       this.currentTab = 'SelectionOverview';
     },
+
+    // removeFromOrder: function (item) {
+    //   this.$delete(this.selection, index)
+    //     this.price -= -item.price;
+    // },
 
     //to submit the order
     //should only be used in SelectionOverview and the Cart!
