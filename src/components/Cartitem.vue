@@ -1,6 +1,6 @@
 <template>
 	<div>
-		{{item.amount}} x {{item.name}} ({{item.category}}): {{item.price}}SEK   <button type="button" class="b" v-on:click="select()">X</button>
+		{{item.amount}} x {{item.name}} ({{item.category}}): {{item.price}} SEK   <button type="button" class="b" v-on:click="select()">X</button>
 	</div>
 </template>
 <script>
