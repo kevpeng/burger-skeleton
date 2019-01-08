@@ -25,23 +25,23 @@
             <div class="cartGrid">
               <div v-if="selection.length > 0">
                 <div class="selected">
-                {{uiLabels.yourOrder}}:
-                <Cartitem class="selection"
-                  v-for="item in selection"
-                  :item="item"
-                  :key="item.name">
-                </Cartitem>
-                <hr class="hr">
-                {{this.price}} SEK
-                <hr>
-                {{uiLabels.chosenIngredients}}
-                <Cartitem class="selection"
-                  v-for="item in chosenIngredients"
-                  :item="item"
-                  :key="item.name">
-                </Cartitem>
-                <hr class="hr">
-                {{this.chosenIngredientsPrice}} SEK
+                  {{uiLabels.yourOrder}}:
+                  <Cartitem class="selection"
+                    v-for="item in selection"
+                    :item="item"
+                    :key="item.name">
+                  </Cartitem>
+                  <hr class="hr">
+                  {{this.price}} SEK
+                  <hr>
+                  {{uiLabels.chosenIngredients}}
+                  <Cartitem class="selection"
+                    v-for="item in chosenIngredients"
+                    :item="item"
+                    :key="item.name">
+                  </Cartitem>
+                  <hr class="hr">
+                  {{this.chosenIngredientsPrice}} SEK
                 </div>
                 <div class="payment">
                   <hr class="hr_sum">
@@ -485,7 +485,7 @@ button:hover {
 .cartGrid {
   display: grid;
   height: calc(100% - 2vw);
-  grid-template-rows: auto 22vh;
+  grid-template-rows: 78vh 22vh;
   margin: 1vw;
 }
 .hr {
@@ -494,6 +494,10 @@ button:hover {
 .hr_sum {
   height: 4px;
   background-color: #8b4513;
+}
+.selected {
+  overflow-y: scroll;
+  height: 55vh;
 }
 .payment {
   font-size: calc(1vw + 3vh);
