@@ -58,7 +58,7 @@
                 </div>
               </div>
               <div v-else>
-                You cart is waiting to be filled
+                The cart is waiting to be filled
               </div>
             </div>
           </div>
