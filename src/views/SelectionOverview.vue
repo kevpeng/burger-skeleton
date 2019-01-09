@@ -95,7 +95,8 @@ export default {
 }
 @media screen and (max-width:818px){
   #forward{
-    font-size: calc(0.3vw + 2vh);
+    font-size: calc(0.5vw + 2vh);
+    padding-left: 2.5vw;
   }
 }
 @media screen and (max-width:380px){
