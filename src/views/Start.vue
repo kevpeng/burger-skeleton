@@ -35,22 +35,13 @@ export default {
         var timer = null;
         function refresh() {
             clearTimeout(timer);
-            timer = setTimeout(function() { window.location = 'http://localhost:8080/#/';}, 5000);
-
+            timer = setTimeout(function () {
+                window.location.reload();
+            }.bind(this), 60000);
         }
-        //
-        // window.setTimeout(function () {
-        //     window.location.reload();
-        // }.bind(this),30000);
 
         window.addEventListener('mousemove', refresh, true);
         refresh();
-
-        // playing around with storing data..
-        // this.$store.state.socket.on('orderPreference', function(data) {
-        //     this.orderPreference = data;
-        // }.bind(this));
-
     },
     methods: {
         chooseTakeAway: function() {
@@ -95,5 +86,5 @@ h2 {
     /*position: absolute;*/
     background-color: #DEB887;
     border: none;
-}    
+}
 </style>
