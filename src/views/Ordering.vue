@@ -44,17 +44,17 @@
                   </Cartitem>
                   <hr class="hr">
                   {{this.chosenIngredientsPrice}} SEK
-                  <div class="payment">
-                    <hr class="hr_sum">
-                    <b>{{uiLabels.sum}}: {{this.chosenIngredientsPrice+this.price}} SEK</b>
-                    <br>
-                    <!-- TO DO: blur background, gray buttons out
-                    add code to print the items with a delete/add (-/+) button -->
-                    <button class="payButton"
-                      v-on:click="placeOrder()">
-                      {{ uiLabels.pay }}
-                    </button>
-                  </div>
+                </div>
+                <div class="payment">
+                  <hr class="hr_sum">
+                  <b>{{uiLabels.sum}}: {{this.chosenIngredientsPrice+this.price}} SEK</b>
+                  <br>
+                  <!-- TO DO: blur background, gray buttons out
+                  add code to print the items with a delete/add (-/+) button -->
+                <button class="payButton"
+                        v-on:click="placeOrder()">
+                  {{ uiLabels.pay }}
+                </button>
                 </div>
 
               </div>
