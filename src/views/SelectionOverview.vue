@@ -93,7 +93,11 @@ export default {
   height: calc(10vh + 2vw);
   font-size: calc(2.5vw + 2.5vh);
 }
-
+@media screen and (max-width:818px){
+  #forward{
+    font-size: calc(0.3vw + 2vh);
+  }
+}
 @media screen and (max-width:380px){
   .gridContainer {
       grid-template-columns: repeat(auto-fit, 32.7vw);
