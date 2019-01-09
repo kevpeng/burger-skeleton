@@ -30,7 +30,8 @@
                     v-for="item in selection"
                     v-on:click="removeFromOrder(item)"
                     :item="item"
-                    :key="item.name">
+                    :key="item.name"
+                    :lang="lang">
                   </Cartitem>
                   <hr class="hr">
                   {{this.price}} SEK
@@ -533,7 +534,7 @@ button:hover {
   height: 55vh;
 }
 .payment {
-  font-size: calc(1vw + 3vh);
+  font-size: calc(1vw + 2vh);
   height: 22vh;
 }
 .payButton{
@@ -543,8 +544,8 @@ button:hover {
   font-size: calc(1vw + 3vh);
   border-radius: 10px;
   border: none;
-  width: 20vw;
-  height: 10vh;
+  width: 15vw;
+  height: 7vh;
 }
 /** HEADER END **/
 

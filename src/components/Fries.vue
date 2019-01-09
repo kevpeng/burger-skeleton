@@ -80,7 +80,8 @@ export default {
       for (var i = 0; i < this.$refs.Fries.length; i += 1) {
         if(this.$refs.Fries[i].counter > 0){
           var obj = {
-            name: this.$refs.Fries[i].item["ingredient_"+ this.lang],
+            nameEN: this.$refs.Fries[i].item["ingredient_en"],
+            nameSV: this.$refs.Fries[i].item["ingredient_sv"],
             amount: this.$refs.Fries[i].counter,
             price: (this.$refs.Fries[i].item.selling_price * this.$refs.Fries[i].counter),
             category: this.$refs.Fries[i].item.category,

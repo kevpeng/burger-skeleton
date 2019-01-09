@@ -82,7 +82,8 @@ export default {
       for (var i = 0; i < this.$refs.Burgers.length; i += 1) {
         if(this.$refs.Burgers[i].counter > 0){
           var obj = {
-            name: this.$refs.Burgers[i].item["ingredient_"+ this.lang],
+            nameEN: this.$refs.Burgers[i].item["ingredient_en"],
+            nameSV: this.$refs.Burgers[i].item["ingredient_sv"],
             amount: this.$refs.Burgers[i].counter,
             price: (this.$refs.Burgers[i].item.selling_price * this.$refs.Burgers[i].counter),
             category: this.$refs.Burgers[i].item.category,

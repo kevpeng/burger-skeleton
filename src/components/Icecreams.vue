@@ -81,7 +81,8 @@ export default {
       for (var i = 0; i < this.$refs.Icecreams.length; i += 1) {
         if(this.$refs.Icecreams[i].counter > 0){
           var obj = {
-            name: this.$refs.Icecreams[i].item["ingredient_"+ this.lang],
+            nameEN: this.$refs.Icecreams[i].item["ingredient_en"],
+            nameSV: this.$refs.Icecreams[i].item["ingredient_sv"],
             amount: this.$refs.Icecreams[i].counter,
             price: (this.$refs.Icecreams[i].item.selling_price * this.$refs.Icecreams[i].counter),
             category: this.$refs.Icecreams[i].item.category,
