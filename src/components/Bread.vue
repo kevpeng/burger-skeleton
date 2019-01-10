@@ -84,10 +84,9 @@ export default {
         updateSelectedBread: function (item) {
             this.chosenBread = [];
             var obj = {
-                name: item["ingredient_"+ this.lang],
+                unit: item,
                 amount: 1,
                 price: item.selling_price,
-                category: item.category,
                 id: Math.floor(Math.random() * Math.floor(9999999999))
             };
             this.chosenBread.push(obj);

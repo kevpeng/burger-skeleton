@@ -82,11 +82,9 @@ export default {
       for (var i = 0; i < this.$refs.Menus.length; i += 1) {
         if(this.$refs.Menus[i].counter > 0){
           var obj = {
-            nameEN: this.$refs.Menus[i].item["ingredient_en"],
-            nameSV: this.$refs.Menus[i].item["ingredient_sv"],
+            unit: this.$refs.Menus[i].item,
             amount: this.$refs.Menus[i].counter,
             price: (this.$refs.Menus[i].item.selling_price * this.$refs.Menus[i].counter),
-            category: this.$refs.Menus[i].item.category,
             id: Math.floor(Math.random() * Math.floor(9999999999))
           };
           this.chosenMenus.push(obj);
