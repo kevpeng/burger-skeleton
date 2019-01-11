@@ -83,8 +83,7 @@ export default {
       for (var i = 0; i < this.$refs.Ingredient.length; i += 1) {
         if(this.$refs.Ingredient[i].counter > 0){
           var obj = {
-            nameEN: this.$refs.Ingredient[i].item["ingredient_en"],
-            nameSV: this.$refs.Ingredient[i].item["ingredient_sv"],
+            unit: this.$refs.Ingredient[i].item,
             amount: this.$refs.Ingredient[i].counter,
             price: (this.$refs.Ingredient[i].item.selling_price * this.$refs.Ingredient[i].counter),
             id: Math.floor(Math.random() * Math.floor(9999999999))

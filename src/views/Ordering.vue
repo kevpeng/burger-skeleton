@@ -41,7 +41,8 @@
                     v-for="item in chosenIngredients"
                     v-on:click="removeIngredientFromOrder(item)"
                     :item="item"
-                    :key="item.name">
+                    :key="item.name"
+                    :lang="lang">
                   </Cartitem>
                   <hr class="hr">
                   {{this.chosenIngredientsPrice}} SEK
