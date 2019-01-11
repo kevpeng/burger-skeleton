@@ -14,8 +14,9 @@
 		<!-- not createdBurger -->
 		<div v-if="(!compareItemNameWithCreatedBurger)">
 			{{item.amount}} x {{item.unit['ingredient_'+lang]}}
-			<div v-if="item.category != -1">({{item.unit['category']}})</div>
-			<div v-if="item.category == -1">({{item.category}})</div>:
+			<a v-if="item.category != -1">({{item.unit['category']}})</a>
+			<a v-if="item.category == -1">({{item.category}})</a>:
+      <br>
 			{{item.price}} SEK   <button type="button" class="b" v-on:click="select()">X</button>
 		</div>
 	</div>
@@ -36,13 +37,10 @@ export default {
     compareItemNameWithCreatedBurger: function() {
       var x = this.item.unit["ingredient_"+this.lang];
       var y = this.uiLabels.createdBurger;
-      console.log("x" + x + " ### y: " + y);
       if(x == y){
-        console.log("true");
         return true;
       }
       else {
-        console.log("false");
         return false;
       }
     }
