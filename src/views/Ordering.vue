@@ -606,6 +606,8 @@ button:hover {
   }
   .payButton{
     height: 8vh;
+    width: 80%;
+    text-align: center;
   }
 }
 /** MEDIA SCALING END **/
