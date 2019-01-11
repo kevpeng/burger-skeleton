@@ -79,7 +79,8 @@ export default {
        this.$emit('cancelTo', newTab, "Do you really want to cancel your Order?");
      },
      submit: function(){
-       this.$emit('toggleCart');
+       // this.$emit('toggleCart');
+       this.$emit('addCreatedBurgerToOrder');
      }
   }
 }
@@ -93,7 +94,12 @@ export default {
   height: calc(10vh + 2vw);
   font-size: calc(2.5vw + 2.5vh);
 }
-
+@media screen and (max-width:818px){
+  #forward{
+    font-size: calc(0.5vw + 2vh);
+    padding-left: 2.5vw;
+  }
+}
 @media screen and (max-width:380px){
   .gridContainer {
       grid-template-columns: repeat(auto-fit, 32.7vw);
