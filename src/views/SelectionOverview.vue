@@ -79,8 +79,8 @@ export default {
        this.$emit('cancelTo', newTab, "Do you really want to cancel your Order?");
      },
      submit: function(){
-       // this.$emit('toggleCart');
-       this.$emit('addCreatedBurgerToOrder');
+       this.$emit('toggleCart');
+       // this.$emit('addCreatedBurgerToOrder');
      }
   }
 }
