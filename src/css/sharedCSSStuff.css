@@ -82,6 +82,7 @@ footer {
 .add {
   right: 0;
   margin-right: 3%;
+  font-size: calc(1vw + 1.5vh);
 }
 
 button:hover {
