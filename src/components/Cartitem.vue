@@ -47,12 +47,13 @@ export default {
 </script>
 <style scoped>
 .b {
-	width: 2vw;
-  height: 4vh;
+	min-width: 3vh;
+  min-height: 3vh;
   border-radius: 10px;
   background-color: #8B4513;
   border: none;
 	color: #FFE4B5;
+	padding: 1px 1px;
 	vertical-align: middle;
 }
 button:hover {
