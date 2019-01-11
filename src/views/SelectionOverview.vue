@@ -3,17 +3,16 @@
     <body>
       <div class="pageGrid">
         <div class="gridContainer">
-          <button class="gridElement line" v-on:click="switchTo('BurgerCreation')"> {{uiLabels.createOwnBurger}} </button>
+          <button class="gridElement line" v-on:click="switchTo('BurgerCreation')">{{category}} {{uiLabels.createOwnBurger}} </button>
           <div class="line"></div>
-          <button class="gridElement" v-on:click="switchTo('Menus')"> {{uiLabels.menus}} </button>
-          <button class="gridElement" v-on:click="switchTo('Burgers')"> {{uiLabels.burgers}} </button>
-          <button class="gridElement" v-on:click="switchTo('Fries')"> {{uiLabels.fries}} </button>
-          <!--button class="gridElement" onclick="location.href='http://localhost:8080/#/start'"> {{uiLabels.fries}} </button-->
-          <button class="gridElement" id="iceCream" v-on:click="switchTo('Icecream')"> {{uiLabels.iceCream}} </button>
-          <button class="gridElement" v-on:click="switchTo('Salad')"> {{uiLabels.salad}} </button>
-          <button class="gridElement" v-on:click="switchTo('Drinks')"> {{uiLabels.drinks}} </button>
+          <button class="gridElement" v-on:click="switchToItems('Menus')"> {{uiLabels.menus}} </button>
+          <button class="gridElement" v-on:click="switchToItems('Burgers')"> {{uiLabels.burgers}} </button>
+          <button class="gridElement" v-on:click="switchToItems('Fries')"> {{uiLabels.fries}} </button>
+          <button class="gridElement" v-on:click="switchToItems('Icecreams')" id="iceCream"> {{uiLabels.iceCream}} </button>
+          <button class="gridElement" v-on:click="switchToItems('Salads')"> {{uiLabels.salad}} </button>
+          <button class="gridElement" v-on:click="switchToItems('Drinks')"> {{uiLabels.drinks}} </button>
           <!-- <div class="gridElement" v-for="b in buttonList">
-          <button class="gridElement" v-on:click="b.methods"> {{b.title}} </button>
+            <button class="gridElement" v-on:click="b.methods"> {{b.title}} </button>
           </div> -->
         </div>
         <footer>
@@ -64,24 +63,17 @@ export default {
   mixins: [sharedVueStuff],
   /*data: function() {
     return {
-      headLine: 'Selection Overview',
       buttonList: buttons,
     }
   },*/
   methods: {
-     switchTo: function(newTab){
-       this.$emit('switchTo', newTab);
-     },
-     cancel: function(){
-       this.$emit('cancel');
-     },
-     cancelTo: function(newTab){
-       this.$emit('cancelTo', newTab, "Do you really want to cancel your Order?");
-     },
-     submit: function(){
-       this.$emit('toggleCart');
-       // this.$emit('addCreatedBurgerToOrder');
-     }
+    cancelTo: function(newTab){
+      this.$emit('cancelTo', newTab, "Do you really want to cancel your Order?");
+    },
+    submit: function(){
+      this.$emit('toggleCart');
+      // this.$emit('addCreatedBurgerToOrder');
+    }
   }
 }
 </script>

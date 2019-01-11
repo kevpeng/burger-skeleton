@@ -35,13 +35,13 @@
 <script>
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
-import Item from '@/components/Burger.vue' //TODO change to Item.vue if the file is ready
+import Item from '@/components/Menu.vue' //TODO change to Item.vue if the file is ready
 import OrderItem from '@/components/OrderItem.vue'
 
 export default {
   name: "Items",
 
-  // include stuff that is used in several files
+  // include stuff that is used in both the ordering system and the kitchen
   mixins: [sharedVueStuff],
 
   components: {
@@ -91,16 +91,42 @@ export default {
       }
     },
     switchTo: function(newTab) {
-      this.$emit('switchTo', newTab);
+        //if burger creation, return to burgerCreation
+        //categories in ingredients: 1Patty, 2Toppings, 3Sauce, 4Bread
+        console.log("category<=4?: " + (this.category<=4));
+        console.log("itemlist=ingredients?: " + (this.itemlist.length > 30));
+        if((this.itemlist.length > 30) && (this.category <= 4)){
+            this.$emit('switchTo', 'BurgerCreation');
+        }
+        //else return to selectionOverview
+        else {
+            this.$emit('switchTo', newTab);
+        }
+        //set all counters to 0. Notice the use of $refs
+        // for (i = 0; i < this.$refs.Icecream.length; i += 1) {
+        //   this.$refs.Icecream[i].resetCounter();
+        // }
+        //this.price = 0;
+        //this.chosenIngredients = [];
     },
     addToOrder: function() {
-      this.$emit('addToOrder', this.chosenItems);
-      //set all counters to 0. Notice the use of $refs
-      // for (i = 0; i < this.$refs.Icecream.length; i += 1) {
-      //   this.$refs.Icecream[i].resetCounter();
-      // }
-      //this.price = 0;
-      //this.chosenIngredients = [];
+        //if burger creation, add to chosenIngredients
+        //categories in ingredients: 1Patty, 2Toppings, 3Sauce, 4Bread
+        console.log("category<=4?: " + (this.category<=4));
+        console.log("itemlist=ingredients?: " + (this.itemlist.length > 30));
+        if((this.itemlist.length > 30) && (this.category <= 4)){
+            this.$emit('addToIngredients', this.chosenItems);            
+        }
+        //else add to selection
+        else {
+            this.$emit('addToOrder', this.chosenItems);
+        }
+        //set all counters to 0. Notice the use of $refs
+        // for (i = 0; i < this.$refs.Icecream.length; i += 1) {
+        //   this.$refs.Icecream[i].resetCounter();
+        // }
+        //this.price = 0;
+        //this.chosenIngredients = [];
     }
   }
 }

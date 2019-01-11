@@ -4,22 +4,22 @@
       <div class="pageGrid">
         <div class="gridContainer">
           <div class="column1">
-            <button v-on:click="switchTo('Bread')" class="gridElement burgerButtons" id="bread"> {{ uiLabels.bread }} </button>
+            <button v-on:click="switchToItems('Bread')" class="gridElement burgerButtons" id="bread"> {{ uiLabels.bread }} </button>
             <br>
-            <button v-on:click="switchTo('Patty')" class="gridElement burgerButtons" id="patty"> {{ uiLabels.patty }} </button>
+            <button v-on:click="switchToItems('Patty')" class="gridElement burgerButtons" id="patty"> {{ uiLabels.patty }} </button>
           </div>
           <div class="column2">
             <img class="burgerImage" src="../assets/burger.png">
           </div>
           <div class="column3" >
-            <button v-on:click="switchTo('Toppings')" class="gridElement burgerButtons" id="toppings"> {{ uiLabels.toppings }} </button>
+            <button v-on:click="switchToItems('Toppings')" class="gridElement burgerButtons" id="toppings"> {{ uiLabels.toppings }} </button>
             <br>
-            <button v-on:click="switchTo('Sauce')" class="gridElement burgerButtons" id="sauce"> {{ uiLabels.sauce }} </button>
+            <button v-on:click="switchToItems('Sauce')" class="gridElement burgerButtons" id="sauce"> {{ uiLabels.sauce }} </button>
           </div>
         </div>
         <footer>
           <button v-on:click="cancelTo('SelectionOverview')" class="back" id="back"> {{ uiLabels.back }} </button>
-          <button v-on:click="addToOrder()" class="add" id="add"> {{ uiLabels.add }} </button>
+          <button v-on:click="addCreatedBurgerToOrder()" class="add" id="add"> {{ uiLabels.add }} </button>
         </footer>
       </div>
     </body>
@@ -32,13 +32,10 @@ export default {
   name: "BurgerCreation",
   mixins: [sharedVueStuff],
   methods: {
-    switchTo: function(newTab) {
-      this.$emit('switchTo', newTab);
-    },
     cancelTo: function(newTab) {
       this.$emit('cancelTo', newTab, "Do you really want to cancel the Creation of your Burger?  All your selections will be lost.");
     },
-    addToOrder: function() {
+    addCreatedBurgerToOrder: function() {
       this.$emit('addCreatedBurgerToOrder');
     }
   }

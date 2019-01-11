@@ -13,7 +13,7 @@ ingredient_id,ingredient_sv,ingredient_en,category,milk_free,gluten_free,vegan,s
 12,bacon,bacon,2,1,1,0,10,bacon.png,
 13,banan,banana,2,1,1,1,5,banane.png,
 14,löjrom,bleak caviar,2,1,1,0,50,bleak_caviar.png,
-15,karamelliserad lök,candied onions,2,1,1,1,5,karam_zwiebeln.png,
+15,karamelliserad lök,candied onions,2,1,1,1,5,karam_zwiebel.png,
 16,cheddar,cheddar cheese,2,0,1,0,10,cheddar.png,
 17,koriander,cilantro,2,1,1,1,5,koriander.png,
 18,coleslaw,coleslaw,2,1,1,0,5,coleslaw.png,

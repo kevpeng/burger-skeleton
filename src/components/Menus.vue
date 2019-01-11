@@ -1,3 +1,4 @@
+<!--
 <template>
   <div>
     <body>
@@ -23,7 +24,7 @@
             <div class="line"></div>
         </div>
         <div class="gridContainer">
-          <!-- Category 3 for Menus in the ingredients.csv file -->
+          <!-- Category 3 for Menus in the ingredients.csv file --->
             <Menu class="gridElement"
                 ref="Menus"
                 v-for="item in premades"
@@ -110,3 +111,4 @@ export default {
 <style scoped>
   @import '~@/css/sharedCSSStuff.css';
 </style>
+-->

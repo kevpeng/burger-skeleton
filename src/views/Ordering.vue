@@ -91,6 +91,8 @@
           :lang="lang"
           :ui-labels="uiLabels"
           :premades="premades"
+          :itemlist="itemlist"
+          :category="category"
           class="tab"
           type="inline-template">
         </component>
@@ -140,21 +142,25 @@ import Cartitem from '@/components/Cartitem.vue'
 import Ingredient from '@/components/Ingredient.vue'
 import IngredientRadio from '@/components/IngredientRadio.vue'
 import OrderItem from '@/components/OrderItem.vue'
+
 import Start from '@/views/Start.vue'
 import SelectionOverview from '@/views/SelectionOverview.vue'
 import Payment from '@/views/PaymentScreen.vue'
 import BurgerCreation from '@/views/BurgerCreation.vue'
-import IngredientsSelection from '@/components/IngredientsSelection.vue'
+
+//import IngredientsSelection from '@/components/IngredientsSelection.vue'
 import Bread from '@/components/Bread.vue'
 import Patty from '@/components/Patty.vue'
 import Toppings from '@/components/Toppings.vue'
 import Sauce from '@/components/Sauce.vue'
-import Menus from '@/components/Menus.vue'
+
+import Items from '@/components/Items.vue'
+/*import Menus from '@/components/Menus.vue'
 import Burgers from '@/components/Burgers.vue'
 import Fries from '@/components/Fries.vue'
 import Drinks from '@/components/Drinks.vue'
-import Salad from '@/components/Salads.vue'
-import Icecream from '@/components/Icecreams.vue'
+import Salads from '@/components/Salads.vue'
+import Icecreams from '@/components/Icecreams.vue'*/
 
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
@@ -169,21 +175,18 @@ export default {
     IngredientRadio,
     Cartitem,
     OrderItem,
+
     Start,
     SelectionOverview,
     Payment,
     BurgerCreation,
-    IngredientsSelection,
+
     Bread,
     Patty,
     Toppings,
     Sauce,
-    Menus,
-    Burgers,
-    Fries,
-    Drinks,
-    Salad,
-    Icecream
+
+    Items
   },
 
   // include stuff that is used in both the ordering system and the kitchen
@@ -193,10 +196,8 @@ export default {
     return {
       //tab/component navigation elements
       currentTab: 'Start',
-      tabs: ['Start', 'SelectionOverview', 'Payment',
-             'BurgerCreation', 'IngredientsSelection',
-             'Bread', 'Patty', 'Toppings', 'Sauce',
-             'Menus', 'Burgers', 'Fries', 'Drinks', 'Salad', 'Icecream'],
+      tabs: ['Start', 'SelectionOverview', 'Payment', 'BurgerCreation',
+             'Bread', 'Patty', 'Toppings', 'Sauce', 'Items'],
 
       //for the self created burger
       chosenIngredients: [],

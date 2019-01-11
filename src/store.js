@@ -10,6 +10,8 @@ export default new Vuex.Store({
     hello: "Hello World!",
     uiLabels: {},
     lang: "en",
+    category: 0,
+    itemlist: {},
     paymentWaitingState: "",
     paymentFinishedState: "",
   },
@@ -25,6 +27,12 @@ export default new Vuex.Store({
     },
     switchLang: function (store, lang){
       store.lang = lang;
+    },
+    switchCategory: function (store, category){
+      store.category = category;
+    },
+    switchList: function (store, itemlist){
+      store.itemlist = itemlist;
     }
   },
   actions: {
