@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Ordering from './views/Ordering.vue'
-// import selectionOverview from '.views/SelectionOverview.vue'
 
 Vue.use(Router)
 
@@ -25,14 +24,6 @@ let router = new Router({
             // this generates a separate chunk (read.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () => import(/* webpackChunkName: "read" */ './views/Kitchen.vue')
-        },
-        {
-            path: '/burgers',
-            meta: {
-                title: 'Burgers',
-            },
-            name: 'burgers',
-            component: () => import(/* webpackChunkName: "read" */ './views/burgers.vue')
         }
     ]
 })

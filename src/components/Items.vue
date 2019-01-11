@@ -4,25 +4,28 @@
       <div class="pageGrid">
         <div class="filterContainer">
             <div class="filter">
-              <!--TODO remove the category, just for debugging!-->
-              <div>{{uiLabels.Filter}} {{category}}:</div>
+              <div>{{uiLabels.Filter}}:</div>
               <div><input type="checkbox" v-model="gluten" value="1">{{uiLabels.glutenfree}}</div>
               <div><input type="checkbox" v-model="vegan" value="1">{{uiLabels.vegan}}</div>
               <div><input type="checkbox" v-model="lactose" value="1">{{uiLabels.lactosefree}}</div>
             </div>
             <div class="line"></div>
         </div>
+
         <div class="gridContainer">
             <Item class="gridElement"
                 ref="Items"
                 v-for="item in filteredArray"
                 v-on:increment="updateSelectedItems()"
+                v-on:pick="updateRadioItems(item)"
                 :lang="lang"
                 :ui-labels="uiLabels"
                 :item="item"
+                :itemlist="itemlist"
                 :key="item.ingredient_id">
             </Item>
         </div>
+
         <footer>
             <button v-on:click="switchTo('SelectionOverview')" class="back"> {{ uiLabels.back }}</button>
             <button v-on:click="addToOrder()" class="add"> {{ uiLabels.add }}</button>
@@ -35,18 +38,16 @@
 <script>
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
-import Item from '@/components/Menu.vue' //TODO change to Item.vue if the file is ready
-import OrderItem from '@/components/OrderItem.vue'
+import Item from '@/components/Item.vue'
 
 export default {
   name: "Items",
 
-  // include stuff that is used in both the ordering system and the kitchen
+  // include stuff that is used on multiple pages
   mixins: [sharedVueStuff],
 
   components: {
-    Item,
-    OrderItem
+    Item
   },
 
   data: function() {
@@ -76,6 +77,16 @@ export default {
   },
 
   methods: {
+    updateRadioItems: function(item) {
+        this.chosenItems = [];
+        var obj = {
+            unit: item,
+            amount: 1,
+            price: item.selling_price,
+            id: Math.floor(Math.random() * Math.floor(9999999999))
+        };
+        this.chosenItems.push(obj);
+    },
     updateSelectedItems: function() {
       this.chosenItems = [];
       for (var i = 0; i < this.$refs.Items.length; i += 1) {
@@ -93,15 +104,15 @@ export default {
     switchTo: function(newTab) {
         //if burger creation, return to burgerCreation
         //categories in ingredients: 1Patty, 2Toppings, 3Sauce, 4Bread
-        console.log("category<=4?: " + (this.category<=4));
-        console.log("itemlist=ingredients?: " + (this.itemlist.length > 30));
         if((this.itemlist.length > 30) && (this.category <= 4)){
             this.$emit('switchTo', 'BurgerCreation');
         }
+
         //else return to selectionOverview
         else {
             this.$emit('switchTo', newTab);
         }
+
         //set all counters to 0. Notice the use of $refs
         // for (i = 0; i < this.$refs.Icecream.length; i += 1) {
         //   this.$refs.Icecream[i].resetCounter();
@@ -112,15 +123,15 @@ export default {
     addToOrder: function() {
         //if burger creation, add to chosenIngredients
         //categories in ingredients: 1Patty, 2Toppings, 3Sauce, 4Bread
-        console.log("category<=4?: " + (this.category<=4));
-        console.log("itemlist=ingredients?: " + (this.itemlist.length > 30));
         if((this.itemlist.length > 30) && (this.category <= 4)){
             this.$emit('addToIngredients', this.chosenItems);            
         }
+
         //else add to selection
         else {
             this.$emit('addToOrder', this.chosenItems);
         }
+
         //set all counters to 0. Notice the use of $refs
         // for (i = 0; i < this.$refs.Icecream.length; i += 1) {
         //   this.$refs.Icecream[i].resetCounter();

@@ -139,28 +139,11 @@
 //use for importing will be used in the template above and also below in
 //components
 import Cartitem from '@/components/Cartitem.vue'
-import Ingredient from '@/components/Ingredient.vue'
-import IngredientRadio from '@/components/IngredientRadio.vue'
-import OrderItem from '@/components/OrderItem.vue'
-
 import Start from '@/views/Start.vue'
 import SelectionOverview from '@/views/SelectionOverview.vue'
-import Payment from '@/views/PaymentScreen.vue'
 import BurgerCreation from '@/views/BurgerCreation.vue'
-
-//import IngredientsSelection from '@/components/IngredientsSelection.vue'
-import Bread from '@/components/Bread.vue'
-import Patty from '@/components/Patty.vue'
-import Toppings from '@/components/Toppings.vue'
-import Sauce from '@/components/Sauce.vue'
-
 import Items from '@/components/Items.vue'
-/*import Menus from '@/components/Menus.vue'
-import Burgers from '@/components/Burgers.vue'
-import Fries from '@/components/Fries.vue'
-import Drinks from '@/components/Drinks.vue'
-import Salads from '@/components/Salads.vue'
-import Icecreams from '@/components/Icecreams.vue'*/
+import Payment from '@/views/PaymentScreen.vue'
 
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
@@ -171,22 +154,12 @@ export default {
   name: 'Ordering',
 
   components: {
-    Ingredient,
-    IngredientRadio,
     Cartitem,
-    OrderItem,
-
     Start,
     SelectionOverview,
-    Payment,
     BurgerCreation,
-
-    Bread,
-    Patty,
-    Toppings,
-    Sauce,
-
-    Items
+    Items,
+    Payment
   },
 
   // include stuff that is used in both the ordering system and the kitchen
@@ -196,8 +169,7 @@ export default {
     return {
       //tab/component navigation elements
       currentTab: 'Start',
-      tabs: ['Start', 'SelectionOverview', 'Payment', 'BurgerCreation',
-             'Bread', 'Patty', 'Toppings', 'Sauce', 'Items'],
+      tabs: ['Start', 'SelectionOverview', 'BurgerCreation', 'Items', 'Payment'],
 
       //for the self created burger
       chosenIngredients: [],
@@ -280,18 +252,17 @@ export default {
     //should only be used in the Patty/Toppings/Sauce/Bread selection !
     //can be called from the components itself with "this.$emit('addToIngredients', ingredients);"
     addToIngredients: function (items) {
-      for (var i=0; i<items.length; i++) {
-        if(items[i].category > 0){
-          for(var j=0; j<this.chosenIngredients.length; j++){
-            if(items[i].category == this.chosenIngredients[j].category){
-              this.chosenIngredients.splice(j, 1);
-              break;
-            }
+      if(this.category > 0){
+        for(var j=0; j<this.chosenIngredients.length; j++){
+          if(this.category == this.chosenIngredients[j].unit['category']){
+            this.chosenIngredientsPrice -= this.chosenIngredients[j].unit['price']; 
+            this.chosenIngredients.splice(j, 1);  
+            break;
           }
         }
-        this.chosenIngredients.push(items[i]);
-        this.chosenIngredientsPrice += +items[i].price;
       }
+      this.chosenIngredients.push(items[i]);
+      this.chosenIngredientsPrice += +items[i].price;      
       this.currentTab = 'BurgerCreation';
     },
 
@@ -359,18 +330,11 @@ export default {
       document.getElementById("myCart").classList.toggle("show");
       //Wrap the order in an object
       var order = {
-        //Todo just testiong values !
           ingredients: this.selection,
           price: this.price
       };
       // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
       this.$store.state.socket.emit('order', {order: order});
-
-      //not needed in the Ordering.vue, but I would leave it to have a reference when needed
-      //set all counters to 0. Notice the use of $refs
-      /*for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
-      }*/
 
       this.price = 0;
       this.selection = [];

@@ -128,34 +128,14 @@ var sharedVueStuff = {
               listname = 'ingredients';
               break;
       }
-      console.log("x " + x + " # listname " + listname);
+
       this.category = x;
+
       if(listname == 'premades'){
         this.itemlist = this.premades;
       }
       else if(listname == 'ingredients'){
         this.itemlist = this.ingredients;
-      }
-      else {
-        alert("List not available. Wrong listname!");
-      }
-      //console.log(this.category);
-      //console.log(this.itemlist);
-    },
-    switchCategory: function (number) {
-      //console.log("switch category number");
-      //this.category = number;
-      //this.$store.state.socket.emit('switchCategory', number);
-    },
-    switchList: function (listname) {
-      //console.log("switch list");
-      if(listname === 'premades'){
-        //this.itemlist = this.premades;
-        //this.$store.state.socket.emit('switchList', this.itemlist);
-      }
-      else if(listname === 'ingredients'){
-        //this.itemlist = this.ingredients;
-        //this.$store.state.socket.emit('switchList', this.itemlist);
       }
       else {
         alert("List not available. Wrong listname!");

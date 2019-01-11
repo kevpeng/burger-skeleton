@@ -28,6 +28,8 @@ export default new Vuex.Store({
     switchLang: function (store, lang){
       store.lang = lang;
     },
+    
+    //TODO maybe switchCategory and switchList can removed
     switchCategory: function (store, category){
       store.category = category;
     },

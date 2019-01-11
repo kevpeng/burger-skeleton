@@ -44,7 +44,6 @@ export default {
       // var elem = document.getElementById("message");
       clearTimeout(timer);
       timer = setTimeout(function() { self.switchpaymentStatus()}, 3000);
-      // console.log(paymentState);
     }
     update();
   }

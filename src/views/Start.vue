@@ -22,9 +22,8 @@ import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default {
     name: 'Start',
-    components: {},
     mixins: [sharedVueStuff], // include stuff that is used in both
-    state: 'start',
+    state: 'start', //TODO where is this used?!
 
     data: function() {
         return {

@@ -106,8 +106,6 @@ export default {
       // }
       //this.price = 0;
       //this.chosenIngredients = [];
-    },
-    TODO_remove_or_addToIngredients: function() {
     }
   }
 }
