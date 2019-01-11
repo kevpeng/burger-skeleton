@@ -49,7 +49,7 @@
 
 <script>
 //import methods and data that are shared between ordering and kitchen views
-import PremadeItem from '@/components/PremadeItem.vue'
+import PremadeItem from '@/components/Item.vue'
 import OrderItem from '@/components/OrderItem.vue'
 
 export default {
