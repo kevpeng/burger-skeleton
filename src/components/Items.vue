@@ -78,14 +78,14 @@ export default {
 
   methods: {
     updateRadioItems: function(item) {
-        this.chosenItems = [];
-        var obj = {
-            unit: item,
-            amount: 1,
-            price: item.selling_price,
-            id: Math.floor(Math.random() * Math.floor(9999999999))
-        };
-        this.chosenItems.push(obj);
+      this.chosenItems = [];
+      var obj = {
+          unit: item,
+          amount: 1,
+          price: item.selling_price,
+          id: Math.floor(Math.random() * Math.floor(9999999999))
+      };
+      this.chosenItems.push(obj);
     },
     updateSelectedItems: function() {
       this.chosenItems = [];

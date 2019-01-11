@@ -1,18 +1,20 @@
 <template>
 	<div>
-		<div v-if="item.name == 'Created Burger'">
-			{{1}} x {{item.name}}:
+		<!-- createdBurger -->
+		<div v-if="(compareItemNameWithCreatedBurger)">
+			{{item.amount}} x {{item.unit['ingredient_'+lang]}}:
 			<!-- {{item.ingredients}} -->
-			<div v-for="all in item.ingredients">
-				<div v-for="i in all">
-					{{i["ingredient_"+lang]}}
-				</div>
+			<div v-for="ingredient in item.ingredients" 
+        :key="ingredient['ingredient_'+lang]">
+					{{ingredient.unit["ingredient_"+lang]}}
 			</div>
 			{{item.price}} SEK   <button type="button" class="b" v-on:click="select()">X</button>
 		</div>
-		<div v-if="item.name != 'Created Burger'">
-			{{item.amount}} x {{item.unit["ingredient_"+lang]}}
-			<div v-if="item.category != -1">({{item.unit["category"]}})</div>
+
+		<!-- not createdBurger -->
+		<div v-if="(!compareItemNameWithCreatedBurger)">
+			{{item.amount}} x {{item.unit['ingredient_'+lang]}}
+			<div v-if="item.category != -1">({{item.unit['category']}})</div>
 			<div v-if="item.category == -1">({{item.category}})</div>:
 			{{item.price}} SEK   <button type="button" class="b" v-on:click="select()">X</button>
 		</div>
@@ -25,6 +27,25 @@ export default {
     uiLabels: Object,
     item: Object,
     lang: String
+  },
+
+  computed: {
+    getCreatedBurgerTitle: function() {
+      return this.uiLabels['createdBurger'];
+    },
+    compareItemNameWithCreatedBurger: function() {
+      var x = this.item.unit["ingredient_"+this.lang];
+      var y = this.uiLabels.createdBurger;
+      console.log("x" + x + " ### y: " + y);
+      if(x == y){
+        console.log("true");
+        return true;
+      }
+      else {
+        console.log("false");
+        return false;
+      }
+    }
   },
 
   methods: {

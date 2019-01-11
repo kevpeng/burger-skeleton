@@ -31,7 +31,8 @@
                     v-on:click="removeFromOrder(item)"
                     :item="item"
                     :key="item.name"
-                    :lang="lang">
+                    :lang="lang"
+                    :uiLabels="uiLabels">
                   </Cartitem>
                   <hr class="hr">
                   {{this.price}} SEK
@@ -42,7 +43,8 @@
                     v-on:click="removeIngredientFromOrder(item)"
                     :item="item"
                     :key="item.name"
-                    :lang="lang">
+                    :lang="lang"
+                    :uiLabels="uiLabels">
                   </Cartitem>
                   <hr class="hr">
                   {{this.chosenIngredientsPrice}} SEK
@@ -255,14 +257,16 @@ export default {
       if(this.category > 0){
         for(var j=0; j<this.chosenIngredients.length; j++){
           if(this.category == this.chosenIngredients[j].unit['category']){
-            this.chosenIngredientsPrice -= this.chosenIngredients[j].unit['price']; 
+            this.chosenIngredientsPrice -= this.chosenIngredients[j].unit['selling_price']; 
             this.chosenIngredients.splice(j, 1);  
             break;
           }
         }
       }
-      this.chosenIngredients.push(items[i]);
-      this.chosenIngredientsPrice += +items[i].price;      
+      for(var i=0; i<items.length; i++){
+        this.chosenIngredients.push(items[i]);
+        this.chosenIngredientsPrice += items[i].price;
+      }      
       this.currentTab = 'BurgerCreation';
     },
 
@@ -271,7 +275,8 @@ export default {
     addCreatedBurgerToOrder: function() {
       var createdBurger = {
         amount: 1,
-        name: "Created Burger",
+        name: this.uiLabels.createdBurger,
+        unit: {"ingredient_en": "Created Burger", "ingredient_sv": "Skapad Burger"},
         price: this.chosenIngredientsPrice,
         ingredients: this.chosenIngredients
       };
