@@ -1,16 +1,36 @@
 <template>
-  <div class="burger">
-      <div class="burgerTitle" >
+  <div class="premadeItem">
+      <div class="premadeItemTitle" >
         {{item["ingredient_"+lang]}}
       </div>
       <img class="image" :src="require('../assets/' + item.picture)" /> <br>
-      <div class="burgerIngredients" >
-        {{item["bread_"+lang]}}<br>
-        {{item["patty_"+lang]}}<br>
-        {{item["toppingOne_"+lang]}},
-        {{item["toppingTwo_"+lang]}},
-        {{item["toppingThree_"+lang]}}<br>
-        {{item["sauce_"+lang]}}
+      <div class="premadeItemIngredients" >
+
+        <!-- Burger -->
+        <div v-if="item['category'] == 2">
+          {{item["bread_"+lang]}}<br>
+          {{item["patty_"+lang]}}<br>
+          {{item["toppingOne_"+lang]}},
+          {{item["toppingTwo_"+lang]}},
+          {{item["toppingThree_"+lang]}}<br>
+          {{item["sauce_"+lang]}}
+        </div>
+
+        <!-- Salad -->
+        <div v-if="item['category'] == 1">
+          {{item["toppingOne_"+lang]}},
+          {{item["toppingTwo_"+lang]}},
+          {{item["toppingThree_"+lang]}}<br>
+          {{item["sauce_"+lang]}}
+        </div>
+
+        <!-- Menu -->
+        <div v-if="item['category'] == 3">
+          {{item["fries_"+lang]}}<br>
+          {{item["drink_"+lang]}}<br>
+          {{item["burgerName_"+lang]}}
+        </div>
+
       </div>
         <button class="counter" v-on:click="decrementCounter">-</button>
           {{counter}}
@@ -21,7 +41,7 @@
 </template>
 <script>
 export default {
-  name: 'Burger',
+  name: 'PremadeItem',
   props: {
     item: Object,
     lang: String,
@@ -63,11 +83,11 @@ export default {
   height: 100px;
 }
 
-.burgerTitle{
+.premadeItemTitle{
   font-size: 2.5vw;
   color: #FFE4B5;
 }
-.burgerIngredients{
+.premadeItemIngredients{
   font-size: 1.5vw;
   color: #FFE4B5;
 }
@@ -82,7 +102,7 @@ export default {
   margin-bottom: 2vh;
 }
 
-.burger{
+.premadeItem{
   font-size: 2vw;
   color: #FFE6D2;
 }
@@ -96,11 +116,11 @@ export default {
     font-weight: bold;
   }
 
-  .burger{
+  .premadeItem{
     font-size: 5vw;
   }
 
-  .burgerTitle{
+  .premadeItemTitle{
     font-size: 5vw;
   }
 }

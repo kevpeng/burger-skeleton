@@ -29,7 +29,7 @@
             <div class="line"></div>
         </div>
         <div class="gridContainer">
-            <Ingredient class="gridElement"
+            <Item class="gridElement"
                 ref="Toppings"
                 v-for="item in ingredients"
                 v-if="item.category == 2 &
@@ -41,7 +41,7 @@
                 :ui-labels="uiLabels"
                 :item="item"
                 :key="item.ingredient_id">
-            </Ingredient>
+            </Item>
         </div>
         <footer>
             <button v-on:click="switchTo('BurgerCreation')" class="back"> {{ uiLabels.back }}</button>
@@ -54,13 +54,13 @@
 
 <script>
 //import methods and data that are shared between ordering and kitchen views
-import Ingredient from '@/components/Ingredient.vue'
+import Item from '@/components/Item.vue'
 import OrderItem from '@/components/OrderItem.vue'
 
 export default {
   name: "Toppings",
   components: {
-    Ingredient,
+    Item,
     OrderItem
   },
 

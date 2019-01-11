@@ -2,8 +2,6 @@
   <div class="menu">
       <div class="menuTitle" >
         {{item["ingredient_"+lang]}}
-        <!-- {{["burger_"+lang]}} -->
-        <!-- {{["burger_en"]}} -->
       </div>
       <img class="image" :src="require('../assets/' + item.picture)" /> <br>
       <div class="menuIngredients" >
