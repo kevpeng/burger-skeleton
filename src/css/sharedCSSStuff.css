@@ -68,7 +68,7 @@ footer {
   border-radius: 10px;
   font-family: 'Amaranth';
   font-weight: bold;
-  font-size: calc(1vw + 2vh);
+  font-size: calc(1.5vw + 1.5vh);
   position: absolute;
   width: 20%;
   height: 6vh;
@@ -82,7 +82,6 @@ footer {
 .add {
   right: 0;
   margin-right: 3%;
-  font-size: calc(1vw + 1.5vh);
 }
 
 button:hover {

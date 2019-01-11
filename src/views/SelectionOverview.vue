@@ -94,6 +94,11 @@ export default {
   height: calc(10vh + 2vw);
   font-size: calc(2.5vw + 2.5vh);
 }
+
+.add {
+  font-size: calc(2vw + 1vh);
+
+}
 @media screen and (max-width:818px){
   #forward{
     font-size: calc(0.5vw + 2vh);
