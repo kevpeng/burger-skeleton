@@ -84,7 +84,8 @@ export default {
     updateSelectedPatty: function(item) {
       this.chosenPatty = [];
       var obj = {
-          unit: item,
+          nameEN: item["ingredient_en"],
+          nameSV: item["ingredient_sv"],
           amount: 1,
           price: item.selling_price,
           category: item.category,

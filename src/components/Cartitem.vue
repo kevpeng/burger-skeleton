@@ -1,21 +1,6 @@
 <template>
 	<div>
-		<div v-if="item.name == 'Created Burger'">
-			{{1}} x {{item.name}}:
-			<!-- {{item.ingredients}} -->
-			<div v-for="all in item.ingredients">
-				<div v-for="i in all">
-					{{i["ingredient_"+lang]}}
-				</div>
-			</div>
-			{{item.price}} SEK   <button type="button" class="b" v-on:click="select()">X</button>
-		</div>
-		<div v-if="item.name != 'Created Burger'">
-			{{item.amount}} x {{item.unit["ingredient_"+lang]}}
-			<div v-if="item.category != -1">({{item.unit["category"]}})</div>
-			<div v-if="item.category == -1">({{item.category}})</div>:
-			{{item.price}} SEK   <button type="button" class="b" v-on:click="select()">X</button>
-		</div>
+		{{item.amount}} x <div v-if="lang == 'en'">{{item.nameEN}}</div> <div v-if="lang == 'sv'">{{item.nameSV}}</div> ({{item.category}}): {{item.price}} SEK   <button type="button" class="b" v-on:click="select()">X</button>
 	</div>
 </template>
 <script>
