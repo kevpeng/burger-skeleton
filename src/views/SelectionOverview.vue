@@ -3,7 +3,7 @@
     <body>
       <div class="pageGrid">
         <div class="gridContainer">
-          <button class="gridElement line" v-on:click="switchTo('BurgerCreation')">{{category}} {{uiLabels.createOwnBurger}} </button>
+          <button class="gridElement line" v-on:click="switchTo('BurgerCreation')">{{uiLabels.createOwnBurger}} </button>
           <div class="line"></div>
           <button class="gridElement" v-on:click="switchToItems('Menus')"> {{uiLabels.menus}} </button>
           <button class="gridElement" v-on:click="switchToItems('Burgers')"> {{uiLabels.burgers}} </button>

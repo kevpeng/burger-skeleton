@@ -205,7 +205,14 @@ export default {
       function refresh() {
           clearTimeout(timer);
           timer = setTimeout(function () {
-              window.location.reload();
+              var answer = confirm("Would you like to continue your order?");
+              if(!answer) {
+                  window.location.reload();
+              }
+              else {
+                  // window.location.reload();
+              }
+
           }.bind(this), 60000);
       }
       window.addEventListener('mousemove', refresh, true);
