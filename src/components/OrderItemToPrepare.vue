@@ -7,7 +7,6 @@
       :order-id="orderId"
       :order="order">
     </OrderItem>
-    {{order.status}}
     <p v-if="order.status ==='not-started'">
       {{uiLabels.status_notstarted}}
     </p>

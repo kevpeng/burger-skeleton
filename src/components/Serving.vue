@@ -13,7 +13,7 @@
                 :key="key">
             </OrderItemToPrepare>
             <hr>
-            <p class="qNr">#{{orders.range()}}<!--getLength(orders, "not-started")}}--></p>
+            <p class="qNr">#{{getLength(orders, "not-started")}}<!--getLength(orders, "not-started")}}--></p>
         </div>
         <div class="queue">
             <h1>{{ uiLabels.ordersTrending }}</h1>
