@@ -1,37 +1,35 @@
 <template>
   <div>
-    <body>
-      <div class="pageGrid">
-        <div class="filterContainer">
-            <div class="filter">
-              <div>{{uiLabels.Filter}}:</div>
-              <div><input type="checkbox" v-model="gluten" value="1">{{uiLabels.glutenfree}}</div>
-              <div><input type="checkbox" v-model="vegan" value="1">{{uiLabels.vegan}}</div>
-              <div><input type="checkbox" v-model="lactose" value="1">{{uiLabels.lactosefree}}</div>
-            </div>
-            <div class="line"></div>
-        </div>
-
-        <div class="gridContainer">
-            <Item class="gridElement"
-                ref="Items"
-                v-for="item in filteredArray"
-                v-on:increment="updateSelectedItems()"
-                v-on:pick="updateRadioItems(item)"
-                :lang="lang"
-                :ui-labels="uiLabels"
-                :item="item"
-                :itemlist="itemlist"
-                :key="item.ingredient_id">
-            </Item>
-        </div>
-
-        <footer>
-            <button v-on:click="switchTo('SelectionOverview')" class="back"> {{ uiLabels.back }}</button>
-            <button v-on:click="addToOrder()" class="add"> {{ uiLabels.add }}</button>
-        </footer>
+    <div class="pageGrid">
+      <div class="filterContainer">
+          <div class="filter">
+            <div>{{uiLabels.Filter}}:</div>
+            <div><input type="checkbox" v-model="gluten" value="1" scale="1">{{uiLabels.glutenfree}}</div>
+            <div><input type="checkbox" v-model="vegan" value="1" scale="2">{{uiLabels.vegan}}</div>
+            <div><input type="checkbox" v-model="lactose" value="1" scale="3">{{uiLabels.lactosefree}}</div>
+          </div>
+          <div class="line"></div>
       </div>
-    </body>
+
+      <div class="gridContainer">
+          <Item class="gridElement"
+              ref="Items"
+              v-for="item in filteredArray"
+              v-on:increment="updateSelectedItems()"
+              v-on:pick="updateRadioItems(item)"
+              :lang="lang"
+              :ui-labels="uiLabels"
+              :item="item"
+              :itemlist="itemlist"
+              :key="item.ingredient_id">
+          </Item>
+      </div>
+
+      <footer>
+          <button v-on:click="switchTo('SelectionOverview')" class="back"> {{ uiLabels.back }}</button>
+          <button v-on:click="addToOrder()" class="add"> {{ uiLabels.add }}</button>
+      </footer>
+    </div>
   </div>
 </template>
 
@@ -112,13 +110,6 @@ export default {
         else {
             this.$emit('switchTo', newTab);
         }
-
-        //set all counters to 0. Notice the use of $refs
-        // for (i = 0; i < this.$refs.Icecream.length; i += 1) {
-        //   this.$refs.Icecream[i].resetCounter();
-        // }
-        //this.price = 0;
-        //this.chosenIngredients = [];
     },
     addToOrder: function() {
         //if burger creation, add to chosenIngredients
@@ -131,13 +122,6 @@ export default {
         else {
             this.$emit('addToOrder', this.chosenItems);
         }
-
-        //set all counters to 0. Notice the use of $refs
-        // for (i = 0; i < this.$refs.Icecream.length; i += 1) {
-        //   this.$refs.Icecream[i].resetCounter();
-        // }
-        //this.price = 0;
-        //this.chosenIngredients = [];
     }
   }
 }

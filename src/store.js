@@ -11,13 +11,14 @@ export default new Vuex.Store({
     uiLabels: {},
     lang: "en",
     category: 0,
-    itemlist: {},
-    paymentWaitingState: "",
-    paymentFinishedState: "",
+    categoryName: '',
+    itemlist: {}
   },
+
   getters: {
     getSocket: state => state.socket
   },
+
   mutations: {
     changeHello: function(state, msg){
       state.hello = msg;
@@ -29,7 +30,7 @@ export default new Vuex.Store({
       store.lang = lang;
     },
     
-    //TODO maybe switchCategory and switchList can removed
+    //needed to dynamically adapt categories and list, to show different representations of Items.vue
     switchCategory: function (store, category){
       store.category = category;
     },
@@ -37,6 +38,7 @@ export default new Vuex.Store({
       store.itemlist = itemlist;
     }
   },
+  
   actions: {
 
   }

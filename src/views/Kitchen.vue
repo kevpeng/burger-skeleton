@@ -1,111 +1,80 @@
 <template>
-<div id="orders">
-  <div class="kitchen_container">
-    <div class="navigation">
-        <button v-on:click="switchKitchenTab()"><p class="t">TAB</p></button>
-        <button :class="[lang]" v-on:click="switchLang()"></button>
-        <hr>
-        <h3 v-if="kitchenState === 'serving'"> {{ uiLabels.serving }}</h3>
-        <h3 v-if="kitchenState === 'cooking'"> {{ uiLabels.cooking }}</h3>
-        <br>
-        <h3> {{ this.$store.state.kitchenTabOpposite }}</h3>
-    </div>
-    <div class="tab">
-      <div>
-        <Serving v-if="kitchenState === 'serving'"></Serving>
+  <div id="orders">
+    <div class="kitchen_container">
+      <div class="navigation">
+          <button v-on:click="switchKitchenTab()"><p class="t">TAB</p></button>
+          <button :class="[lang]" v-on:click="switchLang()"></button>
+          <hr>
+          <h3 v-if="kitchenState === 'serving'"> {{ uiLabels.serving }}</h3>
+          <h3 v-if="kitchenState === 'cooking'"> {{ uiLabels.cooking }}</h3>
+          <br>
+          <h3> {{ this.$store.state.kitchenTabOpposite }}</h3>
       </div>
-      <div>
-        <Cooking v-if="kitchenState === 'cooking'"></Cooking>
+      <div class="tab">
+        <div>
+          <Serving 
+            v-if="kitchenState === 'serving'"
+            v-on:start="markStart"
+            v-on:done="markDone"
+            v-on:remove="markRemoved">
+          </Serving>
+        </div>
+        <div>
+          <Cooking 
+            v-if="kitchenState === 'cooking'"
+            v-on:start="markStart"
+            v-on:done="markDone"
+            v-on:remove="markRemoved">
+          </Cooking>
+        </div>
       </div>
     </div>
   </div>
-  <!--hr>
-  <h1>{{ uiLabels.orders }}</h1>
-  <div>
-    <OrderItemToPrepare
-      v-for="(order, key) in orders"
-      v-if="order.status !== 'done'"
-      v-on:done="markDone(key)"
-      :order-id="key"
-      :order="order"
-      :ui-labels="uiLabels"
-      :lang="lang"
-      :key="key">
-    </OrderItemToPrepare>
-  </div>
-  <h1>{{ uiLabels.ordersFinished }}</h1>
-  <div>
-    <OrderItem
-      v-for="(order, key) in orders"
-      v-if="order.status === 'done'"
-      :order-id="key"
-      :order="order"
-      :lang="lang"
-      :ui-labels="uiLabels"
-      :key="key">
-    </OrderItem>
-  </div-->
-</div>
 </template>
+
 <script>
-import OrderItem from '@/components/OrderItem.vue'
 import Serving from '@/components/Serving.vue'
 import Cooking from '@/components/Cooking.vue'
-import OrderItemToPrepare from '@/components/OrderItemToPrepare.vue'
 
 //import methods and data that are shared between ordering and kitchen views
 import sharedVueStuff from '@/components/sharedVueStuff.js'
 
 export default {
-  name: 'Kitchen', //was 'Ordering' before
+  name: 'Kitchen',
   components: {
     Serving,
-    Cooking,
-    OrderItem,
-    OrderItemToPrepare
+    Cooking
   },
-  mixins: [sharedVueStuff], // include stuff that is used in both
+
+  mixins: [sharedVueStuff], //include the orders that are used in both
                             //the ordering system and the kitchen
+  
   data: function(){
     return {
-      chosenIngredients: [],
       kitchenState: 'serving',
       kitchenStateOpposite: 'cooking',
     }
   },
-  computed: {
-    //load stuff from $store.state.xyz
 
-  //   countBeef100: funtion(){
-  //     return countNumberOfIngredients(2);
-  //   },
-  //   countBeen: funtion(){
-  //     return countNumberOfIngredients(1);
-  //   }
-  },
   methods: {
     switchKitchenTab: function () {
       var tmp = this.kitchenState ;
       this.kitchenState = this.kitchenStateOpposite;
       this.kitchenStateOpposite = tmp;
     },
+    markStart: function (orderid) {
+      this.$store.state.socket.emit("orderStarted", orderid);
+    },
     markDone: function (orderid) {
       this.$store.state.socket.emit("orderDone", orderid);
     },
-    /*countNumberOfIngredients: function(id){
-      let counter = 0;
-      for(let order in this.orders){
-        for(let i = 0; i < this.orders[order].ingredients.length; i += 1){
-          if(this.orders[order].ingredients[i].ingredient_id === id){
-            counter += 1;
-          }
-        }
-      }
-      return counter;
-    }*/
+    markRemoved: function (orderid) {
+      this.$store.state.socket.emit("orderRemoved", orderid);
+    }
   }
 }
 </script>
+
 <style scoped>
 	#orders {
     background-color: beige;
@@ -114,7 +83,6 @@ export default {
   .kitchen_container {
     display: grid;
     grid-template-columns: 5vmax 95vmax;
-    grid-template-rows: 100vh;
     }
 
   .navigation {
@@ -123,6 +91,7 @@ export default {
   }
 
   .tab {
+    height: 100vh;
   }
 
   h3 {
@@ -153,31 +122,12 @@ export default {
 
   /* these 2 classes are used to select language flag. */
   .sv {
-      background: #8b4513 url('~@/assets/SV-select.png') no-repeat right 50% top 50%;
-      background-size: 80%;
-  }
-  .en {
       background: #8b4513 url('~@/assets/ENG-select.png') no-repeat right 50% top 50%;
       background-size: 80%;
   }
+  .en {
+      background: #8b4513 url('~@/assets/SV-select.png') no-repeat right 50% top 50%;
+      background-size: 80%;
+  }  
   /*---------END BUTTON---------*/
-  /*
-
-    <img :src="getImage(item.imagepath)">
-    in methods-vue:
-    getImage: function(path){
-      return required("../assets/" + path); //provide "missing picture" as default
-    }
-
-  v-show="state === "start" "
-    v-if: item.category==1
-
-  v-show="state === "veggies" "
-    v-if: item.category==2
-    button v-if="state == "start" " v-onclick: "toveggies"
-
-    toveggies function(){
-        this.state = "veggies";
-    }
-  */
 </style>

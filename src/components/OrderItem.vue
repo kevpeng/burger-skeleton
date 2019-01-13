@@ -1,7 +1,14 @@
 <template>
 	<div>
-		{{orderId}} {{order.type}} {{uiLabels.ingredients}}: {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(", ") }}
-	</div>
+    <br>
+		#{{orderId}} {{order.type}} 
+    <br>
+    {{uiLabels.ingredients}}: 
+    <div v-for="ingredient in order.ingredients" 
+      :key="ingredient.id">
+      {{ingredient["amount"]}}x {{ingredient.unit["ingredient_"+lang]}}<br>
+    </div>
+  </div>
 </template>
 <script>
 export default {

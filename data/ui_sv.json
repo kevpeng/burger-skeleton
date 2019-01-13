@@ -15,6 +15,7 @@
   "placeOrder" : "Beställ",
   "sideorders" : "Tillbehör",
   "ingredients" : "Ingredienser",
+  "start" : "Börja",
   "ready" : "Klart",
   "order" : "Min burgare",
   "language" : "English",
@@ -61,12 +62,16 @@
   "Burgers": "Burgare",
   "Fries": "Frites",
   "Drinks": "Drycker",
-  "Salad": "Sallader",
-  "Icecream": "Glassar",
+  "Salads": "Sallader",
+  "Icecreams": "Glassar",
   "continue": "Fortsätta",
   "glutenfree": "Glutenfri",
   "lactosefree": "Lactosefri",
   "vegan": "Vegan",
   "Filter": "Filter",
-  "createdBurger": "Skapad Burger"
+  "createdBurger": "Skapad Burger",
+  "status_notstarted": "inte startat",
+  "status_started": "startade",
+  "status_done": "färdigt",
+  "status_removed": "avlägsnas"
 }

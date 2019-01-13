@@ -40,25 +40,27 @@ io.on('connection', function (socket) {
   let uiLang = "en";
   socket.on('pageLoaded', function () {
     socket.emit('initialize', { orders: data.getAllOrders(),
-                            uiLabels: data.getUILabels(uiLang),
-                            ingredients: data.getIngredients(),
-                            premades: data.getPremades() });
+                                uiLabels: data.getUILabels(uiLang),
+                                ingredients: data.getIngredients(),
+                                premades: data.getPremades() });
   });
 
-  // When someone orders something
+  // When someone orders something - called in ordering on placeOrder()
   socket.on('order', function (order) {
-    var orderIdAndName = data.addOrder(order);
+    var orderIdAndName = data.addOrder(order); //handled in dataHandler.js
     // send updated info to all connected clients, note the use of io instead of socket
     socket.emit('orderNumber', orderIdAndName);
     io.emit('currentQueue', { orders: data.getAllOrders(),
-                          ingredients: data.getIngredients(),
-                          premades: data.getPremades() });
+                              ingredients: data.getIngredients(),
+                              premades: data.getPremades() });
   });
+
   // send UI labels in the chosen language
   socket.on('switchLang', function (lang) {
     uiLang = lang;
     socket.emit('switchLang', data.getUILabels(lang));
   });
+
   // when order is marked as done, send updated queue to all connected clients
   socket.on('orderDone', function (orderId) {
     data.markOrderDone(orderId);
@@ -72,6 +74,11 @@ io.on('connection', function (socket) {
 
   socket.on('orderNotStarted', function (orderId) {
     data.markOrderNotStarted(orderId);
+    io.emit('currentQueue', {orders: data.getAllOrders() });
+  });
+
+  socket.on('orderRemoved', function (orderId) {
+    data.markOrderRemoved(orderId);
     io.emit('currentQueue', {orders: data.getAllOrders() });
   });
 

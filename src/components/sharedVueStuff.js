@@ -4,12 +4,10 @@
 var sharedVueStuff = {
   data: function () {
     return {
-      orders: {},
-      ingredients: {},
-      premades: {},
-      paymentState: ''
+      orders: {}
     }
   },
+
   computed: {
     uiLabels: function () {
       return this.$store.state.uiLabels;
@@ -39,6 +37,7 @@ var sharedVueStuff = {
       }
     }
   },
+
   created: function () {
     this.$store.state.socket.emit('pageLoaded');
     this.$store.state.socket.on('initialize', function (data) {
@@ -63,6 +62,7 @@ var sharedVueStuff = {
       }
     }.bind(this));
   },
+
   methods: {
     switchLang: function () {
       if (this.lang === "en") {
@@ -83,6 +83,7 @@ var sharedVueStuff = {
       this.$emit('switchTo', 'Items');
       var x = 0;
       var listname = '';
+      this.$store.state.categoryName = newTab;
       switch (newTab) {
         //ingredients
         case 'Bread': 

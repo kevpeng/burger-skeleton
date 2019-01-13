@@ -41,16 +41,15 @@
       <input type="radio" name="radioButton" class="counter" scale="1.5" v-on:click="pickRadioItem()">
     </div>
 
-    <!-- Counter buttons formultiple choice items -->
+    <!-- Counter buttons for multiple choice items -->
     <div v-if="itemlist.length < 30 
           || item['category'] == 2 
           || item['category'] >= 5">
       <button class="counter" v-on:click="decrementCounter">-</button>
-        {{counter}}
+      {{counter}}
       <button class="counter" v-on:click="incrementCounter">+</button> 
     </div>
 
-    <br>
     {{uiLabels.price}}{{item.selling_price}} kr <br>
     {{uiLabels.stock}}{{item.stock}}
   </div>
@@ -75,8 +74,8 @@ export default {
 
   methods: {
     pickRadioItem: function () {
-      // sending 'increment' message to parent component or view so that it
-      // can catch it with v-on:increment in the component declaration
+      // sending 'pick' message to parent component or view so that it
+      // can catch it with v-on:pick in the component declaration
       this.$emit('pick', this.item);
     },
     incrementCounter: function () {
@@ -94,8 +93,8 @@ export default {
       }
     },
     getImage: function(path){
-     return "../assets/" + path; //TODO provide "missing picture" as default
-   },
+      return "../assets/" + path; //TODO provide "missing picture" as default
+    },
     resetCounter: function () {
       this.counter = 0;
     }

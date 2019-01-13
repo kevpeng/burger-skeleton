@@ -1,11 +1,14 @@
 <template>
   <div id="ordering">
+
     <head>
       <meta charset="utf-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
     </head>
+
     <div class="container">
+
       <div class="header">
         <div class="cancel">
           <button :class="['btn_header', 'btn_cancel']" v-on:click="cancel()"></button>
@@ -25,10 +28,11 @@
             <div class="cartGrid">
               <div v-if="selection.length > 0 || chosenIngredients.length > 0">
                 <div class="selected">
+                  
                   {{uiLabels.yourOrder}}:
                   <Cartitem class="selection"
                     v-for="item in selection"
-                    v-on:click="removeFromOrder(item)"
+                    v-on:remove="removeFromOrder(item)"
                     :item="item"
                     :key="item.name"
                     :lang="lang"
@@ -37,28 +41,28 @@
                   <hr class="hr">
                   {{this.price}} SEK
                   <hr>
+                  
                   {{uiLabels.chosenIngredients}}
                   <Cartitem class="selection"
                     v-for="item in chosenIngredients"
-                    v-on:click="removeIngredientFromOrder(item)"
+                    v-on:remove="removeIngredientFromOrder(item)"
                     :item="item"
                     :key="item.name"
                     :lang="lang"
                     :uiLabels="uiLabels">
                   </Cartitem>
+                  
                   <hr class="hr">
                   {{this.chosenIngredientsPrice}} SEK
                 </div>
+
                 <div class="payment">
                   <hr class="hr_sum">
                   <b>{{uiLabels.sum}}: {{this.chosenIngredientsPrice+this.price}} SEK</b>
                   <br>
-                  <!-- TO DO: blur background, gray buttons out
-                  add code to print the items with a delete/add (-/+) button -->
-                <button class="payButton"
-                        v-on:click="placeOrder()">
-                  {{ uiLabels.pay }}
-                </button>
+                  <button class="payButton" v-on:click="placeOrder()">
+                    {{ uiLabels.pay }}
+                  </button>
                 </div>
 
               </div>
@@ -70,7 +74,7 @@
         </div>
       </div>
 
-      <div class="navigation">
+      <!--div class="navigation">
         <button
           v-for="tab in tabs"
           v-bind:key="tab"
@@ -78,7 +82,8 @@
           v-on:click="currentTab = tab">
           {{ tab }}
         </button>
-      </div>
+      </div-->
+
       <div class="page">
         <component
           v-bind:is="currentTabComponent"
@@ -89,10 +94,8 @@
           v-on:toggleCart="toggleCart"
           v-on:cancelTo="cancelTo"
           v-on:addCreatedBurgerToOrder="addCreatedBurgerToOrder"
-          :ingredients="ingredients"
           :lang="lang"
           :ui-labels="uiLabels"
-          :premades="premades"
           :itemlist="itemlist"
           :category="category"
           class="tab"
@@ -100,43 +103,11 @@
         </component>
       </div>
 
-      <!--div>
-        <img class="example-panel" src="@/assets/exampleImage.jpg">
-        <button v-on:click="switchLang()">{{ uiLabels.language }}</button>
-
-        <h1>{{ uiLabels.ingredients }}</h1>
-
-        <Ingredient
-          ref="ingredient"
-          v-for="item in ingredients"
-          v-on:increment="addToOrder(item)"
-          :item="item"
-          :lang="lang"
-          :key="item.ingredient_id">
-        </Ingredient>
-
-        <h1>{{ uiLabels.order }}</h1>
-        {{ chosenIngredients.map(item => item["ingredient_"+lang]).join(', ') }}, {{ price }} kr
-        <button v-on:click="placeOrder()">{{ uiLabels.placeOrder }}</button>
-
-        <h1>{{ uiLabels.ordersInQueue }}</h1>
-        <div>
-          <OrderItem
-            v-for="(order, key) in orders"
-            v-if="order.status !== 'done'"
-            :order-id="key"
-            :order="order"
-            :ui-labels="uiLabels"
-            :lang="lang"
-            :key="key">
-          </OrderItem>
-        </div>
-      </div-->
     </div>
   </div>
 </template>
-<script>
 
+<script>
 //import the components that are used in the template, the name that you
 //use for importing will be used in the template above and also below in
 //components
@@ -144,7 +115,7 @@ import Cartitem from '@/components/Cartitem.vue'
 import Start from '@/views/Start.vue'
 import SelectionOverview from '@/views/SelectionOverview.vue'
 import BurgerCreation from '@/views/BurgerCreation.vue'
-import Items from '@/components/Items.vue'
+import Items from '@/views/Items.vue'
 import Payment from '@/views/PaymentScreen.vue'
 
 //import methods and data that are shared between ordering and kitchen views
@@ -167,9 +138,9 @@ export default {
   // include stuff that is used in both the ordering system and the kitchen
   mixins: [sharedVueStuff],
 
-  data: function() { //Not that data is a function!
+  data: function() { //Note that data is a function!
     return {
-      //tab/component navigation elements
+      //component navigation elements
       currentTab: 'Start',
       tabs: ['Start', 'SelectionOverview', 'BurgerCreation', 'Items', 'Payment'],
 
@@ -180,7 +151,7 @@ export default {
       //for all selected items (before they get ordered)
       selection: [],
       price: 0,
-      orderNumber: "",
+      orderNumber: "", //TODO order number needed?!
     }
   },
 
@@ -190,17 +161,21 @@ export default {
       return this.currentTab;
     },
     currentTabName: function () {
+      if(this.currentTab == 'Items'){
+        return this.uiLabels[(this.$store.state.categoryName)];
+      }
       return this.uiLabels[(this.currentTab)];
     }
   },
 
   created: function () {
-    //Todo explain what this function is doing
+    //TODO explain what this function is doing (was already given by the teacher!)
     this.$store.state.socket.on('orderNumber', function (data) {
       this.orderNumber = data;
     }.bind(this));
 
       // refreshes page after 1 minute
+      // TODO add a confirm window to reset counter (check Start.vue for a hint)
       var timer = null;
       function refresh() {
           clearTimeout(timer);
@@ -271,7 +246,7 @@ export default {
     },
 
     //to add the chosenIngredients of the created burger to the overall selection
-    //should only be used in the BurgerCreation tab
+    //should only be used in the BurgerCreation page
     addCreatedBurgerToOrder: function() {
       var createdBurger = {
         amount: 1,
@@ -298,10 +273,10 @@ export default {
       }
       this.currentTab = 'SelectionOverview';
     },
-    //to delete selected item directly from the order
-    //should only be used for all NOT self-created-burger items !
+
+    //to delete a selected item directly from the selection in the cart
+    //should only be used for all selection items !
     removeFromOrder: function (item) {
-      // var i = this.selection.indexOf(item.id);
       var i = this.selection.findIndex(s => s.id === item.id);
       if(item.amount == 1){
         this.selection.splice(i, 1);
@@ -313,10 +288,10 @@ export default {
         this.selection[i].amount -= 1;
       }
     },
-    //to delete an ingredient from the self created burger
-    //should only be used in the Patty/Toppings/Sauce/Bread selection !
+
+    //to delete an ingredient directly from the chosenIngredients in the cart
+    //should only be used for all chosenIngredients items !
     removeIngredientFromOrder: function (item) {
-      // var i = this.selection.indexOf(item.id);
       var i = this.chosenIngredients.findIndex(s => s.id === item.id);
       if(item.amount == 1){
         this.chosenIngredients.splice(i, 1);
@@ -329,8 +304,7 @@ export default {
       }
     },
 
-    //to submit the order
-    //should only be used in SelectionOverview and the Cart!
+    //to submit the order; should only be used in the Cart!
     placeOrder: function () {
       document.getElementById("myCart").classList.toggle("show");
       //Wrap the order in an object
@@ -348,63 +322,58 @@ export default {
       this.currentTab = 'Payment';
     },
 
-    //Todo write a short description of what the function does
-    //
     toggleCart: function () {
-        // 1. adding an overlay on the box
-        // 2. blur the background
-        // 3. include the cart items << need to determine proper data structure first. >>
-        // 4. if cart is empty, say "cart is empty"
-        // 5. purchase button
-        // 6. gray out the buttons on footer
-        // 7. (optional) add a red 'X' at top left to show you can exit
         document.getElementById("myCart").classList.toggle("show");
     }
-     // v-click-outside="outside" @click="inside"
-    // outside: function(e) {
-    // 	this.clickOutside += 1
-    //     console.log('clicked outside!')
-    //     document.getElementById("myCart").classList.toggle("show");
-    //   },
-    //   inside: function(e) {
-    //   this.clickInside += 1
-    //     console.log('clicked inside!')
-    //   }
+    
+  /*
+  v-click-outside="outside" @click="inside"
+    outside: function(e) {
+    	this.clickOutside += 1
+        console.log('clicked outside!')
+        document.getElementById("myCart").classList.toggle("show");
+    },
+    inside: function(e) {
+    this.clickInside += 1
+      console.log('clicked inside!')
+    }
   }
-  // directives: {
-  //   'click-outside': {
-  //     bind: function(el, binding, vNode) {
-  //       // Provided expression must evaluate to a function.
-  //       if (typeof binding.value !== 'function') {
-  //       	const compName = vNode.context.name
-  //         let warn = `[Vue-click-outside:] provided expression '${binding.expression}' is not a function, but has to be`
-  //         if (compName) { warn += `Found in component '${compName}'` }
-  //         console.warn(warn)
-  //       }
-  //       // Define Handler and cache it on the element
-  //       const bubble = binding.modifiers.bubble
-  //       const handler = (e) => {
-  //         if (bubble || (!el.contains(e.target) && el !== e.target)) {
-  //         	binding.value(e)
-  //         }
-  //       }
-  //       el.__vueClickOutside__ = handler
-  //       // add Event Listeners
-  //       document.addEventListener('click', handler)
-	// 		},
-  //     unbind: function(el, binding) {
-  //       // Remove Event Listeners
-  //       document.removeEventListener('click', el.__vueClickOutside__)
-  //       el.__vueClickOutside__ = null
-  //     }
-  //   }
-  // }
+  directives: {
+    'click-outside': {
+      bind: function(el, binding, vNode) {
+        // Provided expression must evaluate to a function.
+        if (typeof binding.value !== 'function') {
+        	const compName = vNode.context.name
+          let warn = `[Vue-click-outside:] provided expression '${binding.expression}' is not a function, but has to be`
+          if (compName) { warn += `Found in component '${compName}'` }
+          console.warn(warn)
+        }
+        // Define Handler and cache it on the element
+        const bubble = binding.modifiers.bubble
+        const handler = (e) => {
+          if (bubble || (!el.contains(e.target) && el !== e.target)) {
+          	binding.value(e)
+          }
+        }
+        el.__vueClickOutside__ = handler
+        // add Event Listeners
+        document.addEventListener('click', handler)
+			},
+      unbind: function(el, binding) {
+        // Remove Event Listeners
+        document.removeEventListener('click', el.__vueClickOutside__)
+        el.__vueClickOutside__ = null
+      }
+    }*/
+  }
 }
 </script>
 
 <style scoped>
 /* scoped in the style tag means that these rules will only apply to elements,
    classes and ids in this template and no other templates. */
+
+/*create "global" variable to use in the specific elements*/
 #ordering {
   --header-scale: 70px;
 }
@@ -458,21 +427,14 @@ button:hover {
 }
 
 /* these 2 classes are used to select language flag. */
-.en {
+.sv {
   background: #8b4513 url('~@/assets/ENG-select.png') no-repeat right 50% top 50%;
   background-size: 80%;
 }
-
-/* swapped the images.. gonna have to take a look at it tomorrow */
-.sv {
+.en {
   background: #8b4513 url('~@/assets/SV-select.png') no-repeat right 50% top 50%;
   background-size: 80%;
 }
-
-/*.cart {
-  position: absolute;
-  display: inline-block;
-}*/
 
 .cart_content {
   display: none;
@@ -520,30 +482,17 @@ button:hover {
 }
 /** HEADER END **/
 
-/*ToDo What is this for?!?*/
+/*for the cart toggle; needs to be down here, otherwise things break!!*/
 .show {
   display: block;
 }
 
-/** PAGE START **/
+/** PAGE - NAVIGATION START ** 
 .navigation {
   margin-top: var(--header-scale);
   max-width: 100vw;
   background-color: aqua;
 }
-
-.page {
-  margin-top: var(--header-scale);
-  height: calc(94vh - 2*var(--header-scale));
-  /*ToDo do not really know why 3x, would have expected only 2x ...hmm...*/
-}
-
-/*.ingredient {
-  border: 1px solid #ccd;
-  padding: 1em;
-  background-image: url('~@/assets/exampleImage.jpg');
-  color: white;
-}*/
 .tab-button {
   cursor: pointer;
   width: 10vw;
@@ -554,7 +503,16 @@ button:hover {
 .tab-button.active {
   background: #e0e0e0;
 }
+/** PAGE - NAVIGATION END **/
+
+
+/** PAGE START **/
+.page {
+  margin-top: var(--header-scale);
+  height: calc(94vh - 2*var(--header-scale));
+}
 /** PAGE END **/
+
 
 /** MEDIA SCALING START **/
 @media screen and (max-width:818px){

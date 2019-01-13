@@ -15,6 +15,7 @@
   "placeOrder" : "Place order",
   "sideorders" : "Side orders",
   "ingredients" : "Ingredients",
+  "start" : "Start",
   "ready" : "Done",
   "order" : "My burger",
   "language" : "Svenska",
@@ -61,12 +62,16 @@
   "Burgers": "Burgers",
   "Fries": "Fries",
   "Drinks": "Drinks",
-  "Salad": "Salads",
-  "Icecream": "Ice creams",
+  "Salads": "Salads",
+  "Icecreams": "Ice creams",
   "continue": "Continue",
   "glutenfree": "Gluten free",
   "lactosefree": "Lactose free",
   "vegan": "Vegan",
   "Filter": "Filter",
-  "createdBurger": "Created Burger"
+  "createdBurger": "Created Burger",
+  "status_notstarted": "not-started",
+  "status_started": "started",
+  "status_done": "done",
+  "status_removed": "removed"
 }

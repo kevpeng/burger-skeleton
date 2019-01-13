@@ -88,6 +88,7 @@ Data.prototype.getOrderNumber = function () {
   return this.currentOrderNumber;
 }
 
+//called from serve.js
 Data.prototype.addOrder = function (order) {
   var orderId = this.getOrderNumber();
   this.orders[orderId] = order.order;
@@ -129,6 +130,10 @@ Data.prototype.markOrderStarted = function (orderId) {
 
 Data.prototype.markOrderNotStarted = function (orderId) {
   this.orders[orderId].status = "not-started";
+};
+
+Data.prototype.markOrderRemoved = function (orderId) {
+  this.orders[orderId].status = "removed";
 };
 
 module.exports = Data;

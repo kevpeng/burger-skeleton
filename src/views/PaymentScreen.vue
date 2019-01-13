@@ -1,31 +1,32 @@
 <template>
   <div>
-    <body>
-      <div class="pageGrid">
-        <div id="message">
-          <h3 v-if="paymentState === 'waiting'"> {{ uiLabels.paymentWaiting }}</h3>
-          <h3 v-if="paymentState === 'paid'"> {{ uiLabels.paymentSuccesful }}</h3>
-          <button v-on:click="switchTo('Start')" class="gridElement button new" id="new" v-if="paymentState === 'paid'"> {{uiLabels.paymentNewOrder}}  </button>
-          <h6> {{this.$store.state.paymentState}} </h6>
-        </div>
-        <footer>
-        </footer>
+    <div class="pageGrid">
+      <div id="message">
+        <h3 v-if="paymentState === 'waiting'">{{uiLabels.paymentWaiting}}</h3>
+        <h3 v-if="paymentState === 'paid'">{{uiLabels.paymentSuccesful}}</h3>
+        <button v-on:click="switchTo('Start')" class="gridElement button new" id="new" v-if="paymentState === 'paid'">{{uiLabels.paymentNewOrder}}</button>
       </div>
-    </body>
+      <footer>
+      </footer>
+    </div>
   </div>
 </template>
 
 <script>
 import sharedVueStuff from '@/components/sharedVueStuff.js'
+
 export default {
   name: 'PaymentScreen',
+
   mixins: [sharedVueStuff],
+
   data: function(){
     return {
       paymentState: 'waiting',
       paymentOppositeState: 'paid',
     }
   },
+
   methods: {
     switchpaymentStatus: function () {
       var tempState = this.paymentState;
@@ -36,12 +37,12 @@ export default {
       this.$emit('switchTo', newTab);
     }
   },
-  /*ToDo Add description of what this is doing! o.O*/
+
+  /*Imitating a payment: change state and text after 3 seconds*/
   created: function() {
     var timer = null;
-    var self = this;
+    var self = this; //needed to referenec eanother method from the same file
     function update() {
-      // var elem = document.getElementById("message");
       clearTimeout(timer);
       timer = setTimeout(function() { self.switchpaymentStatus()}, 3000);
     }
@@ -53,15 +54,13 @@ export default {
 <style scoped>
   @import '~@/css/sharedCSSStuff.css';
 
-body {
-  font-family: 'Amaranth';
-}
 .button{
   width: 90%;
   height: 15vh;
   font-size: calc(2.5vw + 2.5vh);
 }
 #message{
+  font-family: 'Amaranth';
   font-size: calc(5vw + 2.5vh);
 }
 .new{

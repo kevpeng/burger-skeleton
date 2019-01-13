@@ -8,19 +8,21 @@
         :key="ingredient['ingredient_'+lang]">
 					{{ingredient.unit["ingredient_"+lang]}}
 			</div>
-			{{item.price}} SEK   <button type="button" class="b" v-on:click="select()">X</button>
+			{{item.price}} SEK   <button type="button" class="b" v-on:click="remove()">X</button>
 		</div>
 
 		<!-- not createdBurger -->
 		<div v-if="(!compareItemNameWithCreatedBurger)">
 			{{item.amount}} x {{item.unit['ingredient_'+lang]}}
-			<a v-if="item.category != -1">({{item.unit['category']}})</a>
-			<a v-if="item.category == -1">({{item.category}})</a>:
-      <br>
-			{{item.price}} SEK   <button type="button" class="b" v-on:click="select()">X</button>
+			<!--a v-if="item.category != -1">({{item.unit['category']}})</a>
+			<a v-if="item.category == -1">({{item.category}})</a-->
+      :<br>
+			{{item.price}} SEK   <button type="button" class="b" v-on:click="remove()">X</button>
 		</div>
+    
 	</div>
 </template>
+
 <script>
 export default {
   name: 'Cartitem',
@@ -47,23 +49,15 @@ export default {
   },
 
   methods: {
-		select: function () {
-      // sending 'increment' message to parent component or view so that it
-      // can catch it with v-on:increment in the component declaration
-      this.$emit('click', this);
+		remove: function () {
+      // sending 'remove' message to parent component or view so that it
+      // can catch it with v-on:remove in the component declaration
+      this.$emit('remove', this);
     }
-    // removeFromOrder: function(item) {
-    //   this.$emit('removeFromOrder', item);
-    //   //set all counters to 0. Notice the use of $refs
-    //   // for (i = 0; i < this.$refs.Icecream.length; i += 1) {
-    //   //   this.$refs.Icecream[i].resetCounter();
-    //   // }
-    //   //this.price = 0;
-    //   //this.chosenIngredients = [];
-    // }
   }
 }
 </script>
+
 <style scoped>
 .b {
 	min-width: 3vh;

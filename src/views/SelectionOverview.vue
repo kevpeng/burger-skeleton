@@ -1,78 +1,38 @@
 <template>
   <div>
-    <body>
-      <div class="pageGrid">
-        <div class="gridContainer">
-          <button class="gridElement line" v-on:click="switchTo('BurgerCreation')">{{category}} {{uiLabels.createOwnBurger}} </button>
-          <div class="line"></div>
-          <button class="gridElement" v-on:click="switchToItems('Menus')"> {{uiLabels.menus}} </button>
-          <button class="gridElement" v-on:click="switchToItems('Burgers')"> {{uiLabels.burgers}} </button>
-          <button class="gridElement" v-on:click="switchToItems('Fries')"> {{uiLabels.fries}} </button>
-          <button class="gridElement" v-on:click="switchToItems('Icecreams')" id="iceCream"> {{uiLabels.iceCream}} </button>
-          <button class="gridElement" v-on:click="switchToItems('Salads')"> {{uiLabels.salad}} </button>
-          <button class="gridElement" v-on:click="switchToItems('Drinks')"> {{uiLabels.drinks}} </button>
-          <!-- <div class="gridElement" v-for="b in buttonList">
-            <button class="gridElement" v-on:click="b.methods"> {{b.title}} </button>
-          </div> -->
-        </div>
-        <footer>
-          <button v-on:click="cancelTo('Start')" class="back" id="back"> {{uiLabels.back}}  </button>
-          <button v-on:click="submit()" class="add" id="forward"> {{uiLabels.continue}}  </button>
-        </footer>
+    <div class="pageGrid">
+      <div class="gridContainer">
+        <button class="gridElement line" v-on:click="switchTo('BurgerCreation')">{{uiLabels.createOwnBurger}}</button>
+        <div class="line"></div>
+        <button class="gridElement" v-on:click="switchToItems('Menus')"> {{uiLabels.menus}} </button>
+        <button class="gridElement" v-on:click="switchToItems('Burgers')"> {{uiLabels.burgers}} </button>
+        <button class="gridElement" v-on:click="switchToItems('Fries')"> {{uiLabels.fries}} </button>
+        <button class="gridElement" v-on:click="switchToItems('Icecreams')" id="iceCream"> {{uiLabels.iceCream}} </button>
+        <button class="gridElement" v-on:click="switchToItems('Salads')"> {{uiLabels.salad}} </button>
+        <button class="gridElement" v-on:click="switchToItems('Drinks')"> {{uiLabels.drinks}} </button>
       </div>
-    </body>
+      <footer>
+        <button v-on:click="cancelTo('Start')" class="back" id="back"> {{uiLabels.back}}  </button>
+        <button v-on:click="submit()" class="add" id="forward"> {{uiLabels.continue}}  </button>
+      </footer>
+    </div>
   </div>
 </template>
 
 <script>
-// Javascript
-/*var buttons = [
-  {
-    "title": {{uiLabels.createOwnBurger}},
-    "methods": "create"
-  },
-  {
-    "title": {{uiLabels.menus}},
-    "methods": "menus"
-  },
-  {
-    "title": {{uiLabels.burgers}},
-    "methods": "burgers"
-  },
-  {
-    "title": {{uiLabels.fries}},
-    "methods": "fries"
-  },
-  {
-    "title": {{uiLabels.iceCream}},
-    "methods": "icecream"
-  },
-  {
-    "title": {{uiLabels.salad}},
-    "methods": "salad"
-  },
-  {
-    "title": {{uiLabels.drinks}},
-    "methods": "Drinks"
-  }
-]*/
-
 import sharedVueStuff from '@/components/sharedVueStuff.js'
+
 export default {
   name: 'SelectionOverview',
+
   mixins: [sharedVueStuff],
-  /*data: function() {
-    return {
-      buttonList: buttons,
-    }
-  },*/
+
   methods: {
     cancelTo: function(newTab){
       this.$emit('cancelTo', newTab, "Do you really want to cancel your Order?");
     },
     submit: function(){
       this.$emit('toggleCart');
-      // this.$emit('addCreatedBurgerToOrder');
     }
   }
 }
@@ -89,38 +49,25 @@ export default {
 
 .add {
   font-size: calc(2vw + 1vh);
-
 }
+
 @media screen and (max-width:818px){
   #forward{
     font-size: calc(0.5vw + 2vh);
     padding-left: 2.5vw;
   }
 }
+
 @media screen and (max-width:380px){
   .gridContainer {
       grid-template-columns: repeat(auto-fit, 32.7vw);
       grid-gap: 1vw;
   }
 }
+
 @media screen and (max-width:300px){
   .gridElement {
       font-size: 7vw;
   }
 }
-/*
-Big screen:
-grid-template-columns: repeat(auto-fit, calc(7em + 12px));
-
-Smaller screen:
-grid-template-columns: 1fr;
-
-Ingreditent:
-width: calc(100%-2em);
-
-computed:{
-  seats: function(){
-    return this.$store.state.seats;
-  }
-} */
 </style>
