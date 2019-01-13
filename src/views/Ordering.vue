@@ -213,7 +213,7 @@ export default {
                   // window.location.reload();
               }
 
-          }.bind(this), 60000);
+          }.bind(this), 40000);
       }
       window.addEventListener('mousemove', refresh, true);
       refresh();
