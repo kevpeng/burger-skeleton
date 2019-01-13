@@ -180,8 +180,15 @@ export default {
       function refresh() {
           clearTimeout(timer);
           timer = setTimeout(function () {
-              window.location.reload();
-          }.bind(this), 60000);
+              var answer = confirm("Would you like to continue your order?");
+              if(!answer) {
+                  window.location.reload();
+              }
+              else {
+                  // window.location.reload();
+              }
+
+          }.bind(this), 40000);
       }
       window.addEventListener('mousemove', refresh, true);
       refresh();

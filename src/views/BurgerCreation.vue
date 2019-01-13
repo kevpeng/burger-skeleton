@@ -1,56 +1,66 @@
 <template>
-  <div>
-    <div class="pageGrid">
-      <div class="gridContainer">
-        <!-- TODO If something is already chosen, view the name of it below the corresponding button -->
-        <div class="column1">
-          <button v-on:click="switchToItems('Bread')" class="gridElement burgerButtons" id="bread"> {{ uiLabels.bread }} </button>
-          <br>
-          <button v-on:click="switchToItems('Patty')" class="gridElement burgerButtons" id="patty"> {{ uiLabels.patty }} </button>
+    <div>
+        <body>
+        <div class="pageGrid">
+            <div class="gridContainer">
+                <div class="column1">
+                    <!--<span id="breadcheck">&#10003;</span>-->
+                    <button v-on:click="switchToItems('Bread')"
+                            class="gridElement burgerButtons" id="bread"> {{ uiLabels.bread }}
+                    </button>
+                    <br>
+                    <!--<span class="pattycheck">&#10003;</span>-->
+                    <button v-on:click="switchToItems('Patty')"
+                            class="gridElement burgerButtons" id="patty"> {{ uiLabels.patty }}
+                    </button>
+                </div>
+                <div class="column2">
+                    <img class="burgerImage" src="../assets/burger.png">
+                </div>
+                <div class="column3">
+                    <!--<span class="toppingcheck">&#10003;</span>-->
+                    <button v-on:click="switchToItems('Toppings')"
+                            class="gridElement burgerButtons" id="toppings"> {{ uiLabels.toppings }}
+                    </button>
+                    <br>
+                    <!--<span class="saucecheck">&#10003;</span>-->
+                    <button v-on:click="switchToItems('Sauce')"
+                            class="gridElement burgerButtons" id="sauce"> {{ uiLabels.sauce }}
+                    </button>
+                </div>
+            </div>
+            <footer>
+                <button v-on:click="cancelTo('SelectionOverview')" class="back" id="back"> {{ uiLabels.back }}</button>
+                <button v-on:click="addCreatedBurgerToOrder()" class="add" id="add"> {{ uiLabels.add }}</button>
+            </footer>
         </div>
-        <div class="column2">
-          <img class="burgerImage" src="../assets/burger.png">
-        </div>
-        <div class="column3" >
-          <button v-on:click="switchToItems('Toppings')" class="gridElement burgerButtons" id="toppings"> {{ uiLabels.toppings }} </button>
-          <br>
-          <button v-on:click="switchToItems('Sauce')" class="gridElement burgerButtons" id="sauce"> {{ uiLabels.sauce }} </button>
-        </div>
-      </div>
-      <footer>
-        <button v-on:click="cancelTo('SelectionOverview')" class="back" id="back"> {{ uiLabels.back }} </button>
-        <button v-on:click="addCreatedBurgerToOrder()" class="add" id="add"> {{ uiLabels.add }} </button>
-      </footer>
+        </body>
     </div>
-  </div>
 </template>
 
 <script>
-import sharedVueStuff from '@/components/sharedVueStuff.js'
+    import sharedVueStuff from '@/components/sharedVueStuff.js'
 
-export default {
-  name: "BurgerCreation",
-
-  mixins: [sharedVueStuff],
-
-  methods: {
-    cancelTo: function(newTab) {
-      this.$emit('cancelTo', newTab, "Do you really want to cancel the Creation of your Burger?  All your selections will be lost.");
-    },
-    addCreatedBurgerToOrder: function() {
-      this.$emit('addCreatedBurgerToOrder');
+    export default {
+        name: "BurgerCreation",
+        mixins: [sharedVueStuff],
+        methods: {
+            cancelTo: function (newTab) {
+                this.$emit('cancelTo', newTab, "Do you really want to cancel the Creation of your Burger?  All your selections will be lost.");
+            },
+            addCreatedBurgerToOrder: function () {
+                this.$emit('addCreatedBurgerToOrder');
+            },
+            // addCheck: function (x) {
+            //     // alert(x);
+            //     document.getElementById("breadcheck").classList.toggle("show");
+            // }
+        }
     }
-  }
-}
 </script>
 
 <style scoped>
-  @import '~@/css/sharedCSSStuff.css';
 
-/* Attention: Overriding things from sharedCSSStuff below here! */
-.gridContainer{
-  align-items: center;
-}
 
 .burgerImage{
   width: 35vw;
@@ -64,17 +74,35 @@ export default {
   font-size: calc(5px + 2.5vw);
 }
 
-@media screen and (max-width:380px){
-  .gridContainer{
-    grid-template-columns: auto;
-  }
 
-  .burgerButtons{
-    height: 10vh;
-    min-width: 180px;
-    min-height: 70px;
-    margin: 1.5vw;
-    font-size: 2em;
-  }
-}
+    /*#breadcheck {*/
+        /*display: none;*/
+        /*!*position: absolute;*!*/
+    /*}*/
+
+    /*.pattycheck {*/
+        /*display: none;*/
+    /*}*/
+
+    /*.toppingcheck {*/
+        /*display: none;*/
+    /*}*/
+
+    /*.saucecheck {*/
+        /*display: none;*/
+    /*}*/
+
+    @media screen and (max-width: 380px) {
+        .gridContainer {
+            grid-template-columns: auto;
+        }
+
+        .burgerButtons {
+            height: 10vh;
+            min-width: 180px;
+            min-height: 70px;
+            margin: 1.5vw;
+            font-size: 2em;
+        }
+    }
 </style>
