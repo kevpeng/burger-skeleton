@@ -1,37 +1,43 @@
 <template>
   <!-- Note in this component that it is using another component -->
   <div>
-    <OrderItem
-      :ui-labels="uiLabels"
-      :lang="lang"
-      :order-id="orderId"
-      :order="order">
-    </OrderItem>
-    <p v-if="order.status ==='not-started'">
-      {{uiLabels.status_notstarted}}
-    </p>
-    <p v-if="order.status === 'started'">
-      {{uiLabels.status_started}}
-    </p>
-    <p v-if="order.status === 'done'">
-      {{uiLabels.status_done}}
-    </p>
-    <p v-if="order.status === 'removed'">
-      {{uiLabels.status_removed}}
-    </p>
+    <div class="itemgrid">
+      <div class="item">
+        <OrderItem
+          :ui-labels="uiLabels"
+          :lang="lang"
+          :order-id="orderId"
+          :order="order">
+        </OrderItem>
+        <p v-if="order.status ==='not-started'">
+          Status: {{uiLabels.status_notstarted}}
+        </p>
+        <p v-if="order.status === 'started'">
+          Status: {{uiLabels.status_started}}
+        </p>
+        <p v-if="order.status === 'done'">
+          Status: {{uiLabels.status_done}}
+        </p>
+        <p v-if="order.status === 'removed'">
+          Status: {{uiLabels.status_removed}}
+        </p>
+      </div>
 
-    <button v-if="order.status ==='not-started'" v-on:click="orderStart">
-      {{uiLabels.start}}
-    </button>
-    <button v-if="order.status === 'started'" v-on:click="orderDone">
-      {{uiLabels.ready}}
-    </button>
-    <button v-if="order.status === 'done'" v-on:click="orderRemove">
-      {{uiLabels.cancelOrder}}
-    </button>
-    <button v-if="order.status === 'removed'" v-on:click="orderStart">
-      {{uiLabels.start}}
-    </button>
+      <div class="button">
+        <button v-if="order.status ==='not-started'" v-on:click="orderStart" class="notstarted">
+          {{uiLabels.start}}
+        </button>
+        <button v-if="order.status === 'started'" v-on:click="orderDone" class="started">
+          {{uiLabels.ready}}
+        </button>
+        <button v-if="order.status === 'done'" v-on:click="orderRemove" class="done">
+          {{uiLabels.cancelOrder}}
+        </button>
+        <button v-if="order.status === 'removed'" v-on:click="orderStart" class="removed">
+          {{uiLabels.start}}
+        </button>
+      </div>
+    </div>
     <hr>
   </div>
 </template>
@@ -73,5 +79,48 @@ export default {
 }
 </script>
 <style scoped>
-	
+.itemgrid {
+  display: grid;
+  grid-template-columns: auto 8vw;
+  color: black;
+  font-weight: lighter;
+  grid-gap: 0.5vw;
+  font-family: 'Amaranth';
+  text-align: left;
+}
+
+.item, .button {
+  padding: 1vw;
+}
+.item {
+  background-color: #8B4513;
+  color: #FFE4B5;
+  border-radius: 10px;
+  border: solid;
+  border-color: black;
+}
+button {
+  height: 100%;
+  width: 100%;
+  background-color: darkolivegreen;
+  border-radius: 10px;
+  font-family: 'Amaranth';
+  font-size: 1em;
+}
+button:hover {
+  background-color: #501811;
+  cursor: pointer;
+}
+
+.notstarted {
+  background-color: darkolivegreen;
+}
+.started {
+  background-color: darkcyan;
+}
+.done {
+  background-color: palevioletred;
+}
+.removed {
+}
 </style>

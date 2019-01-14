@@ -1,5 +1,11 @@
 <template>
   <div id="orders">
+    <head>
+      <meta charset="utf-8"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
+    </head>
+
     <div class="kitchen_container">
       <div class="navigation">
           <button v-on:click="switchKitchenTab()"><p class="t">TAB</p></button>
