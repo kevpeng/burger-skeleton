@@ -67,7 +67,7 @@
 
               </div>
               <div v-else>
-                The cart is waiting to be filled
+                {{ uiLabels.cartEmpty }}
               </div>
             </div>
           </div>
@@ -170,6 +170,7 @@ export default {
   },
 
   created: function () {
+    var self = this;
     //TODO explain what this function is doing (was already given by the teacher!)
     this.$store.state.socket.on('orderNumber', function (data) {
       this.orderNumber = data;
@@ -181,7 +182,7 @@ export default {
       function refresh() {
           clearTimeout(timer);
           timer = setTimeout(function () {
-              var answer = confirm("Would you like to continue your order?");
+              var answer = confirm(self.uiLabels.timeOutMessage);
               if(!answer) {
                   window.location.reload();
               }
@@ -206,7 +207,7 @@ export default {
     //to cancel from any tab/component and return to the Start
     //can be called from the components itself with "this.$emit('cancel');"
     cancel: function () {
-      var message = 'Do you really want to leave the ordering process? All your selections will be lost.';
+      var message = this.uiLabels.cancelMessage;
       if (window.confirm(message)) {
         this.chosenIngredients = [];
         this.chosenIngredientsPrice = 0;

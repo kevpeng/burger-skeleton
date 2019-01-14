@@ -73,5 +73,8 @@
   "status_notstarted": "not-started",
   "status_started": "started",
   "status_done": "done",
-  "status_removed": "removed"
+  "status_removed": "removed",
+  "cartEmpty": "The cart is waiting to be filled",
+  "cancelMessage": "Do you really want to leave the ordering process? All your selections will be lost.",
+  "timeOutMessage": "Would you like to continue your order?"
 }

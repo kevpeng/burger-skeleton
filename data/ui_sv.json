@@ -73,5 +73,8 @@
   "status_notstarted": "inte startat",
   "status_started": "startade",
   "status_done": "färdigt",
-  "status_removed": "avlägsnas"
+  "status_removed": "avlägsnas",
+  "cartEmpty": "Vagnen väntar på att fyllas",
+  "cancelMessage": "Vill du verkligen lämna beställningsprocessen? Alla dina val kommer att gå vilse.",
+  "timeOutMessage": "Vill du fortsätta din beställning?"
 }
