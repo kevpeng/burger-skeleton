@@ -81,6 +81,7 @@ export default {
           unit: item,
           amount: 1,
           price: item.selling_price,
+          category: 100,
           id: Math.floor(Math.random() * Math.floor(9999999999))
       };
       this.chosenItems.push(obj);
@@ -93,6 +94,7 @@ export default {
             unit: this.$refs.Items[i].item,
             amount: this.$refs.Items[i].counter,
             price: (this.$refs.Items[i].item.selling_price * this.$refs.Items[i].counter),
+            category: 100,
             id: Math.floor(Math.random() * Math.floor(9999999999))
           };
           this.chosenItems.push(obj);

@@ -112,6 +112,7 @@
         display: grid;
         grid-template-columns: 31.666vmax 31.666vmax 31.666vmax;
         height: 100vh;
+        text-align: center;
     }
     
     .queue {
