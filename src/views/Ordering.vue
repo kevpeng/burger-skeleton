@@ -28,7 +28,7 @@
             <div class="cartGrid">
               <div v-if="selection.length > 0 || chosenIngredients.length > 0">
                 <div class="selected">
-                  
+
                   {{uiLabels.yourOrder}}:
                   <Cartitem class="selection"
                     v-for="item in selection"
@@ -41,7 +41,7 @@
                   <hr class="hr">
                   {{this.price}} SEK
                   <hr>
-                  
+
                   {{uiLabels.chosenIngredients}}
                   <Cartitem class="selection"
                     v-for="item in chosenIngredients"
@@ -51,7 +51,7 @@
                     :lang="lang"
                     :uiLabels="uiLabels">
                   </Cartitem>
-                  
+
                   <hr class="hr">
                   {{this.chosenIngredientsPrice}} SEK
                 </div>
@@ -98,6 +98,7 @@
           :ui-labels="uiLabels"
           :itemlist="itemlist"
           :category="category"
+          :chosen="chosenIngredients"
           class="tab"
           type="inline-template">
         </component>
@@ -239,8 +240,8 @@ export default {
       if(this.category > 0){
         for(var j=0; j<this.chosenIngredients.length; j++){
           if(this.category == this.chosenIngredients[j].unit['category']){
-            this.chosenIngredientsPrice -= this.chosenIngredients[j].unit['selling_price']; 
-            this.chosenIngredients.splice(j, 1);  
+            this.chosenIngredientsPrice -= this.chosenIngredients[j].unit['selling_price'];
+            this.chosenIngredients.splice(j, 1);
             break;
           }
         }
@@ -248,7 +249,7 @@ export default {
       for(var i=0; i<items.length; i++){
         this.chosenIngredients.push(items[i]);
         this.chosenIngredientsPrice += items[i].price;
-      }      
+      }
       this.currentTab = 'BurgerCreation';
     },
 
@@ -332,7 +333,7 @@ export default {
     toggleCart: function () {
         document.getElementById("myCart").classList.toggle("show");
     }
-    
+
   /*
   v-click-outside="outside" @click="inside"
     outside: function(e) {
@@ -494,7 +495,7 @@ button:hover {
   display: block;
 }
 
-/** PAGE - NAVIGATION START ** 
+/** PAGE - NAVIGATION START **
 .navigation {
   margin-top: var(--header-scale);
   max-width: 100vw;
