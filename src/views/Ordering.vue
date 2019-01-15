@@ -201,6 +201,9 @@ export default {
     //to switch the tab to another component
     //can be called from the components itself with "this.$emit('switchTo', newTab);"
     switchTab: function (newTab) {
+      if(newTab == 'Start') {
+          window.location.reload();
+      }
       this.currentTab = newTab;
     },
 
@@ -215,6 +218,7 @@ export default {
         this.price = 0;
 
         this.currentTab = 'Start';
+        window.location.reload();
       }
     },
 
